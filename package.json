@@ -5,14 +5,20 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "biome format .",
+    "check": "biome check --apply .",
+    "format-and-lint": "biome check .",
+    "format-and-lint:fix": "biome check . --write",
+    "ui": "pnpm --filter @repo/ui ui"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "^22.9.1",
     "prettier": "^3.2.5",
     "turbo": "^2.3.0",
     "typescript": "5.5.4"
   },
-  "packageManager": "pnpm@8.15.6",
+  "packageManager": "pnpm@9.12.2",
   "engines": {
     "node": ">=18"
   }

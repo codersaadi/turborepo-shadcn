@@ -1,0 +1,31 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "extends": ["./library.json"],
+  "linter": {
+    "rules": {
+      "recommended": true,
+      "a11y": {
+        "recommended": true,
+        "useButtonType": "error",
+        "useKeyWithClickEvents": "error",
+        "useValidAnchor": "error"
+      },
+      "security": {
+        "recommended": true,
+        "noDangerouslySetInnerHtml": "error"
+      },
+      "suspicious": {
+        "noArrayIndexKey": "error",
+        "noExplicitAny": "error"
+      },
+      "style": {
+        "noDefaultExport": "off",
+        "useImportType": "error",
+        "useShorthandArrayType": "error"
+      }
+    }
+  },
+  "files": {
+    "ignore": ["node_modules", ".next", "dist", "public", "next-env.d.ts"]
+  }
+}
