@@ -1,10 +1,11 @@
-import { Button } from "@repo/ui/components/ui/button";
+import Checker from "@/app/_components/Checker";
 import React from "react";
+
 
 export default function page() {
 	return (
 		<div className="">
-			<Button>Me Click</Button>
+			<Checker />
 		</div>
 	);
 }
