@@ -1,6 +1,30 @@
 # Turborepo starter
 
-This is a special starter Turborepo with additional features.
+This is a special starter Turborepo with additional features, designed to provide a robust foundation for modern web applications.
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 20.x or later
+- pnpm 9.x or later
+- Git
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/codersaadi/turborepo-shadcn.git my-app
+
+# Navigate to the project
+cd my-app
+
+# Install dependencies
+pnpm install
+
+# Start development servers
+pnpm dev
+```
 
 ## What's inside?
 
@@ -18,15 +42,31 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ### Features & Utilities
 
-This Turborepo has several tools and features set up:
+This Turborepo comes packed with powerful features:
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [Biome](https://biomejs.dev/) for fast linting and formatting
+#### 🛠️ Core Technologies
+- [TypeScript](https://www.typescriptlang.org/) for robust type checking
+- [Next.js](https://nextjs.org/) for modern web applications
+- Strict ESM modules support
+
+#### 🎨 UI & Styling
 - [shadcn/ui](https://ui.shadcn.com/) for beautiful, accessible components
-- [Tailwind CSS](https://tailwindcss.com) for styling
+- [Tailwind CSS](https://tailwindcss.com) for utility-first styling
+
+#### 🧹 Code Quality
+- [Biome](https://biomejs.dev/) for lightning-fast linting and formatting
+- [lint-staged](https://github.com/okonet/lint-staged) for pre-commit file linting
+- Type checking across all workspaces
+
+#### 📦 DevOps & Deployment
 - Docker support for production deployment
-- Strict ESM modules
 - Workspace-aware commands
+- [Turborepo](https://turbo.build/repo) remote caching
+
+#### 🤝 Git Workflow
+- [Husky](https://typicode.github.io/husky/) for Git hooks management
+- [Commitlint](https://commitlint.js.org/) for conventional commit messages
+- Automated pre-commit quality checks
 
 ### Commands
 
@@ -39,42 +79,56 @@ pnpm build      # Build all apps and packages
 pnpm lint       # Lint and auto-fix all files using Biome
 pnpm format     # Format root configuration files
 
+# Git Workflow
+pnpm commit     # Interactive commit message builder
+
 # Type Checking
 pnpm check-types # Type check all workspaces
 
+# Docker (web app)
+pnpm --filter web docker:build  # Build production Docker image
+pnpm --filter web docker:start  # Start Docker container
+```
+
+### Project Structure
+
+```
+.
+├── apps
+│   ├── docs                 # Documentation site
+│   └── web                 # Main web application
+├── packages
+│   ├── ui                  # Shared UI components
+│   ├── typescript-config   # Shared TypeScript configs
+│   └── biome-config        # Shared Biome configs
+└── package.json
 ```
 
 ### UI Components
 
-To add new components to the UI package:
+Add new shadcn/ui components to the UI package:
 
 ```bash
 pnpm ui add button
+pnpm ui add card
+pnpm ui add dialog
+# ... and more
 ```
 
-This will add the specified shadcn component to your UI package.
+### Git Workflow
 
-### Build
+This repo enforces a consistent git workflow:
 
-To build all apps and packages, run the following command:
-
-```bash
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```bash
-pnpm dev
-```
+1. Stage your changes: `git add .`
+2. Create a conventional commit: `pnpm commit`
+3. Pre-commit hooks will automatically:
+   - Format and lint staged files
+   - Run type checking
+   - Validate commit message format
 
 ### Remote Caching
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+Turborepo can use [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines. To enable it:
 
 ```bash
 npx turbo login
@@ -83,8 +137,7 @@ npx turbo link
 
 ## Useful Links
 
-Learn more about the power of Turborepo:
-
+### Turborepo Documentation
 - [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
 - [Caching](https://turbo.build/repo/docs/core-concepts/caching)
 - [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
@@ -92,9 +145,28 @@ Learn more about the power of Turborepo:
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
 
-Additional documentation:
-
+### Tech Stack Documentation
 - [Biome](https://biomejs.dev/)
 - [shadcn/ui](https://ui.shadcn.com/)
 - [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Author
+
+Created with ❤️ by [Saad Bukhari](https://github.com/saad-official)
+
+## License
+
+MIT
+
+---
+
+<p align="center">
+  <a href="https://github.com/codersaadi/turborepo-shadcn">
+    Built with Turborepo 🚀
+  </a>
+</p>
