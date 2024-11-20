@@ -48,6 +48,7 @@ This Turborepo comes packed with powerful features:
 - [TypeScript](https://www.typescriptlang.org/) for robust type checking
 - [Next.js](https://nextjs.org/) for modern web applications
 - Strict ESM modules support
+- [Fuma](https://fuma.dev) for smart package management and dependency resolution
 
 #### 🎨 UI & Styling
 - [shadcn/ui](https://ui.shadcn.com/) for beautiful, accessible components
@@ -85,9 +86,7 @@ pnpm commit     # Interactive commit message builder
 # Type Checking
 pnpm check-types # Type check all workspaces
 
-# Docker (web app)
-pnpm --filter web docker:build  # Build production Docker image
-pnpm --filter web docker:start  # Start Docker container
+
 ```
 
 ### Project Structure
@@ -134,6 +133,10 @@ Turborepo can use [Remote Caching](https://turbo.build/repo/docs/core-concepts/r
 npx turbo login
 npx turbo link
 ```
+
+### Package Management with Fuma
+
+This
 
 ## Useful Links
 

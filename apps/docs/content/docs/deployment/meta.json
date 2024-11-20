@@ -1,4 +1,4 @@
 {
-  "title": "Deployment",
-  "pages": ["index", "...", "[Vercel](https://vercel.com)"]
+	"title": "Deployment",
+	"pages": ["index", "...", "[Vercel](https://vercel.com)"]
 }
