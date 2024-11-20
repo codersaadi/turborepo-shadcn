@@ -1,14 +1,6 @@
 # Turborepo starter
 
-This is an official starter Turborepo.
-
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest
-```
+This is a special starter Turborepo with additional features.
 
 ## What's inside?
 
@@ -18,26 +10,55 @@ This Turborepo includes the following packages/apps:
 
 - `docs`: a [Next.js](https://nextjs.org/) app
 - `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `@repo/ui`: a shared React component library using [shadcn/ui](https://ui.shadcn.com/)
+- `@repo/typescript-config`: shared `tsconfig.json`s used throughout the monorepo
+- `@repo/biome-config`: shared [Biome](https://biomejs.dev/) configurations for linting and formatting
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-### Utilities
+### Features & Utilities
 
-This Turborepo has some additional tools already setup for you:
+This Turborepo has several tools and features set up:
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+- [Biome](https://biomejs.dev/) for fast linting and formatting
+- [shadcn/ui](https://ui.shadcn.com/) for beautiful, accessible components
+- [Tailwind CSS](https://tailwindcss.com) for styling
+- Docker support for production deployment
+- Strict ESM modules
+- Workspace-aware commands
+
+### Commands
+
+```bash
+# Development
+pnpm dev        # Start all apps in development mode
+pnpm build      # Build all apps and packages
+
+# Linting & Formatting
+pnpm lint       # Lint and auto-fix all files using Biome
+pnpm format     # Format root configuration files
+
+# Type Checking
+pnpm check-types # Type check all workspaces
+
+```
+
+### UI Components
+
+To add new components to the UI package:
+
+```bash
+pnpm ui add button
+```
+
+This will add the specified shadcn component to your UI package.
 
 ### Build
 
 To build all apps and packages, run the following command:
 
-```
-cd my-turborepo
+```bash
 pnpm build
 ```
 
@@ -45,8 +66,7 @@ pnpm build
 
 To develop all apps and packages, run the following command:
 
-```
-cd my-turborepo
+```bash
 pnpm dev
 ```
 
@@ -56,16 +76,8 @@ Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo
 
 By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
-```
-cd my-turborepo
+```bash
 npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
 npx turbo link
 ```
 
@@ -79,3 +91,10 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
+Additional documentation:
+
+- [Biome](https://biomejs.dev/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)

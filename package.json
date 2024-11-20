@@ -10,11 +10,15 @@
     "format-and-lint": "biome check .",
     "format-and-lint:fix": "biome check . --write",
     "ui": "pnpm --filter @repo/ui ui",
-    "docker:reset": "docker system prune -af && docker volume prune -f"
+    "prepare": "husky"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
     "@types/node": "^22.9.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.2.5",
     "turbo": "^2.3.0",
     "typescript": "5.5.4"
