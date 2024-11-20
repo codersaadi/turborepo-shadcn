@@ -9,7 +9,8 @@
     "check": "biome check --apply .",
     "format-and-lint": "biome check .",
     "format-and-lint:fix": "biome check . --write",
-    "ui": "pnpm --filter @repo/ui ui"
+    "ui": "pnpm --filter @repo/ui ui",
+    "docker:reset": "docker system prune -af && docker volume prune -f"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
