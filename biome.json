@@ -1,13 +1,13 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "extends": ["./packages/biome-config/library.json"],
-  "files": {
-    "ignore": [
-      "**/node_modules/**",
-      "**/.next/**",
-      "**/dist/**",
-      "**/.turbo/**",
-      "./packages/ui/components.json"
-    ]
-  }
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"extends": ["./packages/biome-config/library.json"],
+	"files": {
+		"ignore": [
+			"**/node_modules/**",
+			"**/.next/**",
+			"**/dist/**",
+			"**/.turbo/**",
+			"./packages/ui/components.json"
+		]
+	}
 }
