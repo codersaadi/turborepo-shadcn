@@ -157,7 +157,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Author
 
-Created with ❤️ by [Saad Bukhari](https://github.com/saad-official)
+Created with ❤️ by [Saad Bukhari](https://github.com/codersaadi)
 
 ## License
 
