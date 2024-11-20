@@ -5,8 +5,15 @@
 			{
 				"name": "next"
 			}
-		]
+		],
+		"declaration": true,
+		"preserveSymlinks": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./*"]
+		}
 	},
+
 	"include": [
 		"next-env.d.ts",
 		"next.config.mjs",
