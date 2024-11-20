@@ -1,9 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function Checker() {
-    return (
-        <div>
-            Checker
-        </div>
-    )
+	return <div>Checker</div>;
 }
