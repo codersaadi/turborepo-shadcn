@@ -7,9 +7,9 @@
 		"./globals.css": "./src/globals.css",
 		"./tailwind-shared": "./tailwind-shared.mts",
 		"./lib/*": "./src/lib/*.ts",
-		"./components/*": "./src/components/*.tsx",
+		"./components/*": ["./src/components/*.tsx", "./src/components/*.ts"],
 		"./postcss.config": "./postcss.config.mjs",
-		"./hooks/*": "./src/hooks/*"
+		"./hooks/*": ["./src/hooks/*.ts", "./src/hooks/*.tsx"]
 	},
 	"scripts": {
 		"ui": "pnpm dlx shadcn@latest",
