@@ -11,7 +11,7 @@
     "format-and-lint:fix": "biome check . --write",
     "ui": "pnpm --filter @repo/ui ui",
     "docs": "pnpm --filter @repo/docs",
-    "web": "pnpm --filter @repo/web",
+    "web": "pnpm --filter web",
     "prepare": "husky"
   },
   "devDependencies": {
