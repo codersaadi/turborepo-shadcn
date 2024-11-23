@@ -9,5 +9,6 @@ export default {
 		"./components/**/*.{ts,tsx,jsx,tsx}",
 		"./app/**/*.{ts,tsx,jsx,tsx}",
 		"./src/**/*.{ts,tsx,jsx,tsx}",
+		"../../packages/ui/src/components/**/*.{ts,tsx}",
 	],
 } satisfies Config;

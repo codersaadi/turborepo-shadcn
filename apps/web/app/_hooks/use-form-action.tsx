@@ -1,3 +1,4 @@
+"use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import { useState, useTransition } from "react";
