@@ -2,13 +2,9 @@ import { UIProvider } from "@repo/ui/components/ui-provider";
 import type React from "react";
 
 export default function RootProvider({
-    children,
+	children,
 }: {
-    children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-    return (
-        <UIProvider>
-            {children}
-        </UIProvider>
-    );
+	return <UIProvider>{children}</UIProvider>;
 }
