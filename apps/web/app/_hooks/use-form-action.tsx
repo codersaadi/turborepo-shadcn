@@ -15,15 +15,24 @@ export type FormMessage = {
 	type: "error" | "success";
 	message: string;
 };
-const messageResponseTypeGuard = <R,>(response: Awaited<R>): FormMessage | undefined => {
-	if (response && typeof response === "object" && ('success' in response && typeof response.success === "boolean") && ("message" in response && typeof response.message === "string")) {
+const messageResponseTypeGuard = <R,>(
+	response: Awaited<R>,
+): FormMessage | undefined => {
+	if (
+		response &&
+		typeof response === "object" &&
+		"success" in response &&
+		typeof response.success === "boolean" &&
+		"message" in response &&
+		typeof response.message === "string"
+	) {
 		return {
 			type: !response.success ? "error" : "success",
-			message: response.message
-		}
+			message: response.message,
+		};
 	}
-	return
-}
+	return;
+};
 export interface FormSubmitProps<
 	T extends z.ZodSchema<FieldValues>,
 	R = unknown,
@@ -60,10 +69,10 @@ export const useFormAction = <T extends z.ZodSchema<FieldValues>, R = unknown>(
 
 					if (onSuccess) {
 						onSuccess(response);
-						const msgRes = messageResponseTypeGuard(response)
+						const msgRes = messageResponseTypeGuard(response);
 						if (msgRes) {
-							setMessage(msgRes)
-							return
+							setMessage(msgRes);
+							return;
 						}
 					}
 
@@ -82,7 +91,6 @@ export const useFormAction = <T extends z.ZodSchema<FieldValues>, R = unknown>(
 
 					if (onError) {
 						onError(error);
-
 					}
 
 					setMessage({
