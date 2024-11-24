@@ -18,7 +18,6 @@ export default function page() {
 			<div className="mx-auto max-w-sm ">
 				<FormExample />
 			</div>
-
 		</div>
 	);
 }
