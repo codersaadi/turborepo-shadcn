@@ -1,8 +1,6 @@
 import React from "react";
-
 import NextThemeSwitch from "./_components/ThemeSwitch";
 import FormExample from "./_components/form-example/form-example";
-
 export default function page() {
 	return (
 		<div className="pt-4">
@@ -20,6 +18,7 @@ export default function page() {
 			<div className="mx-auto max-w-sm ">
 				<FormExample />
 			</div>
+
 		</div>
 	);
 }
