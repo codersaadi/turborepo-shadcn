@@ -1,1 +1,1 @@
-turbo lint --affected
+turbo lint --affected || exit 1
