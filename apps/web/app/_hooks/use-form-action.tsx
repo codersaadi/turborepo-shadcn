@@ -1,4 +1,5 @@
 "use client";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import { useState, useTransition } from "react";
@@ -9,59 +10,73 @@ import {
 	useForm,
 } from "react-hook-form";
 import type { z } from "zod";
+
 export type FormMessage = {
 	type: "error" | "success";
 	message: string;
 };
-export type MessageResponse = {
-	success: boolean;
-	message: string;
-};
-export interface FormSubmitProps<T extends z.ZodSchema<FieldValues>> {
+
+export interface FormSubmitProps<
+	T extends z.ZodSchema<FieldValues>,
+	R = unknown,
+> {
 	schema: T;
-	defaultValues: DefaultValues<z.infer<T>>; // Change to DefaultValues type
-	onSubmitAction: (data: z.infer<T>) => Promise<MessageResponse>;
+	defaultValues: DefaultValues<z.infer<T>>;
+	onSubmitAction: (data: z.infer<T>) => Promise<R>;
+	onSuccess?: (response: R) => void; // Success callback
+	onError?: (error: unknown) => void; // Error callback
+	successMessage?: string;
+	errorMessage?: string;
 }
 
-export const useFormAction = <T extends z.ZodSchema<FieldValues>>(
-	props: FormSubmitProps<T>,
+export const useFormAction = <T extends z.ZodSchema<FieldValues>, R = unknown>(
+	props: FormSubmitProps<T, R>,
 ) => {
-	const { schema, defaultValues, onSubmitAction } = props;
+	const { schema, defaultValues, onSubmitAction, onSuccess, onError } = props;
 
 	const form: UseFormReturn<z.infer<T>> = useForm<z.infer<T>>({
 		resolver: zodResolver(schema),
-		defaultValues, // Now defaults are correctly typed
+		defaultValues,
 	});
 
 	const [message, setMessage] = useState<FormMessage | null>(null);
 	const [isPending, startTransition] = useTransition();
 
-	const onSubmit = (action: (data: z.infer<T>) => Promise<MessageResponse>) => {
-		const setResponseMessage = (res: MessageResponse) => {
-			if (res && "success" in res) {
-				setMessage({
-					type: res.success ? "success" : "error",
-					message: res?.message || "",
-				});
-			}
-		};
-
+	const onSubmit = (action: (data: z.infer<T>) => Promise<R>) => {
 		return async (data: z.infer<T>) => {
 			setMessage(null);
 
-			startTransition(() => {
-				action(data)
-					.then(setResponseMessage)
-					.catch((error) => {
-						if (isRedirectError(error)) {
-							return;
-						}
-						console.error("Submission Error:", error);
-						setMessage({
-							type: "error",
-							message: "Submission failed. Please try again.",
-						});
+			startTransition(async () => {
+				try {
+					const response = await action(data);
+
+					if (onSuccess) {
+						onSuccess(response);
+					}
+
+					setMessage({
+						type: "success",
+						message: props.successMessage ?? "Submission successful.",
 					});
+				} catch (error) {
+					if (isRedirectError(error)) {
+						return;
+					}
+
+					if (process.env.NODE_ENV !== "production") {
+						console.error("Submission Error:", error);
+					}
+
+					if (onError) {
+						onError(error);
+					}
+
+					setMessage({
+						type: "error",
+						message:
+							props.errorMessage ?? "Submission failed. Please try again.",
+					});
+				}
 			});
 		};
 	};
