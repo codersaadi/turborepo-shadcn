@@ -1,17 +1,14 @@
 {
 	"extends": "@repo/typescript-config/nextjs.json",
 	"compilerOptions": {
-		"plugins": [
-			{
-				"name": "next"
-			}
-		],
+		"jsx": "preserve",
+		"allowSyntheticDefaultImports": true,
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./src/*"]
-		}
+		},
+		"types": ["node"]
 	},
-
 	"include": [
 		"next-env.d.ts",
 		"next.config.mjs",

@@ -1,6 +1,6 @@
 import { createEnv } from "@t3-oss/env-core";
 import { z } from "zod";
-import { stripe } from "./presets.mjs";
+import { stripe } from "./presets";
 const serverSchema = {
   DATABASE_URL: z.string(),
   AUTH_SECRET: z.string(),

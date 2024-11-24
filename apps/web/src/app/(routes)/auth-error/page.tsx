@@ -1,5 +1,8 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+
 enum AppError {
 	Configuration = "Configuration",
 	AccessDenied = "AccessDenied",
@@ -46,17 +49,20 @@ const errorMap = {
 	),
 };
 
-export default function AuthErrorPage({
-	searchParams,
-}: {
-	searchParams: unknown & {
-		error?: string;
-	};
-}) {
-	if (!searchParams?.error) {
+export default function AuthErrorPage() {
+	return (
+		<Suspense>
+			<AuthError />
+		</Suspense>
+	);
+}
+
+function AuthError() {
+	const searchParams = useSearchParams();
+	const error = (searchParams.get("error") as AppError) || null;
+	if (!error) {
 		return null;
 	}
-	const error = searchParams?.error as AppError;
 
 	return (
 		<div className="flex h-screen w-full flex-col items-center justify-center bg-gray-100 dark:bg-transparent p-4">

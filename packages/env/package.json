@@ -11,6 +11,6 @@
     "@repo/typescript-config": "workspace:*"
   },
   "exports": {
-    "default": "./src/index.mts"
+    "default": "./src/index.ts"
   }
 }

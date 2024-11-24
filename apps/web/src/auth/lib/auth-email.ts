@@ -1,6 +1,6 @@
+import { AuthEmailTemplate } from "@/auth/components/auth-email";
 import { resend } from "@/lib/email-send";
 import env from "@repo/env";
-
 type SendAuthEmailType = "reset" | "verify" | "confirmation";
 const authEmailLinks = (token: string) => ({
 	reset: `${env.NEXT_PUBLIC_HOST}/auth/new-password?token=${token}`,
@@ -31,10 +31,3 @@ export const authEmail = async (
 	});
 	return { data, error };
 };
-function AuthEmailTemplate(arg0: {
-	link: string;
-	type: SendAuthEmailType;
-	username: string | undefined;
-}): import("react").ReactNode {
-	throw new Error("Function not implemented.");
-}
