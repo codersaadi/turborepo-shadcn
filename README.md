@@ -1,6 +1,5 @@
 # Turborepo starter
-
-This is a special starter Turborepo with additional features, designed to provide a robust foundation for modern web applications.
+This is a feature-packed Turborepo starter with additional tools for modern web applications, including Auth.js 5, Stripe integration, Resend for transactional emails, and typesafe environment variables.
 
 ## 🚀 Quick Start
 
@@ -32,9 +31,11 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
+- `docs`: a [Next.js](https://nextjs.org/) app, Fumadocs , Mdx
 - `web`: another [Next.js](https://nextjs.org/) app
 - `@repo/ui`: a shared React component library using [shadcn/ui](https://ui.shadcn.com/)
+-  `@repo/env` : shared env package , typesafe validated env.
+- `@repo/db` : a shared database package for scaling easily.
 - `@repo/typescript-config`: shared `tsconfig.json`s used throughout the monorepo
 - `@repo/biome-config`: shared [Biome](https://biomejs.dev/) configurations for linting and formatting
 
@@ -48,7 +49,17 @@ This Turborepo comes packed with powerful features:
 - [TypeScript](https://www.typescriptlang.org/) for robust type checking
 - [Next.js](https://nextjs.org/) for modern web applications
 - Strict ESM modules support
-- [Fuma](https://fuma.dev) for smart package management and dependency resolution
+- [Fuma](https://fuma.dev) for documentation
+- [Authjs](https://authjs.dev) formely next-auth@latest
+- ✉️ Email
+Resend for sending transactional emails, such as user invitations or notifications
+
+###  Authentication
+Auth.js 5 for secure, extensible authentication flows
+- Includes OAuth support
+- Type-safe user sessions
+- 💳 Payments
+- Stripe for handling subscriptions and payments
 
 #### 🎨 UI & Styling
 - [shadcn/ui](https://ui.shadcn.com/) for beautiful, accessible components
@@ -56,9 +67,6 @@ This Turborepo comes packed with powerful features:
 
 #### 🧹 Code Quality
 - [Biome](https://biomejs.dev/) for lightning-fast linting and formatting
-- [lint-staged](https://github.com/okonet/lint-staged) for pre-commit file linting
-- Type checking across all workspaces
-
 #### 📦 DevOps & Deployment
 - Docker support for production deployment
 - Workspace-aware commands
@@ -121,7 +129,7 @@ This repo enforces a consistent git workflow:
 1. Stage your changes: `git add .`
 2. Create a conventional commit: `pnpm commit`
 3. Pre-commit hooks will automatically:
-   - Format and lint staged files
+   - Format and lint files
    - Run type checking
    - Validate commit message format
 
