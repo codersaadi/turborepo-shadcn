@@ -48,7 +48,7 @@ export default function FormExample() {
 					)}
 				/>
 				{message && (
-					<FormFeedback type={message.type} message={message.message} />
+					<FormFeedback {...message} />
 				)}
 				<LoaderButton
 					isLoading={isPending}
