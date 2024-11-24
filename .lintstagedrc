@@ -1,0 +1,5 @@
+{
+  "*.{js,ts,cjs,mjs,cts,mts,jsx,tsx,json,jsonc}": [
+    "pnpm run format-and-lint:fix"
+  ]
+}

@@ -2,6 +2,7 @@
   "name": "starter-pack",
   "private": true,
   "scripts": {
+    "lint-staged": "lint-staged",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",

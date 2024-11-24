@@ -12,9 +12,7 @@ function getIconProps(props: IconProps) {
 	};
 }
 export function GoogleIcon(input: IconProps) {
-	const props =
-
-		getIconProps(input);
+	const props = getIconProps(input);
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
