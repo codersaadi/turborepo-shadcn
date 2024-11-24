@@ -9,6 +9,8 @@ This is a feature-packed Turborepo starter with additional tools for modern web 
 - pnpm 9.x or later
 - Git
 
+
+
 ### Installation
 
 ```bash
@@ -20,10 +22,28 @@ cd my-app
 
 # Install dependencies
 pnpm install
-
-# Start development servers
-pnpm dev
 ```
+### .env.example 
+```
+DATABASE_URL="postgresql://postgres..."
+NEXT_PUBLIC_HOST="http://localhost:3000"
+RESEND_KEY="re_2bb..."
+RESEND_AUDIENCE_ID="uuid"
+GITHUB_CLIENT_ID=""
+GITHUB_CLIENT_SECRET=""
+
+GOOGLE_CLIENT_SECRET=""
+GOOGLE_CLIENT_ID=""
+AUTH_SECRET="XCX/Pzf7eiPgfKY2dPh/2HVC0y9dvfEAiaxTeO0QdZuSvgNjczEINYOyejFbOvFw
+yGXouZXOdIfgEXkaqiM58w=="
+
+NEXT_PUBLIC_PRICE_ID_BASIC="price_1Pq55"
+NEXT_PUBLIC_PRICE_ID_PREMIUM="price_1Pq55d"
+
+STRIPE_API_KEY="sk_test_51"
+EMAIL_FROM=""
+```
+
 
 ## What's inside?
 
