@@ -1,6 +1,6 @@
 import { createEnv } from "@t3-oss/env-core";
 import { z } from "zod";
-// import { cloudflare, stripe } from "./presets.mjs";
+import { stripe } from "./presets.mjs";
 const serverSchema = {
   DATABASE_URL: z.string(),
   AUTH_SECRET: z.string(),
@@ -46,7 +46,7 @@ const env = createEnv({
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     NODE_ENV: process.env.NODE_ENV || "development",
   },
-  // extends: [cloudflare(), stripe()],
+  extends: [stripe()],
 });
 
 export default env;
