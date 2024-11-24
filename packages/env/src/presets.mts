@@ -11,3 +11,18 @@ export const cloudflare = () =>
     },
     runtimeEnv: process.env,
   });
+
+export const stripe = () =>
+  createEnv({
+    clientPrefix: "NEXT_PUBLIC_",
+    server: {
+      STRIPE_WEBHOOK_SECRET_LIVE: z.string().optional(),
+      STRIPE_API_KEY: z.string().optional(),
+      STRIPE_WEBHOOK_SECRET: z.string().optional(),
+    },
+    client: {
+      NEXT_PUBLIC_PRICE_ID_BASIC: z.string(),
+      NEXT_PUBLIC_PRICE_ID_PREMIUM: z.string(),
+    },
+    runtimeEnv: process.env,
+  });

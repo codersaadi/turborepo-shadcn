@@ -36,7 +36,6 @@
     "rules": {
       "recommended": true,
       "style": {
-        "useBlockStatements": "error",
         "useShorthandArrayType": "error",
         "noNonNullAssertion": "error"
       }

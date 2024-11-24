@@ -1,0 +1,42 @@
+{
+  "name": "@repo/db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:clear": "NODE_ENV='development' tsx ./src/clear.ts",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@repo/env": "workspace:*",
+    "drizzle-orm": "^0.36.4",
+    "pg": "^8.13.1",
+    "postgres": "^3.4.5",
+    "stripe": "^17.4.0",
+    "unique-names-generator": "^4.7.1"
+  },
+  "devDependencies": {
+    "@repo/biome-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^20.11.24",
+    "@types/pg": "^8.11.10",
+    "@types/uuid": "^10.0.0",
+    "drizzle-kit": "^0.28.1",
+    "typescript": "5.5.4",
+    "uuid": "^11.0.3"
+  },
+  "exports": {
+    ".": [
+      "./src/index.ts"
+    ],
+    "./schema": [
+      "./src/schema.ts"
+    ],
+    "./data/*": [
+      "./src/data/*.ts",
+      "./src/data/*.js"
+    ]
+  }
+}
