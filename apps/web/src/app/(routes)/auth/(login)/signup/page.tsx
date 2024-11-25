@@ -1,17 +1,17 @@
 import { SignUpForm } from "@/auth/components";
-import { signUpAction } from "@/auth/lib/signup-action";
+import { APP_NAME } from "@/constants";
 import type { Metadata } from "next";
 
 import React from "react";
 
 export default function page() {
-	return <SignUpForm onSubmitAction={signUpAction} />;
+	return <SignUpForm />;
 }
 
 /**
- * Meta data for the signin form page
+ * Meta data for the signup form page
  */
 export const metadata: Metadata = {
-	title: "AppName -Create an Account for free ",
+	title: `${APP_NAME} -Create an Account for free`,
 	description: "...",
 };

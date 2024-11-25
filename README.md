@@ -111,10 +111,6 @@ pnpm format     # Format root configuration files
 # Git Workflow
 pnpm commit     # Interactive commit message builder
 
-# Type Checking
-pnpm check-types # Type check all workspaces
-
-
 ```
 
 ### Project Structure
@@ -147,8 +143,7 @@ pnpm ui add dialog
 This repo enforces a consistent git workflow:
 
 1. Stage your changes: `git add .`
-2. Create a conventional commit: `pnpm commit`
-3. Pre-commit hooks will automatically:
+2. Pre-commit hooks will automatically:
    - Format and lint files
    - Run type checking
    - Validate commit message format

@@ -17,15 +17,12 @@ import { Input } from "@repo/ui/components/ui/input";
 import { cn } from "@repo/ui/lib/utils";
 import Link from "next/link";
 import { MagicSignInSchema, type MagicSignInType } from "../auth.schema";
+import { signinMagic } from "../lib/signin_magic-action";
 import { SignInFooter } from "./signin-form";
 
-export default function MagicSignInForm({
-	onSubmitAction,
-}: {
-	onSubmitAction: (data: MagicSignInType) => Promise<MessageResponse>;
-}) {
+export default function MagicSignInForm() {
 	const { form, message, isPending, onSubmit } = useFormAction({
-		onSubmitAction,
+		onSubmitAction: signinMagic,
 		schema: MagicSignInSchema,
 		defaultValues: {
 			email: "",

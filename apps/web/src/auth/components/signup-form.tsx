@@ -21,11 +21,8 @@ import {
 import { Input } from "@repo/ui/components/ui/input";
 import { cn } from "@repo/ui/lib/utils";
 import Link from "next/link";
-export default function SignUpForm({
-	onSubmitAction,
-}: {
-	onSubmitAction: (data: SignupSchemaType) => Promise<MessageResponse>;
-}) {
+import { signUpAction } from "../lib/signup-action";
+export default function SignUpForm() {
 	const { isPasswordShow, setPasswordShow } = useBoolean("passwordShow");
 	const { form, message, isPending, onSubmit } = useFormAction({
 		schema: SignupSchema,
@@ -34,7 +31,7 @@ export default function SignUpForm({
 			email: "",
 			password: "",
 		},
-		onSubmitAction,
+		onSubmitAction: signUpAction,
 	});
 
 	return (

@@ -18,15 +18,16 @@ import { Input } from "@repo/ui/components/ui/input";
 import { cn } from "@repo/ui/lib/utils";
 import { useBoolean } from "../../hooks/use-boolean";
 import { useFormAction } from "../../hooks/use-form-action";
+import { resetPasswordAction } from "../lib/forgot-password";
 export default function ResetPasswordForm({
-	onSubmitAction,
+	token
 }: {
-	onSubmitAction: (data: ResetPasswordSchemaType) => Promise<MessageResponse>;
+	token: string
 }) {
 	const { isPasswordShow, setPasswordShow } = useBoolean("passwordShow");
 	const { form, isPending, message, onSubmit } = useFormAction({
 		schema: ResetPasswordSchema,
-		onSubmitAction: onSubmitAction,
+		onSubmitAction: (data) => resetPasswordAction(data, token),
 		defaultValues: {
 			confirmPassword: "",
 			password: "",

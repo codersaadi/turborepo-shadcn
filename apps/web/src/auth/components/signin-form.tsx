@@ -18,11 +18,10 @@ import { Input } from "@repo/ui/components/ui/input";
 import { cn } from "@repo/ui/lib/utils";
 import Link from "next/link";
 import { LoginSchema, type LoginSchemaType } from "../auth.schema";
+import { signInAction } from "../lib/signin-action";
 export default function SignInForm({
-	onSubmitAction,
 	className,
 }: {
-	onSubmitAction: (data: LoginSchemaType) => Promise<MessageResponse>;
 	className?: string;
 }) {
 	const { isPasswordShow, setPasswordShow } = useBoolean("passwordShow");
@@ -32,7 +31,7 @@ export default function SignInForm({
 			email: "",
 			password: "",
 		},
-		onSubmitAction,
+		onSubmitAction: signInAction,
 	});
 
 	return (

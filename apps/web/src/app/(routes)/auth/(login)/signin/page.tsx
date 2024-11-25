@@ -1,16 +1,16 @@
 import { SignInForm } from "@/auth/components";
-import { signInAction } from "@/auth/lib/signin-action";
+import { APP_NAME } from "@/constants";
 import type { Metadata } from "next";
 import React from "react";
 
 export default function page() {
-	return <SignInForm onSubmitAction={signInAction} />;
+	return <SignInForm />;
 }
 
 /**
  * Meta data for the signin form page
  */
 export const metadata: Metadata = {
-	title: "AppName - Signin to Continue ",
+	title: `${APP_NAME} - Signin to Continue `,
 	description: "...",
 };

@@ -5,21 +5,19 @@ import { FormFeedback } from "@repo/ui/components/form-feedback";
 import { Button } from "@repo/ui/components/ui/button";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
+import { emailVerifyAction } from "../lib/emailVerifyAction";
 
 export default function EmailVerifyForm({
 	token,
-	onSubmitAction,
 }: {
 	token?: string;
-	onSubmitAction: (token?: string) => Promise<MessageResponse>;
 }) {
 	const [message, setMessage] = useState<{
 		type: "success" | "error";
 		message: string;
 	}>();
-	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	const onSubmit = useCallback(async () => {
-		const res = await onSubmitAction(token);
+		const res = await emailVerifyAction(token);
 		setMessage({
 			type: res.success ? "success" : "error",
 			message: res.message,

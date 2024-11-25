@@ -1,5 +1,7 @@
-// import Image from 'next/image';
+import { logoUrl } from '@/constants';
+import Image from 'next/image';
 import Link from "next/link";
+
 const VerifyRequest = async ({
 	searchParams,
 }: {
@@ -12,10 +14,8 @@ const VerifyRequest = async ({
 			<div className="max-w-md w-full space-y-8">
 				<div>
 					<img
-						height={48}
-						width={48}
 						className="mx-auto h-12 w-auto "
-						src={""}
+						src={logoUrl}
 						alt="Your Company"
 					/>
 					<h2 className="mt-6 text-center text-3xl font-extrabold ">

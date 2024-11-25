@@ -15,15 +15,12 @@ import {
 	ForgotPasswordSchema,
 	type ForgotPasswordSchemaType,
 } from "../auth.schema";
+import { forgotPasswordAction } from "../lib/forgot-password";
 
-export default function ForgotPasswordForm({
-	onSubmitAction,
-}: {
-	onSubmitAction: (data: ForgotPasswordSchemaType) => Promise<MessageResponse>;
-}) {
+export default function ForgotPasswordForm() {
 	const { form, isPending, onSubmit, message } = useFormAction({
 		schema: ForgotPasswordSchema,
-		onSubmitAction,
+		onSubmitAction: forgotPasswordAction,
 		defaultValues: {
 			email: "",
 		},

@@ -1,6 +1,6 @@
-import type { ResetPasswordSchemaType } from "@/auth/auth.schema";
 import { ResetPasswordForm } from "@/auth/components";
-import { resetPasswordAction } from "@/auth/lib/forgot-password";
+import { Button } from "@repo/ui/components/ui/button";
+import Link from "next/link";
 import React from "react";
 interface ResetPasswordProps {
 	searchParams: Promise<{
@@ -10,7 +10,12 @@ interface ResetPasswordProps {
 
 export default async function page({ searchParams }: ResetPasswordProps) {
 	const { token } = await searchParams;
-	const resetPassword = (data: ResetPasswordSchemaType) =>
-		resetPasswordAction(data, token);
-	return <ResetPasswordForm onSubmitAction={resetPassword} />;
+	if (!token) {
+		return <Link href={"/auth/signin"}>
+			<Button >
+				Go Back to Sign In
+			</Button>
+		</Link>
+	}
+	return <ResetPasswordForm token={token} />;
 }
