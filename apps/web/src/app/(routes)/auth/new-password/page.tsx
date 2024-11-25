@@ -11,11 +11,11 @@ interface ResetPasswordProps {
 export default async function page({ searchParams }: ResetPasswordProps) {
 	const { token } = await searchParams;
 	if (!token) {
-		return <Link href={"/auth/signin"}>
-			<Button >
-				Go Back to Sign In
-			</Button>
-		</Link>
+		return (
+			<Link href={"/auth/signin"}>
+				<Button>Go Back to Sign In</Button>
+			</Link>
+		);
 	}
 	return <ResetPasswordForm token={token} />;
 }

@@ -1,17 +1,17 @@
-import type { MessageResponse } from '@/types/auth';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { isRedirectError } from 'next/dist/client/components/redirect';
-import { useState, useTransition } from 'react';
+import type { MessageResponse } from "@/types/auth";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { isRedirectError } from "next/dist/client/components/redirect";
+import { useState, useTransition } from "react";
 import {
 	type DefaultValues,
 	type FieldValues,
 	type UseFormReturn,
 	useForm,
-} from 'react-hook-form';
-import type * as z from 'zod';
+} from "react-hook-form";
+import type * as z from "zod";
 
 export type FormMessage = {
-	type: 'error' | 'success';
+	type: "error" | "success";
 	message: string;
 };
 
@@ -22,7 +22,7 @@ export interface FormSubmitProps<T extends z.ZodSchema<FieldValues>> {
 }
 
 export const useFormAction = <T extends z.ZodSchema<FieldValues>>(
-	props: FormSubmitProps<T>
+	props: FormSubmitProps<T>,
 ) => {
 	const { schema, defaultValues, onSubmitAction } = props;
 
@@ -36,10 +36,10 @@ export const useFormAction = <T extends z.ZodSchema<FieldValues>>(
 
 	const onSubmit = (action: (data: z.infer<T>) => Promise<MessageResponse>) => {
 		const setResponseMessage = (res: MessageResponse) => {
-			if (res && 'success' in res) {
+			if (res && "success" in res) {
 				setMessage({
-					type: res.success ? 'success' : 'error',
-					message: res?.message || '',
+					type: res.success ? "success" : "error",
+					message: res?.message || "",
 				});
 			}
 		};
@@ -52,10 +52,10 @@ export const useFormAction = <T extends z.ZodSchema<FieldValues>>(
 					.then(setResponseMessage)
 					.catch((error) => {
 						if (isRedirectError(error)) return;
-						console.error('Submission Error:', error);
+						console.error("Submission Error:", error);
 						setMessage({
-							type: 'error',
-							message: 'Submission failed. Please try again.',
+							type: "error",
+							message: "Submission failed. Please try again.",
 						});
 					});
 			});

@@ -20,9 +20,9 @@ import { useBoolean } from "../../hooks/use-boolean";
 import { useFormAction } from "../../hooks/use-form-action";
 import { resetPasswordAction } from "../lib/forgot-password";
 export default function ResetPasswordForm({
-	token
+	token,
 }: {
-	token: string
+	token: string;
 }) {
 	const { isPasswordShow, setPasswordShow } = useBoolean("passwordShow");
 	const { form, isPending, message, onSubmit } = useFormAction({
