@@ -96,7 +96,7 @@ Auth.js 5 for secure, extensible authentication flows
 - [Husky](https://typicode.github.io/husky/) for Git hooks management
 - [Commitlint](https://commitlint.js.org/) for conventional commit messages
 - Automated pre-commit quality checks
-
+- [react-email](https://react.email/) for developing react email templates.
 ### Commands
 
 ```bash
@@ -107,6 +107,7 @@ pnpm build      # Build all apps and packages
 # Linting & Formatting
 pnpm lint       # Lint and auto-fix all files using Biome
 pnpm format     # Format root configuration files
+pnpm web email # will start email server (react email dev server)
 
 # Git Workflow
 pnpm commit     # Interactive commit message builder
