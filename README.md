@@ -108,8 +108,7 @@ pnpm build      # Build all apps and packages
 pnpm lint       # Lint and auto-fix all files using Biome
 pnpm format     # Format root configuration files
 
-# Git Workflow
-pnpm commit     # Interactive commit message builder
+
 
 # Type Checking
 pnpm check-types # Type check all workspaces
