@@ -1,3 +1,4 @@
+import { logoUrl } from "@/constants";
 import {
 	Body,
 	Button,
@@ -67,7 +68,7 @@ export function AuthEmailTemplate({
 						{/* Logo Section */}
 						<Section className="text-center">
 							<Img
-								src={`${baseUrl}/logo.png`}
+								src={logoUrl}
 								width="40"
 								height="40"
 								alt="Logo"
@@ -93,7 +94,7 @@ export function AuthEmailTemplate({
 						{/* CTA Button */}
 						<Section className="text-center mb-8">
 							<Button
-								className="inline-block rounded-lg bg-primary px-6 py-3 text-center text-sm font-semibold text-white no-underline"
+								className="inline-block rounded-lg bg-blue-600 text-white px-6 py-3 text-center text-sm font-semibold no-underline"
 								href={link}
 							>
 								{config.buttonText}
