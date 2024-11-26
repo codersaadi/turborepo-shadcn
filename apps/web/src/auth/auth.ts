@@ -63,7 +63,6 @@ export const nextauth = NextAuth({
 
 		async jwt({ token, trigger }) {
 			if (!token.sub) return token;
-			if (trigger === "signIn" || trigger === "update") {
 				const existingUser = await userRepository.getUserById(token.sub);
 				if (!existingUser) return token;
 				token.email = existingUser.email;
@@ -71,7 +70,6 @@ export const nextauth = NextAuth({
 				token.picture = existingUser.image;
 				token.stripeCustomerId = existingUser.stripeCustomerId;
 				token.role = existingUser.role;
-			}
 			return token;
 		},
 		// session uses the JWT token to create and generate the session object
