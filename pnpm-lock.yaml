@@ -134,7 +134,7 @@ importers:
         version: 11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2)
       '@trpc/next':
         specifier: 11.0.0-rc.648
-        version: 11.0.0-rc.648(@tanstack/react-query@5.62.0(react@18.3.1))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/react-query@11.0.0-rc.648(@tanstack/react-query@5.62.0(react@18.3.1))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(next@15.0.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2)
+        version: 11.0.0-rc.648(@tanstack/react-query@5.62.0(react@18.3.1))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/react-query@11.0.0-rc.648(@tanstack/react-query@5.62.0(react@18.3.1))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(next@15.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2)
       '@trpc/react-query':
         specifier: 11.0.0-rc.648
         version: 11.0.0-rc.648(@tanstack/react-query@5.62.0(react@18.3.1))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2)
@@ -229,6 +229,12 @@ importers:
       '@repo/db':
         specifier: workspace:*
         version: link:../db
+      '@repo/env':
+        specifier: workspace:*
+        version: link:../env
+      '@stripe/stripe-js':
+        specifier: ^5.2.0
+        version: 5.2.0
       '@tanstack/react-query':
         specifier: ^5.62.0
         version: 5.62.0(react@18.3.1)
@@ -237,7 +243,7 @@ importers:
         version: 11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2)
       '@trpc/next':
         specifier: 11.0.0-rc.648
-        version: 11.0.0-rc.648(@tanstack/react-query@5.62.0(react@18.3.1))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/react-query@11.0.0-rc.648(@tanstack/react-query@5.62.0(react@18.3.1))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(next@15.0.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2)
+        version: 11.0.0-rc.648(@tanstack/react-query@5.62.0(react@18.3.1))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/react-query@11.0.0-rc.648(@tanstack/react-query@5.62.0(react@18.3.1))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(next@15.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2)
       '@trpc/react-query':
         specifier: 11.0.0-rc.648
         version: 11.0.0-rc.648(@tanstack/react-query@5.62.0(react@18.3.1))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2)
@@ -247,6 +253,9 @@ importers:
       dinero.js:
         specifier: 2.0.0-alpha.14
         version: 2.0.0-alpha.14
+      stripe:
+        specifier: ^17.4.0
+        version: 17.4.0
       superjson:
         specifier: ^2.2.1
         version: 2.2.1
@@ -7615,7 +7624,7 @@ snapshots:
       '@trpc/server': 11.0.0-rc.648(typescript@5.6.2)
       typescript: 5.6.2
 
-  '@trpc/next@11.0.0-rc.648(@tanstack/react-query@5.62.0(react@18.3.1))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/react-query@11.0.0-rc.648(@tanstack/react-query@5.62.0(react@18.3.1))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(next@15.0.3(@babel/core@7.24.5)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2)':
+  '@trpc/next@11.0.0-rc.648(@tanstack/react-query@5.62.0(react@18.3.1))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/react-query@11.0.0-rc.648(@tanstack/react-query@5.62.0(react@18.3.1))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(next@15.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.2)':
     dependencies:
       '@trpc/client': 11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2)
       '@trpc/server': 11.0.0-rc.648(typescript@5.6.2)

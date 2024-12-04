@@ -11,13 +11,16 @@
   },
   "dependencies": {
     "@repo/db": "workspace:*",
+    "@repo/env": "workspace:*",
     "@tanstack/react-query": "^5.62.0",
     "@trpc/client": "11.0.0-rc.648",
     "@trpc/next": "11.0.0-rc.648",
     "@trpc/react-query": "11.0.0-rc.648",
     "@trpc/server": "11.0.0-rc.648",
     "dinero.js": "2.0.0-alpha.14",
+    "@stripe/stripe-js": "^5.2.0",
     "superjson": "^2.2.1",
+    "stripe": "^17.4.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -29,6 +32,7 @@
     "./edge": "./src/edge.ts",
     "./lambda": "./src/lambda.ts",
     "./transformer": "./src/transformer.ts",
-    "./schema": "./src/schema.ts"
+    "./schema": "./src/schema.ts",
+    "./stripe": "./src/stripe/stripe.ts"
   }
 }
