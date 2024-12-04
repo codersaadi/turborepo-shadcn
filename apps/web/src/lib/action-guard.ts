@@ -1,76 +1,31 @@
 import type { SessionUser } from "@/types/auth";
-import { type TShapeErrorFn, ZSAError, createServerActionProcedure } from "zsa";
+import { organizationIdInput } from "@repo/api/schema";
+import { getUserOrganization } from "@repo/db/data/organization";
+import { type TShapeErrorFn, createServerActionProcedure } from "zsa";
 import { auth } from "../auth";
-import { AuthenticationError, type ErrorResponse, PublicError } from "./errors";
+import {
+	AuthenticationError,
+	type ErrorResponse,
+	PublicError,
+	UnAuthorizedError,
+} from "./errors";
 import { rateLimitByKey } from "./limiter";
 
-function shapeErrors({
-	err,
-	typedData,
-}: Parameters<TShapeErrorFn>[number]): ErrorResponse {
+function shapeErrors({ err }: { err: ReturnType<TShapeErrorFn> }) {
+	const isAllowedError = err instanceof PublicError;
 	const isDev = process.env.NODE_ENV === "development";
-	const timestamp = new Date().toISOString();
-
-	// Handle ZSA validation errors
-	if (err instanceof ZSAError) {
+	if (isAllowedError || isDev) {
+		console.error(err);
 		return {
-			code: "VALIDATION_ERROR",
-			message: err.message,
-			statusCode: 400,
-			data: err.data ?? null,
-			metadata: isDev
-				? {
-						timestamp,
-						stack: err.stack,
-						debug: {
-							inputRaw: typedData.inputRaw,
-							inputParsed: typedData.inputParsed,
-							inputParseErrors: typedData.inputParseErrors,
-						},
-					}
-				: null,
+			code: err.code ?? "ERROR",
+			message: `${!isAllowedError && isDev ? "DEV ONLY ENABLED - " : ""}${
+				err.message
+			}`,
 		};
 	}
-
-	// Handle our custom public errors
-	if (err instanceof PublicError) {
-		return {
-			code: err.code,
-			message: err.message,
-			statusCode: err.statusCode,
-			data: null,
-			metadata: isDev
-				? {
-						timestamp,
-						stack: err.stack,
-						debug: {
-							inputRaw: typedData.inputRaw,
-							inputParsed: typedData.inputParsed,
-							inputParseErrors: typedData.inputParseErrors,
-						},
-					}
-				: null,
-		};
-	}
-
-	// Handle unknown errors
-	const isError = err instanceof Error;
 	return {
-		code: "INTERNAL_SERVER_ERROR",
-		message: isDev && isError ? err.message : "An unexpected error occurred",
-		statusCode: 500,
-		data: null,
-		metadata: isDev
-			? {
-					timestamp,
-					stack: isError ? err.stack : undefined,
-					debug: {
-						inputRaw: typedData.inputRaw,
-						inputParsed: typedData.inputParsed,
-						inputParseErrors: typedData.inputParseErrors,
-					},
-				}
-			: null,
+		code: "ERROR",
+		message: "Something went wrong",
 	};
 }
 
@@ -79,9 +34,7 @@ const RATE_LIMIT_CONFIG = {
 	AUTHENTICATED: { limit: 10, window: 10000 }, // 10 requests per 10 seconds
 	UNAUTHENTICATED: { limit: 5, window: 10000 }, // 5 requests per 10 seconds
 } as const;
-
-// Improve authenticated action with better error handling
-export const authenticatedAction = createServerActionProcedure()
+export const authActionProcedure = createServerActionProcedure()
 	.experimental_shapeError(shapeErrors)
 	.handler(async () => {
 		const session = await auth();
@@ -96,8 +49,10 @@ export const authenticatedAction = createServerActionProcedure()
 		});
 
 		return { user } satisfies { user: SessionUser };
-	})
-	.createServerAction();
+	});
+
+// Improve authenticated action with better error handling
+export const authenticatedAction = authActionProcedure.createServerAction();
 
 // Improve unauthenticated action with stricter rate limiting
 export const unauthenticatedAction = createServerActionProcedure()
@@ -107,4 +62,33 @@ export const unauthenticatedAction = createServerActionProcedure()
 			key: "unauthenticated-global",
 			...RATE_LIMIT_CONFIG.UNAUTHENTICATED,
 		});
+	});
+
+export const isOrgOwnerProcedure = createServerActionProcedure(
+	authActionProcedure,
+)
+	.input(organizationIdInput)
+	.handler(async ({ input, ctx }) => {
+		const activeOrgId = ctx.user.activeOrgId;
+		if (activeOrgId !== input.organizationId) {
+			throw new UnAuthorizedError();
+		}
+		const organization = await getUserOrganization(
+			input.organizationId,
+			ctx.user.id,
+		);
+		return organization;
+	});
+export const isOrgOwnerAction = isOrgOwnerProcedure.createServerAction();
+
+export const isActiveOrgProcedure = createServerActionProcedure(
+	authActionProcedure,
+)
+	.input(organizationIdInput)
+	.handler(async ({ input, ctx }) => {
+		const activeOrgId = ctx.user.activeOrgId;
+
+		if (activeOrgId !== input.organizationId) {
+			throw new UnAuthorizedError();
+		}
 	});

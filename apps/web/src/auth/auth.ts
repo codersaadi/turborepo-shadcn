@@ -1,4 +1,8 @@
+import { sendVerificationRequest } from "@/auth/sendRequest";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
+import { db } from "@repo/db";
+import { createDefaultOrganization } from "@repo/db/data/organization";
+import { getUserActiveOrg } from "@repo/db/data/userOrganizations";
 import * as userRepository from "@repo/db/data/users";
 import {
 	type User,
@@ -7,15 +11,12 @@ import {
 	users,
 	verificationTokens,
 } from "@repo/db/schema";
+import env from "@repo/env";
 import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Resend from "next-auth/providers/resend";
 import authConfig from "./auth.config";
-
-import { sendVerificationRequest } from "@/auth/sendRequest";
-import { db } from "@repo/db";
-import env from "@repo/env";
 import { LoginSchema } from "./auth.schema";
 const adapter = DrizzleAdapter(db, {
 	accountsTable: accounts,
@@ -37,6 +38,10 @@ export const nextauth = NextAuth({
 			const email = user.email || undefined;
 			await userRepository.verifyUserEmail(user.id, email);
 		},
+		createUser: async ({ user }) => {
+			if (!user.id) return;
+			await createDefaultOrganization(user.id);
+		},
 	},
 	callbacks: {
 		async signIn({ user, account }) {
@@ -47,6 +52,7 @@ export const nextauth = NextAuth({
 
 			if (!user || !user.id) return false;
 			const existingUser = await userRepository.getUserById(user.id);
+
 			//  if there is no user or  provider is credentials and not verified we will redirect. or if user is using magic link email but there is no user we will redirect.
 			if (
 				!existingUser ||
@@ -61,32 +67,50 @@ export const nextauth = NextAuth({
 
 		//  jwt is called when the JWT is created
 
-		async jwt({ token, trigger }) {
+		async jwt(data) {
+			const { token } = data;
+
 			if (!token.sub) return token;
-			if (trigger === "signIn" || trigger === "update") {
+			if (
+				data.trigger === "signIn" ||
+				data.trigger === "signUp" ||
+				data.trigger === "update"
+			) {
 				const existingUser = await userRepository.getUserById(token.sub);
 				if (!existingUser) return token;
+
+				token.activeOrgId = existingUser.activeOrgId;
 				token.email = existingUser.email;
 				token.name = existingUser.name;
 				token.picture = existingUser.image;
 				token.stripeCustomerId = existingUser.stripeCustomerId;
-				token.role = existingUser.role;
+				if (existingUser.activeOrgId) {
+					const activeOrg = await getUserActiveOrg({
+						userId: existingUser.id,
+						organizationId: existingUser.activeOrgId,
+					});
+					if (!activeOrg) return token;
+					token.roleId = activeOrg.roleId;
+				}
 			}
 			return token;
 		},
 		// session uses the JWT token to create and generate the session object
 		async session({ session, token }) {
 			if (session.user) {
-				if (token.role)
-					session.user.role = typeGuards.useRoleTypeGuard(token.role);
 				if (token.sub) session.user.id = token.sub;
 				if (token.email) session.user.email = token.email;
 				if (token.name) session.user.name = token.name;
 				if (token.picture) session.user.image = token.picture;
 				if (token.stripeCustomerId)
-					session.user.stripeCustomerId = typeGuards.stripeCustomerIdTypeGuard(
+					session.user.stripeCustomerId = typeGuards.isString(
 						token.stripeCustomerId,
 					);
+				if (token.activeOrgId)
+					session.user.activeOrgId = typeGuards.isString(token.activeOrgId);
+
+				if (token.roleId)
+					session.user.roleId = typeGuards.isString(token.roleId);
 			}
 
 			return session;
@@ -124,12 +148,6 @@ export const nextauth = NextAuth({
 	],
 });
 const typeGuards = {
-	useRoleTypeGuard: (role: unknown): User["role"] =>
-		role &&
-		typeof role === "string" &&
-		(role === "admin" || role === "user" || role === "member")
-			? role
-			: "user",
-	stripeCustomerIdTypeGuard: (id: unknown): string | null =>
+	isString: (id: unknown): string | null =>
 		id && typeof id === "string" ? id : null,
 };

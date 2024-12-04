@@ -1,10 +1,15 @@
+import ReactQueryProvider from "@/lib/trpc/trpc-client-provider";
 import { UIProvider } from "@repo/ui/components/ui-provider";
 import type React from "react";
 
-export default function RootProvider({
+export default async function RootProvider({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
-	return <UIProvider>{children}</UIProvider>;
+	return (
+		<ReactQueryProvider>
+			<UIProvider>{children}</UIProvider>
+		</ReactQueryProvider>
+	);
 }

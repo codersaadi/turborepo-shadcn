@@ -1,3 +1,4 @@
+"use server";
 import bcrypt from "bcryptjs";
 // import { EmailService } from "../services/mail.sender";
 // export async function sendEmailVerification(email: string, token: string) {

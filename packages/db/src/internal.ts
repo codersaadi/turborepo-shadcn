@@ -1,4 +1,4 @@
-import type * as schema from "./schema.js";
+import type * as schema from "./schema";
 type Omit = <T extends object, K extends [...(keyof T)[]]>(
   obj: T,
   ...keys: K
@@ -23,7 +23,7 @@ import crypto from "node:crypto";
 import type { ExtractTablesWithRelations } from "drizzle-orm";
 import type { PgTransaction } from "drizzle-orm/pg-core";
 import type { PostgresJsQueryResultHKT } from "drizzle-orm/postgres-js";
-import { db } from "./index.js";
+import { db } from "./index";
 export async function generateRandomToken(length: number) {
   const buf = await new Promise<Buffer>((resolve, reject) => {
     crypto.randomBytes(Math.ceil(length / 2), (err, buf) => {
@@ -38,14 +38,16 @@ export async function generateRandomToken(length: number) {
   return buf.toString("hex").slice(0, length);
 }
 
-export async function createTransaction(
+export async function createTransaction<T>(
   cb: (
     trx: PgTransaction<
       PostgresJsQueryResultHKT,
       typeof schema,
       ExtractTablesWithRelations<typeof schema>
     >
-  ) => Promise<void>
-) {
-  await db.transaction(cb);
+  ) => Promise<T>
+): Promise<T> {
+  return db.transaction(async (trx) => {
+    return cb(trx); // Return the result of the callback
+  });
 }

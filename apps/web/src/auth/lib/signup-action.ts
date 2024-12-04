@@ -1,6 +1,7 @@
 "use server";
 import { SignupSchema, type SignupSchemaType } from "@/auth/auth.schema";
 import type { MessageResponse } from "@/types/responses";
+import { createDefaultOrganization } from "@repo/db/data/organization";
 import * as userRepository from "@repo/db/data/users";
 import { createVerificationToken } from "@repo/db/data/verification-token";
 import { authEmail } from "./auth-email";
@@ -34,9 +35,11 @@ export async function signUpAction(
 			name,
 		});
 		if (!user) return { message: "error creating user", success: false };
+		await createDefaultOrganization(user.id);
 
 		const token = await createVerificationToken(email);
 		if (!token) return { message: "Something went wrong!", success: false };
+
 		await authEmail(email, "verify", token?.token);
 		return { message: "Confirmation Email Sent", success: true };
 	} catch (error) {

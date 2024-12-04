@@ -7,13 +7,18 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:clear": "NODE_ENV='development' tsx ./src/clear.ts",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "db:studio": "drizzle-kit studio",
+    "lint": "biome check . --write",
+    "db:push": "drizzle-kit push",
+    "db:seed": "DATABASE_URL='postgresql://postgres:Saadsaad1@localhost:5432/saas_pack' tsx ./src/seeding/main.ts"
   },
   "dependencies": {
     "@repo/env": "workspace:*",
     "drizzle-orm": "^0.36.4",
     "pg": "^8.13.1",
     "postgres": "^3.4.5",
+    "slugify": "^1.6.6",
     "stripe": "^17.4.0",
     "unique-names-generator": "^4.7.1"
   },
@@ -37,6 +42,10 @@
     "./data/*": [
       "./src/data/*.ts",
       "./src/data/*.js"
+    ],
+    "./usecases/*": [
+      "./src/usecases/*.ts",
+      "./src/usecases/*.js"
     ]
   }
 }

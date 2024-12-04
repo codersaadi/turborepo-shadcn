@@ -1,12 +1,13 @@
 "use server";
-import { AuthError } from "next-auth";
+import { AuthError, type Session } from "next-auth";
 
-import { signOut } from "@/auth";
+import { signOut, updateSessionTrigger } from "@/auth";
 import { signIn } from "@/auth";
 
 import type { MessageResponse } from "@/types/responses";
 import * as userRepository from "@repo/db/data/users";
 import { createVerificationToken } from "@repo/db/data/verification-token";
+import { redirect } from "next/navigation";
 import { LoginSchema, type LoginSchemaType } from "../auth.schema";
 export { signOut };
 
@@ -65,4 +66,15 @@ export async function signInAction(
 		}
 		throw error;
 	}
+}
+
+export async function updateUserSessAction({
+	user,
+}: {
+	user: Partial<Session["user"]>;
+}) {
+	await updateSessionTrigger({
+		user,
+	});
+	return;
 }

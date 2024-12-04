@@ -10,7 +10,6 @@ import { type User, accounts, users } from "../schema";
  */
 export async function getUserByEmail(email: string): Promise<
   | {
-      role: "user" | "admin" | "member";
       id: string;
       name: string | null;
       email: string | null;
@@ -43,7 +42,6 @@ export async function getUserByEmail(email: string): Promise<
  */
 export async function getUserById(id: string): Promise<
   | {
-      role: "user" | "admin" | "member";
       id: string;
       name: string | null;
       email: string | null;
@@ -53,6 +51,7 @@ export async function getUserById(id: string): Promise<
       stripeCustomerId: string | null;
       image: string | null;
       createdAt: Date | null;
+      activeOrgId: string | null;
     }
   | undefined
 > {
@@ -172,4 +171,15 @@ export async function deleteUserWithData(userId: string): Promise<void> {
     console.error("Error deleting user with data:", error);
     throw new Error("Could not delete user with data");
   }
+}
+
+export async function updateUserActiveOrg(
+  userId: string,
+  newOrgId: string,
+  trx = db
+) {
+  await db
+    .update(users)
+    .set({ activeOrgId: newOrgId })
+    .where(eq(users.id, userId));
 }
