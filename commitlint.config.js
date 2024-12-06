@@ -35,3 +35,15 @@ module.exports = {
     ],
   },
 };
+
+// build	:Changes that affect the build system or external dependencies (e.g., pnpm, webpack).
+// chore :	Miscellaneous tasks, such as updating package.json or configuration files, that don’t modify source code or tests.
+// ci:	Changes to the Continuous Integration (CI) configuration or scripts (e.g., .github/workflows).
+// docs:	Documentation changes, such as updates to README.md or code comments.
+// feat	A new feature or functionality.
+// fix: 	A bug fix.
+// perf:	Performance improvements or optimizations.
+// refactor:	Code changes that neither fix a bug nor add a feature, e.g., code restructuring.
+// revert:	Reverting a previous commit.
+// style:	Code style changes that don't affect functionality (e.g., formatting, linting fixes).
+// test:	Adding or modifying tests.

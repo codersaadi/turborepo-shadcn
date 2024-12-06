@@ -1,4 +1,5 @@
 import { createStripeCustomerRecord } from "@repo/db/data/users";
+import { ErrorType, createError } from "../errors";
 import {
   createCheckoutSessionSchema,
   createStripeCustomerSchema,
@@ -14,7 +15,10 @@ export const stripeRouter = createTRPCRouter({
 
       // Validate required fields
       if (!successUrl || !priceId || !cancelUrl) {
-        throw new Error("Missing required checkout parameters");
+        throw createError(
+          ErrorType.BAD_REQUEST,
+          "Missing required checkout parameters"
+        );
       }
 
       // Create Stripe checkout session
@@ -46,57 +50,6 @@ export const stripeRouter = createTRPCRouter({
 
       return customer;
     }),
-
-  // updateSubscription: protectedProcedure
-  //   .input(createSubscriptionSchema)
-  //   .mutation(async ({ input, ctx }) => {
-  //     const { priceId } = input;
-  //     const user = ctx.auth.user;
-
-  //     // Check existing subscription
-  //     const existingSubscription = await getSubscription(user.id);
-
-  //     if (existingSubscription?.stripeSubscriptionId) {
-  //       // Retrieve and update current subscription
-  //       const currentSubscription = await stripe.subscriptions.retrieve(
-  //         existingSubscription.stripeSubscriptionId
-  //       );
-
-  //       const updatedSubscription = await stripe.subscriptions.update(
-  //         existingSubscription.stripeSubscriptionId,
-  //         {
-  //           items: [
-  //             {
-  //               id: currentSubscription.items.data?.[0]?.id,
-  //               deleted: true,
-  //             },
-  //             { price: priceId },
-  //           ],
-  //           expand: ["latest_invoice.payment_intent"],
-  //         }
-  //       );
-
-  //       // Update database record
-  //       await updateSubscription({
-  //         stripeSubscriptionId: updatedSubscription.id,
-  //         stripePriceId: priceId,
-  //         stripeCurrentPeriodEnd: new Date(
-  //           updatedSubscription.current_period_end * 1000
-  //         ),
-  //       });
-
-  //       // Handle payment intent
-  //       const latestInvoice = updatedSubscription.latest_invoice as Stripe.Invoice;
-  //       return {
-  //         subscriptionId: updatedSubscription.id,
-  //         clientSecret: latestInvoice?.payment_intent
-  //           ? (latestInvoice.payment_intent as Stripe.PaymentIntent).client_secret
-  //           : null,
-  //       };
-  //     }
-
-  //     throw new Error("No existing subscription found");
-  //   }),
 });
 
 // export async function OPTIONS(request: Request) {

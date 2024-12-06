@@ -33,6 +33,7 @@
     "./lambda": "./src/lambda.ts",
     "./transformer": "./src/transformer.ts",
     "./schema": "./src/schema.ts",
-    "./stripe": "./src/stripe/stripe.ts"
+    "./stripe": "./src/stripe/stripe.ts",
+    "./errors": "./src/errors.ts"
   }
 }
