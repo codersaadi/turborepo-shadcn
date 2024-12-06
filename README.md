@@ -72,15 +72,29 @@ This Turborepo comes packed with powerful features:
 - Strict ESM modules support
 - [Fuma](https://fuma.dev) for documentation
 - [Authjs](https://authjs.dev) formely next-auth@latest
+- [TRPC](https://trpc.io/docs/quickstart) Trpc Quickstart
 - ✉️ Email
 Resend for sending transactional emails, such as user invitations or notifications
 
-###  Authentication
-Auth.js 5 for secure, extensible authentication flows
-- Includes OAuth support
-- Type-safe user sessions
-- 💳 Payments
-- Stripe for handling subscriptions and payments
+### 🔐 Authentication & Security
+- [Auth.js 5](https://authjs.dev/)
+- OAuth Providers
+- Type-safe User Sessions
+
+### 💾 Data & API
+- **Typesafe API Layer**
+  - End-to-end type inference
+  - Shared schemas between client and server
+  - Strong error handling
+- **React Query Integration**
+  - Automatic caching
+  - Optimistic updates
+  - Background synchronization
+
+### 💳 Additional Integrations
+- Stripe Payments
+- Resend Email
+- Shadcn/UI Components
 
 #### 🎨 UI & Styling
 - [shadcn/ui](https://ui.shadcn.com/) for beautiful, accessible components
@@ -124,10 +138,34 @@ pnpm commit     # Interactive commit message builder
 │   └── web                 # Main web application
 ├── packages
 │   ├── ui                  # Shared UI components
+│   ├── api/               # Shared API & tRPC routes
 │   ├── typescript-config   # Shared TypeScript configs
 │   └── biome-config        # Shared Biome configs
 └── package.json
 ```
+
+## 🔍 Key Features
+
+### 💻 tRPC & React Query
+- **End-to-End Typesafe**
+  - Shared types across client and server
+  - Zero-config type inference
+- **Advanced Query Management**
+  - Automatic caching
+  - Background refetching
+  - Optimistic updates
+
+### 🛡️ Error Handling
+- Centralized error factory
+- Typesafe error responses
+- Detailed error metadata
+- Production-ready error anonymization
+
+### 🧩 Modular Architecture
+- Monorepo with clear separation of concerns
+- Shared configurations
+- Easy scalability
+
 
 ### UI Components
 
@@ -179,9 +217,12 @@ This
 - [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 
-## Contributing
+## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+- Fork the repository
+- Create your feature branch
+- Commit with conventional commits
+Push and open a Pull Request
 
 ## Author
 
@@ -198,3 +239,15 @@ MIT
     Built with Turborepo 🚀
   </a>
 </p>
+
+
+🔗 Useful Links
+
+Turborepo Docs
+tRPC Documentation
+React Query Guides
+
+
+
+
+
