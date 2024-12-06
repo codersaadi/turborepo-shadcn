@@ -54,6 +54,7 @@ This Turborepo includes the following packages/apps:
 - `docs`: a [Next.js](https://nextjs.org/) app, Fumadocs , Mdx
 - `web`: another [Next.js](https://nextjs.org/) app
 - `@repo/ui`: a shared React component library using [shadcn/ui](https://ui.shadcn.com/)
+- `@repo/api` API package with tRPC and Zod schemas
 -  `@repo/env` : shared env package , typesafe validated env.
 - `@repo/db` : a shared database package for scaling easily.
 - `@repo/typescript-config`: shared `tsconfig.json`s used throughout the monorepo
