@@ -7,7 +7,6 @@ import { signIn } from "@/auth";
 import type { MessageResponse } from "@/types/responses";
 import * as userRepository from "@repo/db/data/users";
 import { createVerificationToken } from "@repo/db/data/verification-token";
-import { redirect } from "next/navigation";
 import { LoginSchema, type LoginSchemaType } from "../auth.schema";
 export { signOut };
 

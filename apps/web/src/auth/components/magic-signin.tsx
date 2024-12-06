@@ -1,7 +1,6 @@
 "use client";
 
 import { useFormAction } from "@/hooks/use-form-action";
-import type { MessageResponse } from "@/types/responses";
 import { AvatarIcon } from "@radix-ui/react-icons";
 import { FormFeedback } from "@repo/ui/components/form-feedback";
 import { LoaderButton } from "@repo/ui/components/loader-button";
@@ -16,7 +15,7 @@ import {
 import { Input } from "@repo/ui/components/ui/input";
 import { cn } from "@repo/ui/lib/utils";
 import Link from "next/link";
-import { MagicSignInSchema, type MagicSignInType } from "../auth.schema";
+import { MagicSignInSchema } from "../auth.schema";
 import { signinMagic } from "../lib/signin_magic-action";
 import { SignInFooter } from "./signin-form";
 

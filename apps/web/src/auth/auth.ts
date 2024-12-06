@@ -1,16 +1,8 @@
 import { sendVerificationRequest } from "@/auth/sendRequest";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { db } from "@repo/db";
-import { createDefaultOrganization } from "@repo/db/data/organization";
-import { getUserActiveOrg } from "@repo/db/data/userOrganizations";
 import * as userRepository from "@repo/db/data/users";
-import {
-	type User,
-	accounts,
-	sessions,
-	users,
-	verificationTokens,
-} from "@repo/db/schema";
+import { accounts, sessions, users, verificationTokens } from "@repo/db/schema";
 import env from "@repo/env";
 import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
@@ -40,7 +32,7 @@ export const nextauth = NextAuth({
 		},
 		createUser: async ({ user }) => {
 			if (!user.id) return;
-			await createDefaultOrganization(user.id);
+			// await createDefaultOrganization(user.id); // if you want to add anything immediately after signup action
 		},
 	},
 	callbacks: {
@@ -84,14 +76,14 @@ export const nextauth = NextAuth({
 				token.name = existingUser.name;
 				token.picture = existingUser.image;
 				token.stripeCustomerId = existingUser.stripeCustomerId;
-				if (existingUser.activeOrgId) {
-					const activeOrg = await getUserActiveOrg({
-						userId: existingUser.id,
-						organizationId: existingUser.activeOrgId,
-					});
-					if (!activeOrg) return token;
-					token.roleId = activeOrg.roleId;
-				}
+				// if (existingUser.activeOrgId) {
+				// 	const activeOrg = await getUserActiveOrg({
+				// 		userId: existingUser.id,
+				// 		organizationId: existingUser.activeOrgId,
+				// 	});
+				// 	if (!activeOrg) return token;
+				// 	token.roleId = activeOrg.roleId;
+				// }
 			}
 			return token;
 		},
@@ -106,8 +98,8 @@ export const nextauth = NextAuth({
 					session.user.stripeCustomerId = typeGuards.isString(
 						token.stripeCustomerId,
 					);
-				if (token.activeOrgId)
-					session.user.activeOrgId = typeGuards.isString(token.activeOrgId);
+				// if (token.activeOrgId)
+				// 	session.user.activeOrgId = typeGuards.isString(token.activeOrgId);
 
 				if (token.roleId)
 					session.user.roleId = typeGuards.isString(token.roleId);

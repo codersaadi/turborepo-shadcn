@@ -127,23 +127,3 @@ export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
     },
   });
 });
-/**
- * Reusable procedure that enforces users are part of an organization before
- * running the code
- */
-export const protectedOrgProcedure = protectedProcedure.use(({ ctx, next }) => {
-  if (!ctx.auth?.user?.activeOrgId) {
-    throw new TRPCError({
-      code: "UNAUTHORIZED",
-      message: "You must be in an organization to perform this action",
-    });
-  }
-  return next({
-    ctx: {
-      auth: {
-        ...ctx.auth,
-        activeOrgId: ctx.auth.user.activeOrgId,
-      },
-    },
-  });
-});

@@ -20,7 +20,7 @@ type SessionUser = Pick<
 	| "emailVerified"
 	| "stripeCustomerId"
 	| "image"
-	| "activeOrgId"
+	// | "activeOrgId"
 >;
 declare module "next-auth" {
 	interface Session extends DefaultSession {

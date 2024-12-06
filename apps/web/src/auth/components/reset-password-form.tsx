@@ -1,9 +1,5 @@
 "use client";
-import {
-	ResetPasswordSchema,
-	type ResetPasswordSchemaType,
-} from "@/auth/auth.schema";
-import type { MessageResponse } from "@/types/responses";
+import { ResetPasswordSchema } from "@/auth/auth.schema";
 import { EyeClosedIcon, EyeOpenIcon } from "@radix-ui/react-icons";
 import { FormFeedback } from "@repo/ui/components/form-feedback";
 import { LoaderButton } from "@repo/ui/components/loader-button";

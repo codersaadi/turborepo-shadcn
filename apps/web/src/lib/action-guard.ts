@@ -1,6 +1,5 @@
 import type { SessionUser } from "@/types/auth";
-import { organizationIdInput } from "@repo/api/schema";
-import { getUserOrganization } from "@repo/db/data/organization";
+
 import { type TShapeErrorFn, createServerActionProcedure } from "zsa";
 import { auth } from "../auth";
 import {
@@ -62,33 +61,4 @@ export const unauthenticatedAction = createServerActionProcedure()
 			key: "unauthenticated-global",
 			...RATE_LIMIT_CONFIG.UNAUTHENTICATED,
 		});
-	});
-
-export const isOrgOwnerProcedure = createServerActionProcedure(
-	authActionProcedure,
-)
-	.input(organizationIdInput)
-	.handler(async ({ input, ctx }) => {
-		const activeOrgId = ctx.user.activeOrgId;
-		if (activeOrgId !== input.organizationId) {
-			throw new UnAuthorizedError();
-		}
-		const organization = await getUserOrganization(
-			input.organizationId,
-			ctx.user.id,
-		);
-		return organization;
-	});
-export const isOrgOwnerAction = isOrgOwnerProcedure.createServerAction();
-
-export const isActiveOrgProcedure = createServerActionProcedure(
-	authActionProcedure,
-)
-	.input(organizationIdInput)
-	.handler(async ({ input, ctx }) => {
-		const activeOrgId = ctx.user.activeOrgId;
-
-		if (activeOrgId !== input.organizationId) {
-			throw new UnAuthorizedError();
-		}
 	});

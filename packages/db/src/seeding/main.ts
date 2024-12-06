@@ -1,5 +1,4 @@
 import { db, pg } from "..";
-import { createDefaultOrganization } from "../data/organization";
 import { users } from "../schema";
 
 async function main() {
@@ -15,7 +14,7 @@ async function main() {
     .onConflictDoNothing()
     .returning();
   if (!createdUser) throw new Error("error creating user");
-  await createDefaultOrganization(createdUser.id);
+  // await createDefaultOrganization(createdUser.id); id using multi tenacy
   console.log("Successfully seeded the user");
   await pg.end();
 }
