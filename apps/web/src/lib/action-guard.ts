@@ -56,4 +56,5 @@ export const unauthenticatedAction = createServerActionProcedure()
       key: "unauthenticated-global",
       ...RATE_LIMIT_CONFIG.UNAUTHENTICATED,
     });
-  });
+  })
+  .createServerAction();
