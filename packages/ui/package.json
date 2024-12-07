@@ -18,8 +18,8 @@
 		"check-types": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@repo/biome-config": "workspace:*",
-		"@repo/typescript-config": "workspace:*",
+		"@tooling/biome-config": "workspace:*",
+		"@tooling/typescript-config": "workspace:*",
 		"@turbo/gen": "^1.12.4",
 		"@types/node": "^20.11.24",
 		"@types/react": "18.3.1",

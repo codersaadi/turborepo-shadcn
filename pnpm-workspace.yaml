@@ -1,4 +1,4 @@
 packages:
   - "apps/*"
   - "packages/*"
-  - "packages/@trpc/next-layout"
+  - "tooling/*"

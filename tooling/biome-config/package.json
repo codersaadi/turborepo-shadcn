@@ -1,8 +1,12 @@
 {
-  "name": "@repo/biome-config",
+  "name": "@tooling/biome-config",
   "version": "0.0.0",
   "private": true,
-  "files": ["library.json", "next.json", "react-internal.json"],
+  "files": [
+    "library.json",
+    "next.json",
+    "react-internal.json"
+  ],
   "exports": {
     "./library": "./library.json",
     "./next": "./next.json",

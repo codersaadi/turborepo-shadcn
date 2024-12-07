@@ -46,8 +46,8 @@
 		"zsa-react": "^0.2.3"
 	},
 	"devDependencies": {
-		"@repo/biome-config": "workspace:*",
-		"@repo/typescript-config": "workspace:*",
+		"@tooling/biome-config": "workspace:*",
+		"@tooling/typescript-config": "workspace:*",
 		"@types/bcryptjs": "^2.4.6",
 		"@types/node": "^20",
 		"@types/react": "18.3.1",
