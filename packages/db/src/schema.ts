@@ -169,7 +169,7 @@ export const orgRolesArray = [
   "viewer", // Read-only access
 ] as const;
 export const orgRolesEnum = pgEnum("org_role", orgRolesArray);
-
+export type $UserOrgStatus = "active" | "pending" | "suspended";
 // Mapping table for user to organization
 export const userOrganizations = pgTable("user_organization", {
   userId: uuid("userId") // Change to uuid
@@ -179,9 +179,7 @@ export const userOrganizations = pgTable("user_organization", {
     .notNull()
     .references(() => organizations.id, { onDelete: "cascade" }),
   role: orgRolesEnum("org_role").default("viewer"),
-  status: text("status")
-    .$type<"active" | "suspended" | "pending">()
-    .default("active"),
+  status: text("status").$type<$UserOrgStatus>().default("active"),
 });
 
 // Invite Status
@@ -192,7 +190,7 @@ export const inviteStatusArray = [
   "revoked", // Invitation canceled by org admin
 ] as const;
 export const inviteStatusEnum = pgEnum("invite_status", inviteStatusArray);
-
+export type $OrganizationInviteStatus = (typeof inviteStatusArray)[number];
 // Separate Invite Tokens Table
 export const orgInviteTokens = pgTable(
   "org_invite_tokens",
