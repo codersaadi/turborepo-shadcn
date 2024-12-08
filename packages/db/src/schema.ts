@@ -17,7 +17,7 @@ const TIMESTAMPS = {
   createdAt: timestamp("created_at", { mode: "date" }).default(sql`now()`),
   updatedAt: timestamp("updated_at", { mode: "date" })
     .default(sql`now()`)
-    .$onUpdate(() => sql`now()`),
+    .$onUpdate(() => new Date()),
 };
 
 // Enum Types
@@ -51,7 +51,7 @@ export const users = pgTable(
     emailVerified: timestamp("emailVerified", { mode: "date" }),
     stripeCustomerId: text("stripeCustomerId"),
     image: text("image"),
-    activeOrgId: uuid("activeOrgId"), // Change to uuid
+    activeOrgId: uuid("activeOrgId"),
     ...TIMESTAMPS,
   },
   (table) => [uniqueIndex("user_email_idx").on(table.email)]
@@ -170,9 +170,11 @@ export const orgRolesArray = [
 ] as const;
 export const orgRolesEnum = pgEnum("org_role", orgRolesArray);
 export type $UserOrgStatus = "active" | "pending" | "suspended";
-// Mapping table for user to organization
 export const userOrganizations = pgTable("user_organization", {
-  userId: uuid("userId") // Change to uuid
+  id: uuid("id")
+    .defaultRandom() // Adds a unique id as the primary key
+    .primaryKey(),
+  userId: uuid("userId")
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
   organizationId: uuid("organizationId")
@@ -264,198 +266,3 @@ export type Accounts = typeof accounts.$inferSelect;
 export type NewsLetter = typeof newsletters.$inferSelect;
 export type UserOrganization = typeof userOrganizations.$inferSelect;
 export type Organization = typeof organizations.$inferSelect;
-
-/**
- * E Learning Platform Related
- */
-
-// Course Difficulty Levels
-export const courseDifficultyLevels = [
-  "beginner",
-  "intermediate",
-  "advanced",
-  "expert",
-] as const;
-export const courseDifficulty = pgEnum(
-  "course_difficulty",
-  courseDifficultyLevels
-);
-
-// Course Status
-export const courseStatusArray = ["draft", "published", "archived"] as const;
-export const courseStatus = pgEnum("course_status", courseStatusArray);
-
-// Lesson Types
-export const lessonTypeArray = [
-  "video",
-  "text",
-  "quiz",
-  "assignment",
-  "interactive",
-] as const;
-export const lessonType = pgEnum("lesson_type", lessonTypeArray);
-
-// Courses Table
-export const courses = pgTable(
-  "courses",
-  {
-    id: uuid("id")
-      .primaryKey()
-      .$defaultFn(() => crypto.randomUUID()),
-
-    organizationId: uuid("organization_id")
-      .notNull()
-      .references(() => organizations.id, { onDelete: "cascade" }),
-
-    title: text("title").notNull(),
-    description: text("description"),
-
-    instructorId: uuid("instructor_id")
-      .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
-
-    difficulty: courseDifficulty("difficulty").default("beginner"),
-    status: courseStatus("status").default("draft"),
-
-    thumbnailUrl: text("thumbnail_url"),
-    price: integer("price").default(0), // in cents
-
-    duration: integer("duration"), // total course duration in minutes
-    totalLessons: integer("total_lessons").default(0),
-
-    prerequisites: text("prerequisites"),
-
-    createdAt: timestamp("created_at", { mode: "date" }).default(sql`now()`),
-    updatedAt: timestamp("updated_at", { mode: "date" })
-      .default(sql`now()`)
-      .$onUpdate(() => new Date()),
-  },
-  (table) => [uniqueIndex("course_title_idx").on(table.title)]
-);
-
-// Lessons Table
-export const lessons = pgTable(
-  "lessons",
-  {
-    id: uuid("id")
-      .primaryKey()
-      .$defaultFn(() => crypto.randomUUID()),
-
-    courseId: uuid("course_id")
-      .notNull()
-      .references(() => courses.id, { onDelete: "cascade" }),
-
-    title: text("title").notNull(),
-    description: text("description"),
-
-    lessonType: lessonType("lesson_type").notNull(),
-
-    content: text("content"), // Could be video URL, text content, etc.
-
-    order: integer("order").notNull(), // Lesson sequence in course
-
-    duration: integer("duration"), // lesson duration in minutes
-
-    isPreview: boolean("is_preview").default(false),
-
-    resourceUrls: text("resource_urls"), // JSON array of additional resources
-
-    createdAt: timestamp("created_at", { mode: "date" }).default(sql`now()`),
-    updatedAt: timestamp("updated_at", { mode: "date" })
-      .default(sql`now()`)
-      .$onUpdate(() => new Date()),
-  },
-  (table) => [
-    uniqueIndex("lesson_course_order_idx").on(table.courseId, table.order),
-  ]
-);
-
-// Enrollments Table
-export const enrollments = pgTable(
-  "enrollments",
-  {
-    id: uuid("id")
-      .primaryKey()
-      .$defaultFn(() => crypto.randomUUID()),
-
-    userId: uuid("user_id")
-      .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
-
-    courseId: uuid("course_id")
-      .notNull()
-      .references(() => courses.id, { onDelete: "cascade" }),
-
-    status: text("status")
-      .$type<"active" | "completed" | "dropped">()
-      .notNull()
-      .default("active"),
-
-    progress: integer("progress").default(0), // percentage of course completed
-
-    startDate: timestamp("start_date", { mode: "date" }).default(sql`now()`),
-    completedAt: timestamp("completed_at", { mode: "date" }),
-
-    lastAccessedAt: timestamp("last_accessed_at", { mode: "date" }),
-  },
-  (table) => [
-    uniqueIndex("enrollment_unique_idx").on(table.userId, table.courseId),
-  ]
-);
-
-// Quizzes Table
-export const quizzes = pgTable("quizzes", {
-  id: uuid("id")
-    .primaryKey()
-    .$defaultFn(() => crypto.randomUUID()),
-
-  lessonId: uuid("lesson_id")
-    .notNull()
-    .references(() => lessons.id, { onDelete: "cascade" }),
-
-  title: text("title").notNull(),
-  description: text("description"),
-
-  passingScore: integer("passing_score").default(70), // percentage
-
-  timeLimit: integer("time_limit"), // quiz time limit in minutes
-
-  createdAt: timestamp("created_at", { mode: "date" }).default(sql`now()`),
-  updatedAt: timestamp("updated_at", { mode: "date" })
-    .default(sql`now()`)
-    .$onUpdate(() => new Date()),
-});
-
-// Quiz Attempts Table
-export const quizAttempts = pgTable(
-  "quiz_attempts",
-  {
-    id: uuid("id")
-      .primaryKey()
-      .$defaultFn(() => crypto.randomUUID()),
-
-    userId: uuid("user_id")
-      .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
-
-    quizId: uuid("quiz_id")
-      .notNull()
-      .references(() => quizzes.id, { onDelete: "cascade" }),
-
-    score: integer("score").notNull(),
-    passed: boolean("passed").notNull(),
-
-    startedAt: timestamp("started_at", { mode: "date" }).default(sql`now()`),
-    completedAt: timestamp("completed_at", { mode: "date" }),
-  },
-  (table) => [
-    uniqueIndex("quiz_attempt_unique_idx").on(table.userId, table.quizId),
-  ]
-);
-
-// Type Exports
-export type Course = typeof courses.$inferSelect;
-export type Lesson = typeof lessons.$inferSelect;
-export type Enrollment = typeof enrollments.$inferSelect;
-export type Quiz = typeof quizzes.$inferSelect;
-export type QuizAttempt = typeof quizAttempts.$inferSelect;

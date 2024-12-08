@@ -1,8 +1,25 @@
+CREATE TYPE "public"."accountStatus" AS ENUM('suspended', 'disabled', 'active', 'onboarding');--> statement-breakpoint
 CREATE TYPE "public"."course_difficulty" AS ENUM('beginner', 'intermediate', 'advanced', 'expert');--> statement-breakpoint
 CREATE TYPE "public"."course_status" AS ENUM('draft', 'published', 'archived');--> statement-breakpoint
 CREATE TYPE "public"."invite_status" AS ENUM('pending', 'accepted', 'declined', 'revoked');--> statement-breakpoint
 CREATE TYPE "public"."lesson_type" AS ENUM('video', 'text', 'quiz', 'assignment', 'interactive');--> statement-breakpoint
 CREATE TYPE "public"."org_role" AS ENUM('owner', 'admin', 'manager', 'editor', 'viewer');--> statement-breakpoint
+CREATE TYPE "public"."role" AS ENUM('user', 'admin', 'member');--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "account" (
+	"userId" uuid NOT NULL,
+	"type" text NOT NULL,
+	"provider" text NOT NULL,
+	"providerAccountId" text NOT NULL,
+	"refresh_token" text,
+	"access_token" text,
+	"expires_at" integer,
+	"token_type" text,
+	"scope" text,
+	"id_token" text,
+	"session_state" text,
+	CONSTRAINT "account_provider_providerAccountId_pk" PRIMARY KEY("provider","providerAccountId")
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "courses" (
 	"id" uuid PRIMARY KEY NOT NULL,
 	"organization_id" uuid NOT NULL,
@@ -44,6 +61,12 @@ CREATE TABLE IF NOT EXISTS "lessons" (
 	"resource_urls" text,
 	"created_at" timestamp DEFAULT now(),
 	"updated_at" timestamp DEFAULT now()
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "newsletter" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"email" text NOT NULL,
+	CONSTRAINT "newsletter_email_unique" UNIQUE("email")
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "org_invite_tokens" (
@@ -104,12 +127,65 @@ CREATE TABLE IF NOT EXISTS "quizzes" (
 	"updated_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "resetPasswordToken" (
+	"id" uuid PRIMARY KEY NOT NULL,
+	"email" text NOT NULL,
+	"token" text NOT NULL,
+	"expires" timestamp NOT NULL,
+	CONSTRAINT "resetPasswordToken_token_unique" UNIQUE("token")
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "session" (
+	"sessionToken" text PRIMARY KEY NOT NULL,
+	"userId" uuid NOT NULL,
+	"expires" timestamp NOT NULL
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "subscriptions" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"userId" uuid NOT NULL,
+	"stripeSubscriptionId" text NOT NULL,
+	"stripeCustomerId" text NOT NULL,
+	"stripePriceId" text NOT NULL,
+	"expires" timestamp NOT NULL,
+	CONSTRAINT "subscriptions_userId_unique" UNIQUE("userId")
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "user_organization" (
 	"userId" uuid NOT NULL,
 	"organizationId" uuid NOT NULL,
 	"org_role" "org_role" DEFAULT 'viewer',
 	"status" text DEFAULT 'active'
 );
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "user" (
+	"id" uuid PRIMARY KEY NOT NULL,
+	"name" text,
+	"email" text,
+	"password" text,
+	"accountStatus" "accountStatus" DEFAULT 'onboarding',
+	"emailVerified" timestamp,
+	"stripeCustomerId" text,
+	"image" text,
+	"activeOrgId" uuid,
+	"created_at" timestamp DEFAULT now(),
+	"updated_at" timestamp DEFAULT now(),
+	CONSTRAINT "user_id_unique" UNIQUE("id"),
+	CONSTRAINT "user_email_unique" UNIQUE("email")
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "verificationToken" (
+	"identifier" text NOT NULL,
+	"token" text NOT NULL,
+	"expires" timestamp NOT NULL,
+	CONSTRAINT "verificationToken_identifier_token_pk" PRIMARY KEY("identifier","token")
+);
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "account" ADD CONSTRAINT "account_userId_user_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
 --> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "courses" ADD CONSTRAINT "courses_organization_id_organization_id_fk" FOREIGN KEY ("organization_id") REFERENCES "public"."organization"("id") ON DELETE cascade ON UPDATE no action;
@@ -178,6 +254,18 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
+ ALTER TABLE "session" ADD CONSTRAINT "session_userId_user_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "subscriptions" ADD CONSTRAINT "subscriptions_userId_user_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
  ALTER TABLE "user_organization" ADD CONSTRAINT "user_organization_userId_user_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
@@ -196,4 +284,5 @@ CREATE UNIQUE INDEX IF NOT EXISTS "org_invite_token_unique_idx" ON "org_invite_t
 CREATE UNIQUE INDEX IF NOT EXISTS "org_invite_unique_idx" ON "organization_invites" USING btree ("organization_id","email");--> statement-breakpoint
 CREATE UNIQUE INDEX IF NOT EXISTS "org_name_idx" ON "organization" USING btree ("name");--> statement-breakpoint
 CREATE UNIQUE INDEX IF NOT EXISTS "org_slug_idx" ON "organization" USING btree ("slug");--> statement-breakpoint
-CREATE UNIQUE INDEX IF NOT EXISTS "quiz_attempt_unique_idx" ON "quiz_attempts" USING btree ("user_id","quiz_id");
+CREATE UNIQUE INDEX IF NOT EXISTS "quiz_attempt_unique_idx" ON "quiz_attempts" USING btree ("user_id","quiz_id");--> statement-breakpoint
+CREATE UNIQUE INDEX IF NOT EXISTS "user_email_idx" ON "user" USING btree ("email");

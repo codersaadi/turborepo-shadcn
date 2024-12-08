@@ -13,7 +13,7 @@ export async function createDefaultOrganization(userId: string) {
     description: "This is the default organization of the current user",
     ownerId: userId,
   };
-  return createOrganizationUseCase(data, true); // active is true
+  return createOrganizationUseCase(data, true, "owner"); // active is true
 }
 export async function createOrganization(
   data: {

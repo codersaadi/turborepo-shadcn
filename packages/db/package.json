@@ -11,7 +11,8 @@
     "db:studio": "drizzle-kit studio",
     "lint": "biome check . --write",
     "db:push": "drizzle-kit push",
-    "db:seed": "DATABASE_URL='postgresql://postgres:Saadsaad1@localhost:5432/saas_pack' tsx ./src/seeding/main.ts"
+    "db:seed": "DATABASE_URL='postgresql://postgres:Saadsaad1@localhost:5432/saas_pack' tsx ./src/seeding/main.ts",
+    "db:reset": "pnpm db:clear && pnpm db:generate && pnpm db:migrate"
   },
   "dependencies": {
     "@repo/env": "workspace:*",

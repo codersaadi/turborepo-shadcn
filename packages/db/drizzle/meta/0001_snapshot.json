@@ -1,6 +1,6 @@
 {
-  "id": "c419aa3a-4de3-40a2-8915-588b6f361d2d",
-  "prevId": "ef9eadd1-738c-4103-af26-09a14c612be8",
+  "id": "e270299f-574f-48c1-8d2e-7c2b56d5880d",
+  "prevId": "90937b6f-9632-4d43-be80-15b8637e2d2a",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -1206,6 +1206,13 @@
       "name": "user_organization",
       "schema": "",
       "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
         "userId": {
           "name": "userId",
           "type": "uuid",

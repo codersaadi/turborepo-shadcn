@@ -6,6 +6,7 @@ import {
 } from "../data/userOrganizations";
 import { updateUserActiveOrg } from "../data/users";
 import { createTransaction } from "../internal";
+import type { userOrganizations } from "../schema";
 
 export async function createOrganizationUseCase(
   data: {
@@ -16,7 +17,8 @@ export async function createOrganizationUseCase(
     maxMembers?: number;
     ownerId: string;
   },
-  SetActive = false
+  SetActive = false,
+  role: (typeof userOrganizations.$inferInsert)["role"] = "owner"
 ) {
   try {
     return await createTransaction(async (trx) => {
@@ -31,12 +33,15 @@ export async function createOrganizationUseCase(
           userId: data.ownerId,
           organizationId: orgCreated.id,
           status: "active",
+          role,
         },
         trx
       );
       console.log("relation created successfully");
 
       if (SetActive) {
+        console.log("setting org to active");
+
         await updateUserActiveOrg(orgCreated.ownerId, orgCreated.id);
         console.log("updated org active successfully");
       }

@@ -15,8 +15,7 @@ export default async function layout({
 	params: Promise<Params>;
 }) {
 	const session = await auth();
-	if (!session || session?.user?.activeOrgId) return null;
-
+	if (!session || !session?.user?.activeOrgId) return null;
 	const resolvedParams = await getParamsStrict(
 		params,
 		z.object({
