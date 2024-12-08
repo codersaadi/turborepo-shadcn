@@ -9,14 +9,14 @@ export const SIGNIN_PAGE = "/auth/signin";
  * @type {string[]}
  */
 export const authRoutes: string[] = [
-	SIGNIN_PAGE,
-	"/auth/signup",
-	"/auth/forgot-password",
-	"/auth/new-password",
-	"/auth/email_verify",
-	"/auth/verify-request",
-	"/auth-error",
-	"/auth/signin-email",
+  SIGNIN_PAGE,
+  "/auth/signup",
+  "/auth/forgot-password",
+  "/auth/new-password",
+  "/auth/email_verify",
+  "/auth/verify-request",
+  "/auth-error",
+  "/auth/signin-email",
 ];
 /**
  * Routes start with the api are used for api auth purpose
@@ -27,4 +27,4 @@ export const apiAuthPrefix: string = "/api/auth";
 /**
  * The default route to redirect to after login
  */
-export const DEFAULT_LOGIN_REDIRECT = "/dashboard";
+export const DEFAULT_LOGIN_REDIRECT = "/c/redirect";
