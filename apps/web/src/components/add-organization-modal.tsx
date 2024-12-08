@@ -1,6 +1,4 @@
 "use client";
-
-import { updateSessionTrigger } from "@/auth";
 import { updateUserSessAction } from "@/auth/lib/signin-action";
 import { trpcReact } from "@/lib/trpc/react-client";
 import { zodResolver } from "@hookform/resolvers/zod";
