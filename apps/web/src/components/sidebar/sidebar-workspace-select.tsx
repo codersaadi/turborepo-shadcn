@@ -12,7 +12,7 @@ import { Skeleton } from "@repo/ui/components/ui/skeleton";
 import { Building, Building2, ChevronsUpDown } from "lucide-react";
 import type { Session } from "next-auth";
 import React, { useEffect, useState } from "react";
-// import { AddOrganizationModal } from "../add-organization-modal";
+import { AddOrganizationModal } from "../add-organization-modal";
 import SwitchOrgTrigger from "./SwitchOrgTrigger";
 
 export default function SidebarWorkspaceSelect({
@@ -109,7 +109,7 @@ export default function SidebarWorkspaceSelect({
 						);
 					})}
 				<div className="mt-2 pt-2 border-t">
-					{/* <AddOrganizationModal /> */}
+					<AddOrganizationModal />
 				</div>
 			</DropdownMenuContent>
 		</DropdownMenu>
