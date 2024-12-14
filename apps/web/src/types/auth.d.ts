@@ -1,6 +1,6 @@
 export interface MessageResponse {
-  message: string;
-  success: boolean;
+	message: string;
+	success: boolean;
 }
 import type { User } from "@repo/db/schema";
 export type $UserRole = "user" | "admin" | "member";
@@ -12,26 +12,26 @@ import type { NextRequest } from "next/server";
  */
 
 type SessionUser = Pick<
-  User,
-  | "id"
-  | "name"
-  | "email"
-  | "role"
-  | "emailVerified"
-  | "stripeCustomerId"
-  | "image"
-  | "activeOrgId"
+	User,
+	| "id"
+	| "name"
+	| "email"
+	| "role"
+	| "emailVerified"
+	| "stripeCustomerId"
+	| "image"
+	| "activeOrgId"
 > & {
-  role: string | null;
+	role: string | null;
 };
 declare module "next-auth" {
-  interface Session extends DefaultSession {
-    user: SessionUser;
-  }
-  interface NextAuthRequest extends NextRequest {
-    auth: Session | null;
-  }
-  interface NextAuthApiRequest extends NextAuthRequest {
-    auth: Session;
-  }
+	interface Session extends DefaultSession {
+		user: SessionUser;
+	}
+	interface NextAuthRequest extends NextRequest {
+		auth: Session | null;
+	}
+	interface NextAuthApiRequest extends NextAuthRequest {
+		auth: Session;
+	}
 }

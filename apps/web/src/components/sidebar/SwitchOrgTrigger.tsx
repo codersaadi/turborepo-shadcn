@@ -38,7 +38,8 @@ const useOrgSwitchMutate = () => {
 export default function SwitchOrgTrigger({
 	newOrgId,
 	children,
-}: { children: React.ReactNode } & SwitchOrgInput) {
+	disabled = false,
+}: { children: React.ReactNode; disabled?: boolean } & SwitchOrgInput) {
 	const { mutate, isPending } = useOrgSwitchMutate();
 	return (
 		<LoaderButton
@@ -46,6 +47,7 @@ export default function SwitchOrgTrigger({
 			variant={"ghost"}
 			onClick={() => mutate({ newOrgId })}
 			isLoading={isPending}
+			disabled={isPending || disabled}
 		>
 			{children}
 		</LoaderButton>

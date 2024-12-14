@@ -15,6 +15,13 @@
       "when": 1733618382734,
       "tag": "0001_hot_colleen_wing",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1734083341485,
+      "tag": "0002_aspiring_killmonger",
+      "breakpoints": true
     }
   ]
 }

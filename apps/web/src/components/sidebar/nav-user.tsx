@@ -30,6 +30,7 @@ import {
 	Sparkles,
 } from "lucide-react";
 import type { Session } from "next-auth";
+import { signOut } from "next-auth/react";
 import type React from "react";
 export const NavUserWrapper = ({
 	session,
@@ -117,7 +118,7 @@ export function NavUser({
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem>
+						<DropdownMenuItem onClick={() => signOut()}>
 							<LogOut />
 							Log out
 						</DropdownMenuItem>

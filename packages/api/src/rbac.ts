@@ -14,7 +14,8 @@ export enum PermissionFlags {
   USER_CREATE = 1 << 6, // 64
   USER_DELETE = 1 << 7, // 128
 
-  // Course Permissions
+  // Course Permissions  - if you add another resource like courses or something
+
   COURSE_VIEW = 1 << 8, // 256
   COURSE_EDIT = 1 << 9, // 512
   COURSE_CREATE = 1 << 10, // 1024
@@ -32,6 +33,7 @@ export const RolePermissionMap: Record<(typeof orgRolesArray)[number], number> =
       PermissionFlags.USER_EDIT |
       PermissionFlags.USER_CREATE |
       PermissionFlags.USER_DELETE |
+      // if you add another resource like courses or something
       PermissionFlags.COURSE_VIEW |
       PermissionFlags.COURSE_EDIT |
       PermissionFlags.COURSE_CREATE |
@@ -42,6 +44,7 @@ export const RolePermissionMap: Record<(typeof orgRolesArray)[number], number> =
       PermissionFlags.ORG_EDIT |
       PermissionFlags.USER_VIEW |
       PermissionFlags.USER_EDIT |
+      // if you add another resource like courses or something
       PermissionFlags.COURSE_VIEW |
       PermissionFlags.COURSE_EDIT |
       PermissionFlags.COURSE_CREATE,
@@ -49,9 +52,11 @@ export const RolePermissionMap: Record<(typeof orgRolesArray)[number], number> =
     manager:
       PermissionFlags.ORG_VIEW |
       PermissionFlags.USER_VIEW |
+      // if you add another resource like courses or something
+
       PermissionFlags.COURSE_VIEW |
       PermissionFlags.COURSE_EDIT,
-
+    // if you add another resource like courses or something
     editor:
       PermissionFlags.COURSE_VIEW |
       PermissionFlags.COURSE_EDIT |

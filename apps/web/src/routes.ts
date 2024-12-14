@@ -9,14 +9,14 @@ export const SIGNIN_PAGE = "/auth/signin";
  * @type {string[]}
  */
 export const authRoutes: string[] = [
-  SIGNIN_PAGE,
-  "/auth/signup",
-  "/auth/forgot-password",
-  "/auth/new-password",
-  "/auth/email_verify",
-  "/auth/verify-request",
-  "/auth-error",
-  "/auth/signin-email",
+	SIGNIN_PAGE,
+	"/auth/signup",
+	"/auth/forgot-password",
+	"/auth/new-password",
+	"/auth/email_verify",
+	"/auth/verify-request",
+	"/auth-error",
+	"/auth/signin-email",
 ];
 /**
  * Routes start with the api are used for api auth purpose

@@ -17,7 +17,9 @@ import SwitchOrgTrigger from "./SwitchOrgTrigger";
 
 export default function SidebarWorkspaceSelect({
 	session,
-}: { session: Session }) {
+}: {
+	session: Session;
+}) {
 	const {
 		data: organizations = [],
 		error,
@@ -30,7 +32,6 @@ export default function SidebarWorkspaceSelect({
 	);
 
 	useEffect(() => {
-		// Update activeOrg when organizations or session's activeOrgId changes
 		const updatedActiveOrg = organizations.find(
 			(org) => org.id === session?.user?.activeOrgId,
 		);
@@ -45,28 +46,33 @@ export default function SidebarWorkspaceSelect({
 				<SidebarMenuButton className="w-full justify-between">
 					{isLoading ? (
 						<span className="flex items-center gap-2">
-							<Building className="h-4 w-4" />
+							<Building className="h-4 w-4 shrink-0" />
 							<Skeleton className="h-5 w-24" />
 						</span>
 					) : (
 						<>
-							<span className="flex items-center gap-2">
-								<Building className="h-4 w-4" />
+							<span className="flex items-center gap-2 min-w-0">
+								<Building className="h-4 w-4 shrink-0" />
 								<span className="truncate">
 									{activeOrg?.name || "Select Workspace"}
 								</span>
 							</span>
-							<ChevronsUpDown className="ml-auto h-4 w-4 opacity-50" />
+							<ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
 						</>
 					)}
 				</SidebarMenuButton>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align="start" side="right" className="w-64 p-2">
+			<DropdownMenuContent
+				side="bottom"
+				// align="start"
+				// side="right"
+				className="w-64 p-2 max-h-[calc(100vh-4rem)] overflow-y-auto"
+			>
 				<h3 className="mb-2 px-2 text-sm font-semibold">Organizations</h3>
 				{isLoading && (
 					<div className="space-y-1">
 						{[...Array(3)].map((e, i) => (
-							<Skeleton key={`${i}-${e}`} className="h-8 w-full" />
+							<Skeleton key={`${e}-${i.toString()}`} className="h-8 w-full" />
 						))}
 					</div>
 				)}
@@ -85,6 +91,7 @@ export default function SidebarWorkspaceSelect({
 
 						return (
 							<SwitchOrgTrigger
+								disabled={isActive}
 								newOrgId={organization.id}
 								key={organization.slug}
 							>
@@ -92,15 +99,15 @@ export default function SidebarWorkspaceSelect({
 									disabled={isActive}
 									className="flex items-center justify-between w-full p-2"
 								>
-									<span className="flex items-center gap-2">
+									<span className="flex items-center gap-2 min-w-0">
 										{isActive && (
-											<span className="h-2 w-2 rounded-full bg-emerald-600" />
+											<span className="h-2 w-2 rounded-full bg-emerald-600 shrink-0" />
 										)}
-										<Building2 className="h-4 w-4" />
+										<Building2 className="h-4 w-4 shrink-0" />
 										<span className="truncate">{organization.name}</span>
 									</span>
 									{organization.ownerId === session?.user?.id && (
-										<span className="rounded-full bg-sky-600 text-white px-1.5 py-0.5 text-xs font-semibold text-primary-foreground">
+										<span className="rounded-full bg-sky-600 text-white px-1.5 py-0.5 text-xs font-semibold text-primary-foreground shrink-0">
 											Owner
 										</span>
 									)}

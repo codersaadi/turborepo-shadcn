@@ -17,6 +17,7 @@ export async function getUserByEmail(email: string): Promise<
       status: "suspended" | "disabled" | "active" | "onboarding" | null;
       emailVerified: Date | null;
       stripeCustomerId: string | null;
+      activeOrgId: string | null;
       image: string | null;
       createdAt: Date | null;
     }

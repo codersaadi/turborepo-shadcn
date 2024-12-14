@@ -1,4 +1,5 @@
 // source.config.ts
 import { defineDocs } from "fumadocs-mdx/config";
-const { docs, meta } = defineDocs();
+// biome-ignore lint/style/noVar: <explanation>
+var { docs, meta } = defineDocs();
 export { docs, meta };
