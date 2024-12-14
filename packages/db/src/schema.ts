@@ -133,7 +133,7 @@ export const newsletters = pgTable("newsletter", {
  * Multi Tenacy from here
  */
 
-// Organizations table
+// Organizations table - by default org id will be tied to the
 export const organizations = pgTable(
   "organization",
   {

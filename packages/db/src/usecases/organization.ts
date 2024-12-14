@@ -61,6 +61,7 @@ export async function switchOrgUseCase({
   currentOrgId: string;
   newOrgId: string;
 }) {
+  //  it will only switch to those whose status is active (status can be suspended or pending or as per your requirements, here the status is not about what is in the org id in the session)
   const user = await getUserActiveOrg({
     userId,
     organizationId: currentOrgId,
