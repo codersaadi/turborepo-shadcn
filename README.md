@@ -137,7 +137,7 @@ pnpm commit     # Interactive commit message builder
 │   ├── docs                 # Documentation site
 │   └── web                 # Main web application
 ├── packages
-│   ├── ui                  # Shared UI components
+│   ├── repo-ui                  # Shared UI components
 │   ├── api/               # Shared API & tRPC routes
 │   ├── typescript-config   # Shared TypeScript configs
 │   └── biome-config        # Shared Biome configs
