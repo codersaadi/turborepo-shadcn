@@ -12,6 +12,7 @@
     "stripe:listen": "stripe listen --forward-to http://localhost:3000/api/webhooks/stripe"
   },
   "dependencies": {
+    "@plugins/aws-s3": "workspace:*",
     "@repo/api": "workspace:*",
     "@auth/core": "^0.37.4",
     "@auth/drizzle-adapter": "^1.7.4",

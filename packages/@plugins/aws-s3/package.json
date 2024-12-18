@@ -1,0 +1,21 @@
+{
+  "name": "@plugins/aws-s3",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.668.0",
+    "@aws-sdk/lib-storage": "^3.668.0",
+    "@aws-sdk/s3-presigned-post": "^3.668.0",
+    "@aws-sdk/s3-request-presigner": "^3.668.0",
+    "@t3-oss/env-core": "^0.11.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@tooling/biome-config": "workspace:*",
+    "@tooling/typescript-config": "workspace:*",
+    "@repo/env": "workspace:*"
+  },
+  "exports": {
+    "default": "./src/index.ts"
+  }
+}
