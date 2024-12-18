@@ -57,6 +57,7 @@ This Turborepo includes the following packages/apps:
 - `@repo/api` API package with tRPC and Zod schemas
 -  `@repo/env` : shared env package , typesafe validated env.
 - `@repo/db` : a shared database package for scaling easily.
+- `@repo/analytics` : Analytics provider with flexible options.
 - `@tooling/typescript-config`: shared `tsconfig.json`s used throughout the monorepo
 - `@tooling/biome-config`: shared [Biome](https://biomejs.dev/) configurations for linting and formatting
 
@@ -243,13 +244,9 @@ MIT
 </p>
 
 
-🔗 Useful Links
-
-Turborepo Docs
-tRPC Documentation
-React Query Guides
-
-
-
+### 🔗 Useful Links
+- Turborepo Docs
+- tRPC Documentation
+- React Query Guides
 
 
