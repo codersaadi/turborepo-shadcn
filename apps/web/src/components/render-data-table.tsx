@@ -1,7 +1,7 @@
-import { Shell } from "@repo/ui/components/shell";
-import { DataTableSkeleton } from "@repo/ui/components/table/data-table-skeleton";
-import { Skeleton } from "@repo/ui/components/ui/skeleton";
 import React from "react";
+import { Shell } from "repo-ui/components/shell";
+import { DataTableSkeleton } from "repo-ui/components/table/data-table-skeleton";
+import { Skeleton } from "repo-ui/components/ui/skeleton";
 import NextDateRangePicker from "./NextDateRangePicker";
 export const RenderDataTable = ({
 	children,

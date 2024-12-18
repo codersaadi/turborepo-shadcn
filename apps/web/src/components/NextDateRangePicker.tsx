@@ -1,6 +1,6 @@
-import { DateRangePicker } from "@repo/ui/components/date-range-picker";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React from "react";
+import { DateRangePicker } from "repo-ui/components/date-range-picker";
 
 export default function NextDateRangePicker() {
 	const pathname = usePathname();

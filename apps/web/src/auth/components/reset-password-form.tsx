@@ -1,17 +1,17 @@
 "use client";
 import { ResetPasswordSchema } from "@/auth/auth.schema";
 import { EyeClosedIcon, EyeOpenIcon } from "@radix-ui/react-icons";
-import { FormFeedback } from "@repo/ui/components/form-feedback";
-import { LoaderButton } from "@repo/ui/components/loader-button";
+import { FormFeedback } from "repo-ui/components/form-feedback";
+import { LoaderButton } from "repo-ui/components/loader-button";
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
-} from "@repo/ui/components/ui/form";
-import { Input } from "@repo/ui/components/ui/input";
-import { cn } from "@repo/ui/lib/utils";
+} from "repo-ui/components/ui/form";
+import { Input } from "repo-ui/components/ui/input";
+import { cn } from "repo-ui/lib/utils";
 import { useBoolean } from "../../hooks/use-boolean";
 import { useFormAction } from "../../hooks/use-form-action";
 import { resetPasswordAction } from "../lib/forgot-password";

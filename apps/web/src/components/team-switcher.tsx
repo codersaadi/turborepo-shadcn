@@ -1,5 +1,7 @@
 "use client";
 
+import { ChevronsUpDown, Plus } from "lucide-react";
+import * as React from "react";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -8,15 +10,13 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuShortcut,
 	DropdownMenuTrigger,
-} from "@repo/ui/components/ui/dropdown-menu";
+} from "repo-ui/components/ui/dropdown-menu";
 import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
 	useSidebar,
-} from "@repo/ui/components/ui/sidebar";
-import { ChevronsUpDown, Plus } from "lucide-react";
-import * as React from "react";
+} from "repo-ui/components/ui/sidebar";
 
 export function TeamSwitcher({
 	teams,

@@ -1,10 +1,10 @@
 "use client";
 
 import type { MessageResponse } from "@/types/responses";
-import { FormFeedback } from "@repo/ui/components/form-feedback";
-import { Button } from "@repo/ui/components/ui/button";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
+import { FormFeedback } from "repo-ui/components/form-feedback";
+import { Button } from "repo-ui/components/ui/button";
 import { emailVerifyAction } from "../lib/emailVerifyAction";
 
 export default function EmailVerifyForm({

@@ -4,19 +4,19 @@ import { useFormAction } from "../../hooks/use-form-action";
 
 import { useBoolean } from "@/hooks/use-boolean";
 import { AvatarIcon, EyeClosedIcon, EyeOpenIcon } from "@radix-ui/react-icons";
-import { FormFeedback } from "@repo/ui/components/form-feedback";
-import { LoaderButton } from "@repo/ui/components/loader-button";
-import { Button } from "@repo/ui/components/ui/button";
+import Link from "next/link";
+import { FormFeedback } from "repo-ui/components/form-feedback";
+import { LoaderButton } from "repo-ui/components/loader-button";
+import { Button } from "repo-ui/components/ui/button";
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
-} from "@repo/ui/components/ui/form";
-import { Input } from "@repo/ui/components/ui/input";
-import { cn } from "@repo/ui/lib/utils";
-import Link from "next/link";
+} from "repo-ui/components/ui/form";
+import { Input } from "repo-ui/components/ui/input";
+import { cn } from "repo-ui/lib/utils";
 import { LoginSchema, type LoginSchemaType } from "../auth.schema";
 import { signInAction } from "../lib/signin-action";
 export default function SignInForm({

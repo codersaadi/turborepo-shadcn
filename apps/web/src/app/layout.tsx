@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import "@repo/ui/globals.css";
+import "repo-ui/globals.css";
 import { geistMono, geistSans } from "./fonts";
 import RootProvider from "./root-provider";
 

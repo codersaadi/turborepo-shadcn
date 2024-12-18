@@ -10,7 +10,7 @@
     "check": "biome check --apply .",
     "format-and-lint": "biome check .",
     "format-and-lint:fix": "biome check . --write",
-    "ui": "pnpm --filter @repo/ui ui",
+    "ui": "pnpm --filter repo-ui ui",
     "docs": "pnpm --filter docs",
     "web": "pnpm --filter web",
     "db": "pnpm --filter @repo/db",

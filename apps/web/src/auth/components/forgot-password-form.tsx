@@ -1,15 +1,15 @@
 "use client";
 import type { MessageResponse } from "@/types/responses";
-import { FormFeedback } from "@repo/ui/components/form-feedback";
-import { LoaderButton } from "@repo/ui/components/loader-button";
+import { FormFeedback } from "repo-ui/components/form-feedback";
+import { LoaderButton } from "repo-ui/components/loader-button";
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
-} from "@repo/ui/components/ui/form";
-import { Input } from "@repo/ui/components/ui/input";
+} from "repo-ui/components/ui/form";
+import { Input } from "repo-ui/components/ui/input";
 import { useFormAction } from "../../hooks/use-form-action";
 import {
 	ForgotPasswordSchema,

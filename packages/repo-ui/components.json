@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.mts",
+    "css": "src/globals.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "repo-ui/components",
+    "utils": "repo-ui/lib/utils",
+    "hooks": "repo-ui/hooks"
+  }
+}

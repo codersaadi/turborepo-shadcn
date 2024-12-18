@@ -1,7 +1,7 @@
 "use client";
-import { Button } from "@repo/ui/components/ui/button";
-import { cn } from "@repo/ui/lib/utils";
 import { signOut } from "next-auth/react";
+import { Button } from "repo-ui/components/ui/button";
+import { cn } from "repo-ui/lib/utils";
 export default function SignOutButton({ callback }: { callback?: () => void }) {
 	return (
 		<Button
