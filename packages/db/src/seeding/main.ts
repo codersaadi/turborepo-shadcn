@@ -3,11 +3,11 @@ import { users } from "../schema";
 
 async function main() {
   const userData = {
-    email: "codestacklab@xyz.com",
-    password: "$2a$10$eBWPibRqL/mAbrmbDEHD5efcAOtREelYr1wqM0VymHiCIjWCsIUlW",
+    email: "codersaadi@xyz.com",
+    password: "$2a$10$k004FluJIF2/l/ykBZDx6eFqz9SAtxHCNbLsDH3jaOD8x9Meji7/O",
     name: "Saadi",
     emailVerified: new Date(),
-  };
+  }; // password is codersaadi
   const [createdUser] = await db
     .insert(users)
     .values(userData)

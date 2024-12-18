@@ -1,0 +1,24 @@
+{
+  "name": "@repo/analytics",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "@next/third-parties": "^15.1.0",
+    "@repo/env": "workspace:*",
+    "@vercel/analytics": "^1.4.1",
+    "posthog-js": "^1.195.0",
+    "posthog-node": "^4.3.1",
+    "react": "^18.3.1",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@tooling/typescript-config": "workspace:*",
+    "@types/node": "22.10.1",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.1"
+  }
+}

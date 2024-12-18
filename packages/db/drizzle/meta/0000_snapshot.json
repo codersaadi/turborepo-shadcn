@@ -1,5 +1,5 @@
 {
-  "id": "ef9eadd1-738c-4103-af26-09a14c612be8",
+  "id": "da1cfd04-4cb4-40ca-bce6-470cf5cf6e1c",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -350,12 +350,6 @@
         "image": {
           "name": "image",
           "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "activeOrgId": {
-          "name": "activeOrgId",
-          "type": "uuid",
           "primaryKey": false,
           "notNull": false
         },

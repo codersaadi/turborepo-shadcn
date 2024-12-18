@@ -1,6 +1,5 @@
 import { sql } from "drizzle-orm";
 import {
-  boolean,
   integer,
   pgEnum,
   pgTable,
@@ -11,14 +10,6 @@ import {
   uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
-
-// REUSABLES
-const TIMESTAMPS = {
-  createdAt: timestamp("created_at", { mode: "date" }).default(sql`now()`),
-  updatedAt: timestamp("updated_at", { mode: "date" })
-    .default(sql`now()`)
-    .$onUpdate(() => sql`now()`),
-};
 
 // Enum Types
 type ProviderType = "oauth" | "email" | "credentials";
@@ -51,8 +42,10 @@ export const users = pgTable(
     emailVerified: timestamp("emailVerified", { mode: "date" }),
     stripeCustomerId: text("stripeCustomerId"),
     image: text("image"),
-    activeOrgId: uuid("activeOrgId"), // Change to uuid
-    ...TIMESTAMPS,
+    createdAt: timestamp("created_at", { mode: "date" }).default(sql`now()`),
+    updatedAt: timestamp("updated_at", { mode: "date" })
+      .default(sql`now()`)
+      .$onUpdate(() => sql`now()`),
   },
   (table) => [uniqueIndex("user_email_idx").on(table.email)]
 );

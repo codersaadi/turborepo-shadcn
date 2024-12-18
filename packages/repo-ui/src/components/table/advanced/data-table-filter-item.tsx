@@ -149,8 +149,10 @@ export function DataTableFilterItem<TData>({
 						</div>
 						<Select
 							value={selectedOperator?.value}
-							onValueChange={(value) =>
-								setSelectedOperator(operators?.find((c) => c.value === value))
+							onValueChange={(value) => {
+								const operator = operators?.find(values => value === values.value)
+								if (operator) setSelectedOperator(operator)
+							}
 							}
 						>
 							<SelectTrigger className="h-auto w-fit truncate border-none px-2 py-0.5 text-xs hover:bg-muted/50">

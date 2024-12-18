@@ -54,7 +54,6 @@ CREATE TABLE IF NOT EXISTS "user" (
 	"emailVerified" timestamp,
 	"stripeCustomerId" text,
 	"image" text,
-	"activeOrgId" uuid,
 	"created_at" timestamp DEFAULT now(),
 	"updated_at" timestamp DEFAULT now(),
 	CONSTRAINT "user_id_unique" UNIQUE("id"),

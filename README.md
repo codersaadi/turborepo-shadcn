@@ -124,10 +124,12 @@ pnpm lint       # Lint and auto-fix all files using Biome
 pnpm format     # Format root configuration files
 pnpm web email # will start email server (react email dev server)
 
-# Git Workflow
-pnpm commit     # Interactive commit message builder
-
+pnpm db db:generate 
+pnpm db db:migrate
+pnpm db db:seed 
 ```
+Seed user Email  : `codersaadi@xyz.com`
+Seed user Password: codersaadi
 
 ### Project Structure
 

@@ -51,7 +51,6 @@ export async function getUserById(id: string): Promise<
       stripeCustomerId: string | null;
       image: string | null;
       createdAt: Date | null;
-      activeOrgId: string | null;
     }
   | undefined
 > {
@@ -173,13 +172,13 @@ export async function deleteUserWithData(userId: string): Promise<void> {
   }
 }
 
-export async function updateUserActiveOrg(
-  userId: string,
-  newOrgId: string,
-  trx = db
-) {
-  await db
-    .update(users)
-    .set({ activeOrgId: newOrgId })
-    .where(eq(users.id, userId));
-}
+// export async function updateUserActiveOrg(
+//   userId: string,
+//   newOrgId: string,
+//   trx = db
+// ) {
+//   await db
+//     .update(users)
+//     .set({ activeOrgId: newOrgId })
+//     .where(eq(users.id, userId));
+// }

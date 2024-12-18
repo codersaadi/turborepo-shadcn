@@ -1,5 +1,3 @@
-// "use client"
-
 import NextThemeSwitch from "@/components/ThemeSwitch";
 import React from "react";
 export default async function page() {

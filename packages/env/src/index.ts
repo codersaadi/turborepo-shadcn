@@ -1,4 +1,4 @@
-import { createEnv } from "@t3-oss/env-core";
+import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 import {
   // cloudflare,
@@ -15,7 +15,6 @@ const serverSchema = {
   GITHUB_CLIENT_SECRET: z.string().min(1, "GitHub Client Secret is required"),
   GOOGLE_CLIENT_ID: z.string(),
   GOOGLE_CLIENT_SECRET: z.string().min(1, "Google Client Secret is required"),
-  // env can be test, development, production
   NODE_ENV: z.enum(["test", "development", "production"]),
 };
 
@@ -26,14 +25,15 @@ const clientSchema = {
     .refine((url) => !url.endsWith("/"), {
       message: "HOST URL should not end with a trailing slash",
     }),
+
+  NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().min(1).startsWith("G-").optional(),
 };
 
 const env = createEnv({
-  clientPrefix: "NEXT_PUBLIC_",
   server: serverSchema,
   client: clientSchema,
   emptyStringAsUndefined: true,
-  runtimeEnvStrict: {
+  runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
     NEXT_PUBLIC_HOST: process.env.NEXT_PUBLIC_HOST,
     EMAIL_FROM: process.env.EMAIL_FROM,
@@ -47,12 +47,19 @@ const env = createEnv({
     GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    // Analytics
+    NEXT_PUBLIC_GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
+
     NODE_ENV: process.env.NODE_ENV || "development",
+  },
+  onValidationError: (err) => {
+    throw err;
   },
   extends: [
     stripe(),
     // add this if you are using cloudflare , plugins like  aws-s3 etc
-    // cloudflare()
+    // cloudflare(),
+    // posthogPreset(),
   ],
 });
 
