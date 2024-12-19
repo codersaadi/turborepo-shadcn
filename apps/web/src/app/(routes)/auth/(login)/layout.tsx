@@ -1,7 +1,11 @@
+import OAuthProviders from "@/auth/components/oauth-provider";
 import type React from "react";
-import OAuthProviders from "./oauth-provider";
 
-export default function layout({ children }: { children: React.ReactNode }) {
+interface AuthLayoutProps {
+	readonly children: React.ReactNode
+}
+
+export default function AuthLayout({ children }: AuthLayoutProps) {
 	return (
 		<>
 			{children}

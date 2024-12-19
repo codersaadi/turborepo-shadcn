@@ -12,12 +12,10 @@ export default function OAuthProviders() {
 		});
 	};
 	return (
-		<div>
-			<SigninWithProviders
-				action={signinWithProvidersAction}
-				withDescription={true}
-				orPosition="top"
-			/>
-		</div>
+		<SigninWithProviders
+			action={signinWithProvidersAction}
+			withDescription={true}
+			orPosition="top"
+		/>
 	);
 }
