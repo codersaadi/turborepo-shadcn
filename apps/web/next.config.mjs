@@ -9,7 +9,14 @@ async function validateEnv() {
 validateEnv();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["repo-ui", "@repo/env", "@repo/api"],
+  transpilePackages: [
+    "repo-ui",
+    "@repo/env",
+    "@repo/api",
+    "@repo/db",
+    "@authjs/client",
+    "@authjs/core",
+  ],
   // output: "standalone",
   images: {
     remotePatterns: [

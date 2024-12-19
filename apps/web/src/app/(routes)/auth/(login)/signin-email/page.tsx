@@ -1,5 +1,5 @@
-import { MagicSignInForm } from "@/auth/components";
 import { APP_NAME } from "@/constants";
+import { MagicSignInForm } from "@authjs/client";
 import type { Metadata } from "next";
 import React from "react";
 

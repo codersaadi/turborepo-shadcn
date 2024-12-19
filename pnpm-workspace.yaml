@@ -3,3 +3,4 @@ packages:
   - "packages/*"
   - "tooling/*"
   - "packages/@plugins/*"
+  - "packages/@authjs/*"

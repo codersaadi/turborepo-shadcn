@@ -1,4 +1,5 @@
-import OAuthProviders from "@/auth/components/oauth-provider";
+import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
+import { OAuthProviders } from "@authjs/client";
 import type React from "react";
 
 interface AuthLayoutProps {
@@ -9,7 +10,10 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
 	return (
 		<>
 			{children}
-			<OAuthProviders />
+			<OAuthProviders options={{
+				orPosition: "top",
+				withDescription: true
+			}} redirectTo={DEFAULT_LOGIN_REDIRECT} />
 		</>
 	);
 }

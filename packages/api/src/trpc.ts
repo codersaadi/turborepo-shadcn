@@ -1,3 +1,5 @@
+// import { auth } from "@authjs/core";
+import type { Session } from "@authjs/core/types";
 import { TRPCError, initTRPC } from "@trpc/server";
 import { ZodError } from "zod";
 /**
@@ -9,11 +11,9 @@ import { ZodError } from "zod";
  * The pieces you will need to use are documented accordingly near the end
  */
 import type { NextRequest } from "../../../apps/web/node_modules/next/server";
-import type { SessionUser } from "../../../apps/web/src/types/auth";
 
 import { transformer } from "./transformer";
 
-type AuthContext = { user?: SessionUser } | undefined | null;
 /**
  * 1. CONTEXT
  *
@@ -25,7 +25,7 @@ type AuthContext = { user?: SessionUser } | undefined | null;
  */
 interface CreateContextOptions {
   headers: Headers;
-  auth: AuthContext;
+  auth: Session | null;
   apiKey?: string | null;
   req?: NextRequest;
 }
@@ -50,12 +50,11 @@ export const createInnerTRPCContext = (opts: CreateContextOptions) => {
  */
 export const createTRPCContext = async (opts: {
   headers: Headers;
-  auth: AuthContext;
   req?: NextRequest;
+  auth: Session | null;
   // eslint-disable-next-line @typescript-eslint/require-await
 }) => {
   const apiKey = opts.req?.headers.get("x-acme-api-key");
-
   return createInnerTRPCContext({
     auth: opts.auth,
     apiKey,
@@ -120,10 +119,6 @@ export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
       auth: {
         ...ctx.auth,
       },
-    } as {
-      auth: {
-        user: SessionUser;
-      };
     },
   });
 });

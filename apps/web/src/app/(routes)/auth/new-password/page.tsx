@@ -1,4 +1,4 @@
-import { ResetPasswordForm } from "@/auth/components";
+import { ResetPasswordForm } from "@authjs/client";
 import Link from "next/link";
 import React from "react";
 import { Button } from "repo-ui/components/ui/button";

@@ -1,0 +1,21 @@
+{
+	"extends": "@tooling/typescript-config/react-library.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"outDir": "dist",
+		"allowJs": true,
+		"esModuleInterop": true,
+		"moduleResolution": "bundler",
+		"module": "ESNext",
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"paths": {
+			"@authjs/client/*": ["./src/*"],
+		},
+		
+	},
+	"include": ["src"],
+	"exclude": ["node_modules", "dist"]
+}

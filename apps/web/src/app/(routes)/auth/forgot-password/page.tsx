@@ -1,5 +1,5 @@
-import { ForgotPasswordForm } from "@/auth/components";
 import { APP_NAME } from "@/constants";
+import { ForgotPasswordForm } from "@authjs/client";
 import type { Metadata } from "next";
 import React from "react";
 

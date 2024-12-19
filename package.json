@@ -13,6 +13,7 @@
     "ui": "pnpm --filter repo-ui ui",
     "docs": "pnpm --filter docs",
     "web": "pnpm --filter web",
+    "email": "pnpm --filter @repo/email",
     "db": "pnpm --filter @repo/db",
     "prepare": "husky"
   },

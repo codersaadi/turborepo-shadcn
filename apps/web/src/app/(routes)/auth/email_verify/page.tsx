@@ -1,4 +1,4 @@
-import { EmailVerifyForm } from "@/auth/components";
+import { EmailVerifyForm } from "@authjs/client";
 
 import React from "react";
 interface EmailVerifyProps {

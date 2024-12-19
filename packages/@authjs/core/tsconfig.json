@@ -1,0 +1,23 @@
+{
+	"extends": "@tooling/typescript-config/base.json",
+	"compilerOptions": {
+		"outDir": "dist",
+		"allowJs": true,
+		"rootDir": ".",
+		"esModuleInterop": true,
+		"moduleResolution": "bundler",
+		"module": "ESNext",
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"baseUrl": ".",		
+		
+		"paths": {
+			"@authjs/core/*": ["./src/*"],
+		},
+		
+	},
+	"include": ["src"],
+	"exclude": ["node_modules", "dist"]
+}
