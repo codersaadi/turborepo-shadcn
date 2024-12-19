@@ -59,8 +59,11 @@ This Turborepo includes the following packages/apps:
 - `@repo/db` : a shared database package for scaling easily.
 - `@repo/analytics` : Analytics provider with flexible options.
 - `@tooling/typescript-config`: shared `tsconfig.json`s used throughout the monorepo
-- `@tooling/biome-config`: shared [Biome](https://biomejs.dev/) configurations for linting and formatting
-
+- `@tooling/biome-config`: shared [Biome](https://biomejs.dev/) configurations for 
+linting and formatting
+- `@authjs/core` : core auth features , actions , schema, middleware.
+- `@authjs/client` : auth client components , forms etc.  
+- `@repo/email` : react email , create and test your emails. 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ### Features & Utilities
@@ -123,8 +126,9 @@ pnpm build      # Build all apps and packages
 # Linting & Formatting
 pnpm lint       # Lint and auto-fix all files using Biome
 pnpm format     # Format root configuration files
-pnpm web email # will start email server (react email dev server)
 
+pnpm email dev # will start email server (react email dev server)
+# DB Package
 pnpm db db:generate 
 pnpm db db:migrate
 pnpm db db:seed 
