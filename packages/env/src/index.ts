@@ -3,6 +3,7 @@ import { z } from "zod";
 import {
   // cloudflare,
   stripe,
+  upstash,
 } from "./presets";
 const serverSchema = {
   DATABASE_URL: z.string(),
@@ -57,6 +58,7 @@ const env = createEnv({
   },
   extends: [
     stripe(),
+    upstash(),
     // add this if you are using cloudflare , plugins like  aws-s3 etc
     // cloudflare(),
     // posthogPreset(),

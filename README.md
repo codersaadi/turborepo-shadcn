@@ -42,6 +42,9 @@ NEXT_PUBLIC_PRICE_ID_PREMIUM="price_1Pq55d"
 
 STRIPE_API_KEY="sk_test_51"
 EMAIL_FROM=""
+
+UPSTASH_REDIS_REST_URL="https://**.upstash.io"
+UPSTASH_REDIS_REST_TOKEN=***
 ```
 
 
@@ -64,6 +67,7 @@ linting and formatting
 - `@authjs/core` : core auth features , actions , schema, middleware.
 - `@authjs/client` : auth client components , forms etc.  
 - `@repo/email` : react email , create and test your emails. 
+- `@repo/rate-limit` : upstash rate limiting .
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ### Features & Utilities
