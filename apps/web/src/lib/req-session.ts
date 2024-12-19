@@ -7,7 +7,7 @@ export const createAuthErrorResponse = (message?: string) => {
     { status: error.statusCode }
   );
 };
-import { auth } from "@/auth";
+import { auth } from "@authjs/core";
 import type { Session } from "@authjs/core/types";
 import { createAuthenticationError } from "@repo/api/errors";
 export const getSessionFromRequest = async (

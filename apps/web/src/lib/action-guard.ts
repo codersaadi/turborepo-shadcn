@@ -1,7 +1,7 @@
+import { auth } from "@authjs/core";
 import type { SessionUser } from "@authjs/core/types";
 import { createAuthenticationError, isKnownError } from "@repo/api/errors";
 import { type TShapeErrorFn, createServerActionProcedure } from "zsa";
-import { auth } from "../auth";
 import { rateLimitByKey } from "./limiter";
 
 function shapeErrors({ err }: { err: ReturnType<TShapeErrorFn> }) {
