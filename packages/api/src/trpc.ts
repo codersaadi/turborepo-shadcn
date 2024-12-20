@@ -1,5 +1,5 @@
 // import { auth } from "@authjs/core";
-import type { Session } from "@authjs/core/types";
+import type { Session, SessionUser } from "@authjs/core/types";
 import { TRPCError, initTRPC } from "@trpc/server";
 import { ZodError } from "zod";
 /**
@@ -111,14 +111,12 @@ export const publicProcedure = t.procedure;
  * code
  */
 export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
-  if (!ctx.auth?.user) {
+  if (!ctx.auth?.user || !ctx.auth.user.id) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({
     ctx: {
-      auth: {
-        ...ctx.auth,
-      },
+      auth: ctx.auth as Session & { user: SessionUser },
     },
   });
 });
