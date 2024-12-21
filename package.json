@@ -11,7 +11,6 @@
     "format-and-lint": "biome check .",
     "format-and-lint:fix": "biome check . --write",
     "ui": "pnpm --filter repo-ui ui",
-    "docs": "pnpm --filter docs",
     "web": "pnpm --filter web",
     "email": "pnpm --filter @repo/email",
     "db": "pnpm --filter @repo/db",
