@@ -2,16 +2,15 @@
   "name": "@repo/db",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:clear": "NODE_ENV='development' tsx ./src/clear.ts",
+    "db:clear": "NODE_ENV='development' tsx ./clear.ts",
     "check-types": "tsc --noEmit",
     "db:studio": "drizzle-kit studio",
     "lint": "biome check . --write",
     "db:push": "drizzle-kit push",
-    "db:seed": "DATABASE_URL='postgresql://postgres:Saadsaad1@localhost:5432/saas_pack' tsx ./src/seeding/main.ts"
+    "db:seed": "DATABASE_URL='postgresql://postgres:Saadsaad1@localhost:5432/saas_pack' tsx ./seeding/main.ts"
   },
   "dependencies": {
     "@repo/env": "workspace:*",
@@ -34,18 +33,18 @@
   },
   "exports": {
     ".": [
-      "./src/index.ts"
+      "./index.ts"
     ],
     "./schema": [
-      "./src/schema.ts"
+      "./schema.ts"
     ],
     "./data/*": [
-      "./src/data/*.ts",
-      "./src/data/*.js"
+      "./data/*.ts",
+      "./data/*.js"
     ],
     "./usecases/*": [
-      "./src/usecases/*.ts",
-      "./src/usecases/*.js"
+      "./usecases/*.ts",
+      "./usecases/*.js"
     ]
   }
 }

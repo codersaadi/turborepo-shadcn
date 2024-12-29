@@ -12,6 +12,8 @@
     "@tooling/typescript-config": "workspace:*"
   },
   "exports": {
-    "default": "./src/index.ts"
+    ".": [
+      "./index.ts"
+    ]
   }
 }

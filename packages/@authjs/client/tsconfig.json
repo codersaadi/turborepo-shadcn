@@ -12,10 +12,10 @@
 		"forceConsistentCasingInFileNames": true,
 		"noEmit": true,
 		"paths": {
-			"@authjs/client/*": ["./src/*"],
+			"@authjs/client/*": ["./*"],
 		},
 		
 	},
-	"include": ["src"],
+	"include": ["**/*.ts"],
 	"exclude": ["node_modules", "dist"]
 }

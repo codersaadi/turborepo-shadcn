@@ -4,7 +4,12 @@ import React from "react";
 
 export default async function page() {
 	const session = await auth();
-	if (!session) return <p className="text-destructive">unauthorized! you are not authorize to view this content</p>;
+	if (!session)
+		return (
+			<p className="text-destructive">
+				unauthorized! you are not authorize to view this content
+			</p>
+		);
 
 	const image = session?.user?.image
 		? `${session.user.image.slice(0, 14)}...`

@@ -1,6 +1,8 @@
 import type React from "react";
 import AuthLayoutImage from "./auth-image";
-const AuthFlexLayout = ({ children }: { readonly children: React.ReactNode }) => {
+const AuthFlexLayout = ({
+	children,
+}: { readonly children: React.ReactNode }) => {
 	return (
 		<div className="flex items-center justify-center   h-screen  w-full   ">
 			<div className="w-full py-2  flex-1 flex relative flex-col   items-center mt-2   md:mt-0 px-2   ">

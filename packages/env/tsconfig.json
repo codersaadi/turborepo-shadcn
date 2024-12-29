@@ -1,17 +1,12 @@
 {
-	"extends": "@tooling/typescript-config/base.json",
+	"extends": "@tooling/typescript-config/react-library.json",
 	"compilerOptions": {
 		"outDir": "dist",
-		"allowJs": true,
-		"esModuleInterop": true,
 		"moduleResolution": "bundler",
-		"module": "ESNext",
-		"allowSyntheticDefaultImports": true,
-		"strict": true,
-		"forceConsistentCasingInFileNames": true,
-		"noEmit": true,
-
+		"module": "Preserve",
+		"baseUrl": ".",
+		"rootDir": "."
 	},
-	"include": ["src"],
+	"include": ["**/*.ts"],
 	"exclude": ["node_modules", "dist"]
 }

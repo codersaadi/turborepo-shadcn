@@ -8,20 +8,20 @@
   },
   "exports": {
     ".": [
-      "./src/index.ts"
+      "./index.ts"
     ],
     "./middleware": [
-      "./src/middleware.ts"
+      "./middleware.ts"
     ],
     "./schema": [
-      "./src/schema.ts"
+      "./schema.ts"
     ],
     "./actions/*": [
-      "./src/lib/actions/*.ts"
+      "./lib/actions/*.ts"
     ],
     "./types": [
-      "./src/lib/types.ts",
-      "./src/auth.d.ts"
+      "./lib/types.ts",
+      "./auth.d.ts"
     ]
   },
   "devDependencies": {

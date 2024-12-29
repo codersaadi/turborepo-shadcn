@@ -1,0 +1,24 @@
+{
+  "name": "@repo/next-config",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "devDependencies": {
+    "@tooling/typescript-config": "workspace:*",
+    "next": "15.1.0"
+  },
+  "dependencies": {
+    "@repo/env": "workspace:*",
+    "@logtail/next": "^0.1.7",
+    "@next/bundle-analyzer": "^15.1.0",
+    "@sentry/nextjs": "^8.43.0",
+    "@vercel/toolbar": "^0.1.28"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./instrumentation": "./instrumentation.ts"
+  }
+}
