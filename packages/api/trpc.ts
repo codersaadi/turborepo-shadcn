@@ -9,7 +9,6 @@ import { ZodError } from "zod";
  * tl;dr - this is where all the tRPC server stuff is created and plugged in.
  * The pieces you will need to use are documented accordingly near the end
  */
-import type { NextRequest } from "../../apps/web/node_modules/next/server";
 
 import { transformer } from "./transformer";
 
@@ -22,7 +21,7 @@ import { transformer } from "./transformer";
  * processing a request
  *
  */
-interface CreateContextOptions {
+interface CreateContextOptions<NextRequest> {
   headers: Headers;
   auth: Session | null;
   apiKey?: string | null;
@@ -38,7 +37,9 @@ interface CreateContextOptions {
  * - trpc's `createSSGHelpers` where we don't have req/res
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
-export const createInnerTRPCContext = (opts: CreateContextOptions) => {
+export const createInnerTRPCContext = <NextRequest>(
+  opts: CreateContextOptions<NextRequest>
+) => {
   return { ...opts };
 };
 
@@ -47,7 +48,9 @@ export const createInnerTRPCContext = (opts: CreateContextOptions) => {
  * process every request that goes through your tRPC endpoint
  * @link https://trpc.io/docs/context
  */
-export const createTRPCContext = async (opts: {
+export const createTRPCContext = async <
+  NextRequest extends { headers: Headers },
+>(opts: {
   headers: Headers;
   req?: NextRequest;
   auth: Session | null;
