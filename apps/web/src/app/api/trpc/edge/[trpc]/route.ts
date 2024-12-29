@@ -2,7 +2,7 @@ import { createTrpcApiContext } from "@/lib/trpc/trpc-context";
 import { edgeRouter } from "@repo/api/edge";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import type { NextRequest } from "next/server";
-
+// WE ARE USING DRIZZLE POSTGRES - DOES NOT SUPPORT EDGE RUNTIME .
 // export const runtime ="edge";
 
 const handler = async (req: NextRequest) =>

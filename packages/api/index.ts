@@ -1,4 +1,4 @@
-import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
+import type { inferRouterInputs, inferRouterOutputs } from "@repo/trpc";
 
 import type { AppRouter } from "./root";
 

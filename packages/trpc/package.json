@@ -1,0 +1,32 @@
+{
+  "name": "@repo/trpc",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "devDependencies": {
+    "@tooling/typescript-config": "workspace:*",
+    "typescript": "5.6.2"
+  },
+  "dependencies": {
+    "@authjs/core": "workspace:*",
+    "@repo/env": "workspace:*",
+    "@tanstack/react-query": "^5.62.0",
+    "@trpc/client": "11.0.0-rc.648",
+    "@trpc/next": "11.0.0-rc.648",
+    "@trpc/react-query": "11.0.0-rc.648",
+    "@trpc/server": "11.0.0-rc.648",
+    "superjson": "^2.2.1",
+    "dinero.js": "2.0.0-alpha.14",
+    "zod": "^3.23.8"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./transformer": "./transformer.ts",
+    "./common/*": [
+      "./common/*.ts"
+    ]
+  }
+}

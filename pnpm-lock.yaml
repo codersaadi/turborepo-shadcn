@@ -444,33 +444,15 @@ importers:
       '@repo/env':
         specifier: workspace:*
         version: link:../env
+      '@repo/trpc':
+        specifier: workspace:*
+        version: link:../trpc
       '@stripe/stripe-js':
         specifier: ^5.2.0
         version: 5.2.0
-      '@tanstack/react-query':
-        specifier: ^5.62.0
-        version: 5.62.0(react@19.0.0)
-      '@trpc/client':
-        specifier: 11.0.0-rc.648
-        version: 11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2)
-      '@trpc/next':
-        specifier: 11.0.0-rc.648
-        version: 11.0.0-rc.648(@tanstack/react-query@5.62.0(react@19.0.0))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/react-query@11.0.0-rc.648(@tanstack/react-query@5.62.0(react@19.0.0))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.6.2)
-      '@trpc/react-query':
-        specifier: 11.0.0-rc.648
-        version: 11.0.0-rc.648(@tanstack/react-query@5.62.0(react@19.0.0))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.6.2)
-      '@trpc/server':
-        specifier: 11.0.0-rc.648
-        version: 11.0.0-rc.648(typescript@5.6.2)
-      dinero.js:
-        specifier: 2.0.0-alpha.14
-        version: 2.0.0-alpha.14
       stripe:
         specifier: ^17.4.0
         version: 17.4.0
-      superjson:
-        specifier: ^2.2.1
-        version: 2.2.1
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -772,6 +754,46 @@ importers:
       '@types/react-dom':
         specifier: 18.3.1
         version: 18.3.1
+      typescript:
+        specifier: 5.6.2
+        version: 5.6.2
+
+  packages/trpc:
+    dependencies:
+      '@authjs/core':
+        specifier: workspace:*
+        version: link:../@authjs/core
+      '@repo/env':
+        specifier: workspace:*
+        version: link:../env
+      '@tanstack/react-query':
+        specifier: ^5.62.0
+        version: 5.62.0(react@19.0.0)
+      '@trpc/client':
+        specifier: 11.0.0-rc.648
+        version: 11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2)
+      '@trpc/next':
+        specifier: 11.0.0-rc.648
+        version: 11.0.0-rc.648(@tanstack/react-query@5.62.0(react@19.0.0))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/react-query@11.0.0-rc.648(@tanstack/react-query@5.62.0(react@19.0.0))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.6.2)
+      '@trpc/react-query':
+        specifier: 11.0.0-rc.648
+        version: 11.0.0-rc.648(@tanstack/react-query@5.62.0(react@19.0.0))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.6.2)
+      '@trpc/server':
+        specifier: 11.0.0-rc.648
+        version: 11.0.0-rc.648(typescript@5.6.2)
+      dinero.js:
+        specifier: 2.0.0-alpha.14
+        version: 2.0.0-alpha.14
+      superjson:
+        specifier: ^2.2.1
+        version: 2.2.1
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
+    devDependencies:
+      '@tooling/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
       typescript:
         specifier: 5.6.2
         version: 5.6.2
