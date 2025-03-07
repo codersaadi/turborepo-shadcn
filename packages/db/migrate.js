@@ -3,9 +3,7 @@ const { drizzle } = require("drizzle-orm/postgres-js");
 const { migrate } = require("drizzle-orm/postgres-js/migrator");
 const postgres = require("postgres");
 
-const connectionString =
-  process.env.DATABASE_URL ||
-  "postgresql://postgres:Saadsaad1@db:5432/saas_pack";
+const connectionString = process.env.DATABASE_URL || "fallback_strinng";
 
 const MAX_RETRIES = 5;
 const RETRY_DELAY = 5000;

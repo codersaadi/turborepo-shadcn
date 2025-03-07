@@ -5,10 +5,7 @@ let db: PostgresJsDatabase<typeof schema>;
 let pg: ReturnType<typeof postgres>;
 
 if (process.env.NODE_ENV === "production") {
-  pg = postgres(
-    process.env.DATABASE_URL ||
-      "postgresql://postgres:Saadsaad1@localhost:5432/saas_pack"
-  );
+  pg = postgres(process.env.DATABASE_URL || "fallback_string");
   db = drizzle(pg, { schema });
 } else {
   if (
