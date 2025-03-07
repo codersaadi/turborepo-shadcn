@@ -21,13 +21,13 @@ export interface FormSubmitProps<T extends z.ZodSchema<FieldValues>> {
 	schema: T;
 	defaultValues: DefaultValues<z.infer<T>>; // Change to DefaultValues type
 	onSubmitAction: (data: z.infer<T>) => Promise<MessageResponse>;
-	onError: (error: unknown) => boolean;
+	onErrorIgnore: (error: unknown) => boolean;
 }
 
 export const useFormAction = <T extends z.ZodSchema<FieldValues>>(
 	props: FormSubmitProps<T>
 ) => {
-	const { schema, defaultValues, onSubmitAction, onError } = props;
+	const { schema, defaultValues, onSubmitAction, onErrorIgnore } = props;
 
 	const form: UseFormReturn<z.infer<T>> = useForm<z.infer<T>>({
 		resolver: zodResolver(schema),
@@ -54,7 +54,7 @@ export const useFormAction = <T extends z.ZodSchema<FieldValues>>(
 				action(data)
 					.then(setResponseMessage)
 					.catch((error) => {
-						if (onError(error)) return;
+						if (onErrorIgnore(error)) return;
 						console.error("Submission Error:", error);
 						setMessage({
 							type: "error",

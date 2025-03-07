@@ -15,7 +15,6 @@
     "@repo/env": "workspace:*",
     "@tanstack/react-query": "^5.62.0",
     "@trpc/client": "11.0.0-rc.648",
-    "@trpc/next": "11.0.0-rc.648",
     "@trpc/react-query": "11.0.0-rc.648",
     "@trpc/server": "11.0.0-rc.648",
     "superjson": "^2.2.1",

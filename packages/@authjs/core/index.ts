@@ -155,7 +155,7 @@ declare module "next-auth" {
     auth: Session | null;
   }
 }
-
+import { AdapterUser } from "@auth/core/adapters";
 declare module "next-auth/jwt" {
   interface JWT {
     stripeCustomerId: string | null;

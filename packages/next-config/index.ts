@@ -2,7 +2,7 @@ import withBundleAnalyzer from "@next/bundle-analyzer";
 
 import { env } from "@repo/env";
 import { withSentryConfig } from "@sentry/nextjs";
-// import withVercelToolbar from "@vercel/toolbar/plugins/next";
+import withVercelToolbar from "@vercel/toolbar/plugins/next";
 import type { NextConfig } from "next";
 
 const otelRegex = /@opentelemetry\/instrumentation/;
@@ -50,10 +50,9 @@ const baseConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
 };
 
-export const config: NextConfig =
-  //  env.FLAGS_SECRET
-  // ? withVercelToolbar()(baseConfig):
-  baseConfig;
+export const config: NextConfig = env.FLAGS_SECRET
+  ? withVercelToolbar()(baseConfig)
+  : baseConfig;
 
 export const sentryConfig: Parameters<typeof withSentryConfig>[1] = {
   org: env.SENTRY_ORG,

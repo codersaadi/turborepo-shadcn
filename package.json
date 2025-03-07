@@ -14,7 +14,9 @@
     "web": "pnpm --filter web",
     "email": "pnpm --filter @repo/email",
     "db": "pnpm --filter @repo/db",
-    "prepare": "husky"
+    "prepare": "husky",
+    "bump-deps": "npx npm-check-updates --deep -u -x react-day-picker && pnpm install",
+    "bump-ui": "npx shadcn@latest add --all --overwrite -c packages/repo-ui"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

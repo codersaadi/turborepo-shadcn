@@ -1,11 +1,9 @@
-import { APP_NAME } from "@/constants";
-import { ForgotPasswordForm } from "@authjs/client";
-import type { Metadata } from "next";
-import React from "react";
 
-export default function page() {
-	return <ForgotPasswordForm />;
-}
+import ForgotPassword from "@/components/auth/forgot-password";
+import { APP_NAME } from "@/constants";
+import type { Metadata } from "next";
+
+export default ForgotPassword
 export const metadata: Metadata = {
 	title: `${APP_NAME} - Forgot Account Password`,
 	description: "...",

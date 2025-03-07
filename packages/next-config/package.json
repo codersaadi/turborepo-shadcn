@@ -11,9 +11,9 @@
     "next": "15.1.0"
   },
   "dependencies": {
-    "@repo/env": "workspace:*",
     "@logtail/next": "^0.1.7",
-    "@next/bundle-analyzer": "^15.1.0",
+    "@next/bundle-analyzer": "^15.2.1",
+    "@repo/env": "workspace:*",
     "@sentry/nextjs": "^8.43.0",
     "@vercel/toolbar": "^0.1.28"
   },

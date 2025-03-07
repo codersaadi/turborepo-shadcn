@@ -3,7 +3,6 @@
 import { signInAction } from "@authjs/core/actions/signin";
 import { LoginSchema } from "@authjs/core/schema";
 import { AvatarIcon, EyeClosedIcon, EyeOpenIcon } from "@radix-ui/react-icons";
-import { isRedirectError } from "next/dist/client/components/redirect";
 import Link from "next/link";
 import { useState } from "react";
 import { FormFeedback } from "repo-ui/components/form-feedback";
@@ -21,8 +20,11 @@ import { useFormAction } from "repo-ui/hooks/use-form";
 import { cn } from "repo-ui/lib/utils";
 export default function SignInForm({
 	className,
+	onErrorIgnore
+
 }: {
 	className?: string;
+	onErrorIgnore: (error: unknown) => boolean;
 }) {
 	const [isPasswordShow, setPasswordShow] = useState(false);
 	const { form, message, isPending, onSubmit } = useFormAction({
@@ -32,7 +34,7 @@ export default function SignInForm({
 			password: "",
 		},
 		onSubmitAction: signInAction,
-		onError: isRedirectError
+		onErrorIgnore
 	});
 
 	return (

@@ -3,7 +3,6 @@
 import { signinMagic } from "@authjs/core/actions/signin-magic";
 import { MagicSignInSchema } from "@authjs/core/schema";
 import { AvatarIcon } from "@radix-ui/react-icons";
-import { isRedirectError } from "next/dist/client/components/redirect";
 import Link from "next/link";
 import { FormFeedback } from "repo-ui/components/form-feedback";
 import { LoaderButton } from "repo-ui/components/loader-button";
@@ -20,16 +19,22 @@ import { useFormAction } from "repo-ui/hooks/use-form";
 import { cn } from "repo-ui/lib/utils";
 import { SignInFooter } from "./signin-form";
 
-export default function MagicSignInForm() {
+export default function MagicSignInForm({
+	// className,
+	onErrorIgnore,
+
+}: {
+	onErrorIgnore: (error: unknown) => boolean;
+}) {
 	const { form, message, isPending, onSubmit } = useFormAction({
-		onSubmitAction: signinMagic,
+		onSubmitAction: async (data) => {
+			return signinMagic(data, onErrorIgnore)
+		},
 		schema: MagicSignInSchema,
 		defaultValues: {
 			email: "",
 		},
-		onError(error) {
-			return isRedirectError(error)
-		},
+		onErrorIgnore
 	});
 	return (
 		<>

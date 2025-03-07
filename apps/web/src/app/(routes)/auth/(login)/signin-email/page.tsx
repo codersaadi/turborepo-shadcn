@@ -1,12 +1,7 @@
+import { SigninMagic } from "@/components/auth/signin";
 import { APP_NAME } from "@/constants";
-import { MagicSignInForm } from "@authjs/client";
 import type { Metadata } from "next";
-import React from "react";
-
-export default function page() {
-	return <MagicSignInForm />;
-}
-
+export default SigninMagic
 /**
  * Meta data for the signin form page
  */

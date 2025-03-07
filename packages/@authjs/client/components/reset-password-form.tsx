@@ -2,7 +2,6 @@
 import { resetPasswordAction } from "@authjs/core/actions/forgot-password";
 import { ResetPasswordSchema } from "@authjs/core/schema";
 import { EyeClosedIcon, EyeOpenIcon } from "@radix-ui/react-icons";
-import { isRedirectError } from "next/dist/client/components/redirect";
 import { useState } from "react";
 import { FormFeedback } from "repo-ui/components/form-feedback";
 import { LoaderButton } from "repo-ui/components/loader-button";
@@ -18,8 +17,10 @@ import { useFormAction } from "repo-ui/hooks/use-form";
 import { cn } from "repo-ui/lib/utils";
 export default function ResetPasswordForm({
 	token,
+	onErrorIgnore
 }: {
 	token: string;
+	onErrorIgnore: (error: unknown) => boolean;
 }) {
 	const [isPasswordShow, setPasswordShow] = useState(false);
 	const { form, isPending, message, onSubmit } = useFormAction({
@@ -29,9 +30,7 @@ export default function ResetPasswordForm({
 			confirmPassword: "",
 			password: "",
 		},
-		onError(error) {
-			return isRedirectError(error)
-		},
+		onErrorIgnore
 	});
 	return (
 		<>

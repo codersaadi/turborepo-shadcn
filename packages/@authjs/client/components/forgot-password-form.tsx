@@ -3,7 +3,6 @@ import { forgotPasswordAction } from "@authjs/core/actions/forgot-password";
 import {
 	ForgotPasswordSchema,
 } from "@authjs/core/schema";
-import { isRedirectError } from "next/dist/client/components/redirect";
 import { FormFeedback } from "repo-ui/components/form-feedback";
 import { LoaderButton } from "repo-ui/components/loader-button";
 import {
@@ -16,16 +15,18 @@ import {
 import { Input } from "repo-ui/components/ui/input";
 import { useFormAction } from "repo-ui/hooks/use-form";
 
-export default function ForgotPasswordForm() {
+export default function ForgotPasswordForm(
+	{ onErrorIgnore }: {
+		onErrorIgnore: (error: unknown) => boolean
+	}
+) {
 	const { form, isPending, onSubmit, message } = useFormAction({
 		schema: ForgotPasswordSchema,
 		onSubmitAction: forgotPasswordAction,
 		defaultValues: {
 			email: "",
 		},
-		onError(error) {
-			return isRedirectError(error)
-		},
+		onErrorIgnore
 	});
 	return (
 		<>

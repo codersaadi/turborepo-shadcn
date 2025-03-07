@@ -6,7 +6,6 @@ import * as React from "react";
 import type { DateRange } from "react-day-picker";
 
 import { cn } from "../lib/utils";
-import type { FrameworkAgnosticUrlProps } from "./table/advanced/filters-toolbar";
 import { Button, type ButtonProps } from "./ui/button";
 import { Calendar } from "./ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";

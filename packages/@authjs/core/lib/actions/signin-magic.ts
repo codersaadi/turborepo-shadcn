@@ -1,14 +1,13 @@
 "use server";
-import { signIn } from "@authjs/core";
 import type { MagicSignInType } from "@authjs/core/schema";
 import env from "@repo/env";
-import {
-  type RedirectError,
-  isRedirectError,
-} from "next/dist/client/components/redirect";
+import { signIn } from "../..";
 
 const HOST = env.NEXT_PUBLIC_HOST || "http://localhost:3000";
-export async function signinMagic(data: MagicSignInType) {
+export async function signinMagic(
+  data: MagicSignInType,
+  isRedirectError: (error: unknown) => boolean
+) {
   try {
     await signIn("resend", { email: data.email });
     return {
@@ -17,7 +16,10 @@ export async function signinMagic(data: MagicSignInType) {
     };
   } catch (error) {
     if (isRedirectError(error)) {
-      return handleSignInRedirectError(error, data);
+      return handleSignInRedirectError(
+        error as Error & { digest: string },
+        data
+      );
     }
     return {
       message: error instanceof Error ? error.message : "Failed to Send Email",
@@ -27,7 +29,7 @@ export async function signinMagic(data: MagicSignInType) {
 }
 
 const handleSignInRedirectError = (
-  error: RedirectError,
+  error: Error & { digest: string },
   data: MagicSignInType
 ) => {
   let digest = error.digest;

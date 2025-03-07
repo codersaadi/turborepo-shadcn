@@ -1,13 +1,7 @@
+import { Signup } from "@/components/auth/signup";
 import { APP_NAME } from "@/constants";
-import { SignUpForm } from "@authjs/client";
 import type { Metadata } from "next";
-
-import React from "react";
-
-export default function page() {
-	return <SignUpForm />;
-}
-
+export default Signup
 /**
  * Meta data for the signup form page
  */

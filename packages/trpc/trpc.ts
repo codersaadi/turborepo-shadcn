@@ -114,7 +114,10 @@ export const publicProcedure = t.procedure;
  */
 export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
   if (!ctx.auth?.user || !ctx.auth.user.id) {
-    throw new TRPCError({ code: "UNAUTHORIZED" });
+    throw new TRPCError({
+      code: "UNAUTHORIZED",
+      message: "User is not allowed to perform this action",
+    });
   }
   return next({
     ctx: {

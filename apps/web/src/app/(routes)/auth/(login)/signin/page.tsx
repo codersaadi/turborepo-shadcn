@@ -1,12 +1,8 @@
+import { SigninCredentials } from "@/components/auth/signin";
 import { APP_NAME } from "@/constants";
-import { SignInForm } from "@authjs/client";
 import type { Metadata } from "next";
-import React from "react";
 
-export default function page() {
-	return <SignInForm />;
-}
-
+export default SigninCredentials
 /**
  * Meta data for the signin form page
  */
