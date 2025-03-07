@@ -8,15 +8,15 @@
   },
   "devDependencies": {
     "@tooling/typescript-config": "workspace:*",
-    "typescript": "5.6.2"
+    "typescript": "5.7.2"
   },
   "dependencies": {
     "@authjs/core": "workspace:*",
     "@repo/env": "workspace:*",
     "@tanstack/react-query": "^5.62.0",
-    "@trpc/client": "11.0.0-rc.648",
+    "@trpc/client": "11.0.0-rc.648+77b4d8920",
     "@trpc/react-query": "11.0.0-rc.648",
-    "@trpc/server": "11.0.0-rc.648",
+    "@trpc/server": "11.0.0-rc.824+b21849468",
     "superjson": "^2.2.1",
     "dinero.js": "2.0.0-alpha.14",
     "zod": "^3.23.8"

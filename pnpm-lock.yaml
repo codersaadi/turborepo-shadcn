@@ -46,10 +46,10 @@ importers:
         version: link:../../packages/next-config
       '@sentry/nextjs':
         specifier: ^8.43.0
-        version: 8.55.0(@opentelemetry/context-async-hooks@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.57.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(webpack@5.98.0)
+        version: 8.55.0(@opentelemetry/context-async-hooks@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.57.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(next@15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(webpack@5.98.0)
       next:
         specifier: 15.1.0
-        version: 15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -76,8 +76,8 @@ importers:
         specifier: ^9.1.0
         version: 9.1.2
       typescript:
-        specifier: 5.6.2
-        version: 5.6.2
+        specifier: 5.7.2
+        version: 5.7.2
 
   apps/docs:
     dependencies:
@@ -101,7 +101,7 @@ importers:
         version: 11.5.6(acorn@8.14.1)(fumadocs-core@14.7.7(@types/react@19.0.10)(next@15.2.1(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(next@15.2.1(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       fumadocs-ui:
         specifier: ^14.4.2
-        version: 14.7.7(@types/react-dom@18.3.0)(@types/react@19.0.10)(fumadocs-core@14.7.7(@types/react@19.0.10)(next@15.2.1(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(next@15.2.1(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.6.2)))
+        version: 14.7.7(@types/react-dom@18.3.0)(@types/react@19.0.10)(fumadocs-core@14.7.7(@types/react@19.0.10)(next@15.2.1(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(next@15.2.1(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.7.2)))
       next:
         specifier: 15.2.1
         version: 15.2.1(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -141,10 +141,10 @@ importers:
         version: 8.5.3
       tailwindcss:
         specifier: ^3.4.14
-        version: 3.4.17(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.6.2))
+        version: 3.4.17(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.7.2))
       typescript:
-        specifier: 5.6.2
-        version: 5.6.2
+        specifier: 5.7.2
+        version: 5.7.2
 
   apps/web:
     dependencies:
@@ -188,20 +188,23 @@ importers:
         specifier: ^4.0.11
         version: 4.0.11
       '@tanstack/react-query':
-        specifier: ^5.62.0
+        specifier: ^5.67.1
         version: 5.67.1(react@19.0.0)
       '@tanstack/react-query-devtools':
         specifier: ^5.62.0
         version: 5.67.1(@tanstack/react-query@5.67.1(react@19.0.0))(react@19.0.0)
       '@trpc/client':
-        specifier: 11.0.0-rc.648
-        version: 11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2)
+        specifier: ^11.0.0-rc.648+77b4d8920
+        version: 11.0.0-rc.824(@trpc/server@11.0.0-rc.648(typescript@5.7.2))(typescript@5.7.2)
       '@trpc/react-query':
         specifier: 11.0.0-rc.648
-        version: 11.0.0-rc.648(@tanstack/react-query@5.67.1(react@19.0.0))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.6.2)
+        version: 11.0.0-rc.648(@tanstack/react-query@5.67.1(react@19.0.0))(@trpc/client@11.0.0-rc.824(@trpc/server@11.0.0-rc.648(typescript@5.7.2))(typescript@5.7.2))(@trpc/server@11.0.0-rc.648(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
       '@trpc/server':
         specifier: 11.0.0-rc.648
-        version: 11.0.0-rc.648(typescript@5.6.2)
+        version: 11.0.0-rc.648(typescript@5.7.2)
+      '@trpc/tanstack-react-query':
+        specifier: 11.0.0-rc.824
+        version: 11.0.0-rc.824(@tanstack/react-query@5.67.1(react@19.0.0))(@trpc/client@11.0.0-rc.824(@trpc/server@11.0.0-rc.648(typescript@5.7.2))(typescript@5.7.2))(@trpc/server@11.0.0-rc.648(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
       jiti:
         specifier: ^2.4.2
         version: 2.4.2
@@ -264,8 +267,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       typescript:
-        specifier: 5.6.2
-        version: 5.6.2
+        specifier: 5.7.2
+        version: 5.7.2
 
   packages/@authjs/client:
     dependencies:
@@ -310,8 +313,8 @@ importers:
         specifier: ^19.0.0
         version: 19.0.4(@types/react@19.0.10)
       typescript:
-        specifier: 5.6.2
-        version: 5.6.2
+        specifier: 5.7.2
+        version: 5.7.2
 
   packages/@authjs/core:
     dependencies:
@@ -356,8 +359,8 @@ importers:
         specifier: ^20.11.24
         version: 20.17.23
       typescript:
-        specifier: 5.6.2
-        version: 5.6.2
+        specifier: 5.7.2
+        version: 5.7.2
 
   packages/@plugins/aws-s3:
     dependencies:
@@ -455,8 +458,8 @@ importers:
         specifier: workspace:*
         version: link:../../tooling/typescript-config
       typescript:
-        specifier: 5.6.2
-        version: 5.6.2
+        specifier: 5.7.2
+        version: 5.7.2
 
   packages/db:
     dependencies:
@@ -567,7 +570,7 @@ importers:
     dependencies:
       '@logtail/next':
         specifier: ^0.1.7
-        version: 0.1.7(next@15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+        version: 0.1.7(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@next/bundle-analyzer':
         specifier: ^15.2.1
         version: 15.2.1
@@ -576,17 +579,17 @@ importers:
         version: link:../env
       '@sentry/nextjs':
         specifier: ^8.43.0
-        version: 8.55.0(@opentelemetry/context-async-hooks@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.57.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(next@15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(webpack@5.98.0)
+        version: 8.55.0(@opentelemetry/context-async-hooks@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.57.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(webpack@5.98.0)
       '@vercel/toolbar':
         specifier: ^0.1.28
-        version: 0.1.34(@vercel/analytics@1.5.0(next@15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))(next@15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 0.1.34(@vercel/analytics@1.5.0(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
     devDependencies:
       '@tooling/typescript-config':
         specifier: workspace:*
         version: link:../../tooling/typescript-config
       next:
         specifier: 15.1.0
-        version: 15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   packages/rate-limit:
     dependencies:
@@ -780,7 +783,7 @@ importers:
         version: link:../../tooling/typescript-config
       '@turbo/gen':
         specifier: ^1.12.4
-        version: 1.13.4(@types/node@20.17.23)(typescript@5.6.2)
+        version: 1.13.4(@types/node@20.17.23)(typescript@5.7.2)
       '@types/node':
         specifier: ^20.11.24
         version: 20.17.23
@@ -794,8 +797,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       typescript:
-        specifier: 5.6.2
-        version: 5.6.2
+        specifier: 5.7.2
+        version: 5.7.2
 
   packages/trpc:
     dependencies:
@@ -809,14 +812,14 @@ importers:
         specifier: ^5.62.0
         version: 5.67.1(react@19.0.0)
       '@trpc/client':
-        specifier: 11.0.0-rc.648
-        version: 11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2)
+        specifier: 11.0.0-rc.648+77b4d8920
+        version: 11.0.0-rc.648(@trpc/server@11.0.0-rc.824(typescript@5.7.2))(typescript@5.7.2)
       '@trpc/react-query':
         specifier: 11.0.0-rc.648
-        version: 11.0.0-rc.648(@tanstack/react-query@5.67.1(react@19.0.0))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.6.2)
+        version: 11.0.0-rc.648(@tanstack/react-query@5.67.1(react@19.0.0))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.824(typescript@5.7.2))(typescript@5.7.2))(@trpc/server@11.0.0-rc.824(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
       '@trpc/server':
-        specifier: 11.0.0-rc.648
-        version: 11.0.0-rc.648(typescript@5.6.2)
+        specifier: 11.0.0-rc.824+b21849468
+        version: 11.0.0-rc.824(typescript@5.7.2)
       dinero.js:
         specifier: 2.0.0-alpha.14
         version: 2.0.0-alpha.14
@@ -831,8 +834,8 @@ importers:
         specifier: workspace:*
         version: link:../../tooling/typescript-config
       typescript:
-        specifier: 5.6.2
-        version: 5.6.2
+        specifier: 5.7.2
+        version: 5.7.2
 
   tooling/biome-config: {}
 
@@ -3962,6 +3965,12 @@ packages:
       '@trpc/server': 11.0.0-rc.648+77b4d8920
       typescript: '>=5.6.2'
 
+  '@trpc/client@11.0.0-rc.824':
+    resolution: {integrity: sha512-3JMsgiMrCEeblrzu7ScTjipYaeEmegbnM5ZPmqqkPIbXcnth/TwH5tRr+nQbLSU/NGkWJWsjgEq7bM0BV17sJw==}
+    peerDependencies:
+      '@trpc/server': 11.0.0-rc.824+b21849468
+      typescript: '>=5.7.2'
+
   '@trpc/react-query@11.0.0-rc.648':
     resolution: {integrity: sha512-U3H6o/aN3umEA2QNDGRsaJb6M7zrffor2NQl2UaHOiLBHuXZ3ISI2fJXay7e32s1l6z5F5PGMGwTQtUedzWI2w==}
     peerDependencies:
@@ -3976,6 +3985,21 @@ packages:
     resolution: {integrity: sha512-nKW7FNM+QZrY/CVGlX3hFNIdUvbw6pwSJ+HzEF8GIeSJDKLHK7Ke1QJGI2mRW6oF9dCKMBXfuLaYY2dXfjfn7Q==}
     peerDependencies:
       typescript: '>=5.6.2'
+
+  '@trpc/server@11.0.0-rc.824':
+    resolution: {integrity: sha512-6u6CZ/x+oe2bZDhOo5h0wonbMU3svPe8hs6Dr2ymrU+23NAHE6tHtROAX+dKrMzup9KJcqyAabuFRYHy2H0tjw==}
+    peerDependencies:
+      typescript: '>=5.7.2'
+
+  '@trpc/tanstack-react-query@11.0.0-rc.824':
+    resolution: {integrity: sha512-92bDvduan/rOjisDDyrO9fscx+GTEFYcLMwTgCILl8geIviTrChQQr7ExS9HxWrUrHXgAeOpS0vBhhIWRE5VmA==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.67.1
+      '@trpc/client': 11.0.0-rc.824+b21849468
+      '@trpc/server': 11.0.0-rc.824+b21849468
+      react: '>=18.2.0'
+      react-dom: '>=18.2.0'
+      typescript: '>=5.7.2'
 
   '@tsconfig/node10@1.0.11':
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
@@ -7423,8 +7447,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typescript@5.6.2:
-    resolution: {integrity: sha512-NW8ByodCSNCwZeghjN3o+JX5OFH0Ojg6sadjEKY4huZ52TqbJTJnDo5+Tw98lSy63NZvi4n+ez5m2u5d4PkZyw==}
+  typescript@5.7.2:
+    resolution: {integrity: sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -8985,9 +9009,9 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@logtail/next@0.1.7(next@15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
+  '@logtail/next@0.1.7(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
-      next: 15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       whatwg-fetch: 3.6.20
 
   '@mdx-js/loader@3.1.0(acorn@8.14.1)(webpack@5.98.0)':
@@ -11441,23 +11465,50 @@ snapshots:
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
 
-  '@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2)':
+  '@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.824(typescript@5.7.2))(typescript@5.7.2)':
     dependencies:
-      '@trpc/server': 11.0.0-rc.648(typescript@5.6.2)
-      typescript: 5.6.2
+      '@trpc/server': 11.0.0-rc.824(typescript@5.7.2)
+      typescript: 5.7.2
 
-  '@trpc/react-query@11.0.0-rc.648(@tanstack/react-query@5.67.1(react@19.0.0))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2))(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.6.2)':
+  '@trpc/client@11.0.0-rc.824(@trpc/server@11.0.0-rc.648(typescript@5.7.2))(typescript@5.7.2)':
+    dependencies:
+      '@trpc/server': 11.0.0-rc.648(typescript@5.7.2)
+      typescript: 5.7.2
+
+  '@trpc/react-query@11.0.0-rc.648(@tanstack/react-query@5.67.1(react@19.0.0))(@trpc/client@11.0.0-rc.648(@trpc/server@11.0.0-rc.824(typescript@5.7.2))(typescript@5.7.2))(@trpc/server@11.0.0-rc.824(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)':
     dependencies:
       '@tanstack/react-query': 5.67.1(react@19.0.0)
-      '@trpc/client': 11.0.0-rc.648(@trpc/server@11.0.0-rc.648(typescript@5.6.2))(typescript@5.6.2)
-      '@trpc/server': 11.0.0-rc.648(typescript@5.6.2)
+      '@trpc/client': 11.0.0-rc.648(@trpc/server@11.0.0-rc.824(typescript@5.7.2))(typescript@5.7.2)
+      '@trpc/server': 11.0.0-rc.824(typescript@5.7.2)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
-      typescript: 5.6.2
+      typescript: 5.7.2
 
-  '@trpc/server@11.0.0-rc.648(typescript@5.6.2)':
+  '@trpc/react-query@11.0.0-rc.648(@tanstack/react-query@5.67.1(react@19.0.0))(@trpc/client@11.0.0-rc.824(@trpc/server@11.0.0-rc.648(typescript@5.7.2))(typescript@5.7.2))(@trpc/server@11.0.0-rc.648(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)':
     dependencies:
-      typescript: 5.6.2
+      '@tanstack/react-query': 5.67.1(react@19.0.0)
+      '@trpc/client': 11.0.0-rc.824(@trpc/server@11.0.0-rc.648(typescript@5.7.2))(typescript@5.7.2)
+      '@trpc/server': 11.0.0-rc.648(typescript@5.7.2)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      typescript: 5.7.2
+
+  '@trpc/server@11.0.0-rc.648(typescript@5.7.2)':
+    dependencies:
+      typescript: 5.7.2
+
+  '@trpc/server@11.0.0-rc.824(typescript@5.7.2)':
+    dependencies:
+      typescript: 5.7.2
+
+  '@trpc/tanstack-react-query@11.0.0-rc.824(@tanstack/react-query@5.67.1(react@19.0.0))(@trpc/client@11.0.0-rc.824(@trpc/server@11.0.0-rc.648(typescript@5.7.2))(typescript@5.7.2))(@trpc/server@11.0.0-rc.648(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)':
+    dependencies:
+      '@tanstack/react-query': 5.67.1(react@19.0.0)
+      '@trpc/client': 11.0.0-rc.824(@trpc/server@11.0.0-rc.648(typescript@5.7.2))(typescript@5.7.2)
+      '@trpc/server': 11.0.0-rc.648(typescript@5.7.2)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      typescript: 5.7.2
 
   '@tsconfig/node10@1.0.11': {}
 
@@ -11467,7 +11518,7 @@ snapshots:
 
   '@tsconfig/node16@1.0.4': {}
 
-  '@turbo/gen@1.13.4(@types/node@20.17.23)(typescript@5.6.2)':
+  '@turbo/gen@1.13.4(@types/node@20.17.23)(typescript@5.7.2)':
     dependencies:
       '@turbo/workspaces': 1.13.4
       chalk: 2.4.2
@@ -11477,7 +11528,7 @@ snapshots:
       minimatch: 9.0.5
       node-plop: 0.26.3
       proxy-agent: 6.5.0
-      ts-node: 10.9.2(@types/node@20.17.23)(typescript@5.6.2)
+      ts-node: 10.9.2(@types/node@20.17.23)(typescript@5.7.2)
       update-check: 1.5.4
       validate-npm-package-name: 5.0.1
     transitivePeerDependencies:
@@ -11665,9 +11716,9 @@ snapshots:
     dependencies:
       crypto-js: 4.2.0
 
-  '@vercel/analytics@1.5.0(next@15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
+  '@vercel/analytics@1.5.0(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
     optionalDependencies:
-      next: 15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
     optional: true
 
@@ -11676,7 +11727,7 @@ snapshots:
       next: 15.2.1(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
 
-  '@vercel/microfrontends@1.0.0(@vercel/analytics@1.5.0(next@15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))(next@15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@vercel/microfrontends@1.0.0(@vercel/analytics@1.5.0(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       ajv: 8.17.1
       commander: 12.1.0
@@ -11686,17 +11737,17 @@ snapshots:
       jsonc-parser: 3.3.1
       path-to-regexp: 6.2.1
     optionalDependencies:
-      '@vercel/analytics': 1.5.0(next@15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
-      next: 15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@vercel/analytics': 1.5.0(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+      next: 15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
     transitivePeerDependencies:
       - debug
 
-  '@vercel/toolbar@0.1.34(@vercel/analytics@1.5.0(next@15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))(next@15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@vercel/toolbar@0.1.34(@vercel/analytics@1.5.0(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@tinyhttp/app': 1.3.0
-      '@vercel/microfrontends': 1.0.0(@vercel/analytics@1.5.0(next@15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))(next@15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@vercel/microfrontends': 1.0.0(@vercel/analytics@1.5.0(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0))(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       chokidar: 3.6.0
       execa: 5.1.1
       fast-glob: 3.3.3
@@ -11705,7 +11756,7 @@ snapshots:
       jsonc-parser: 3.3.1
       strip-ansi: 6.0.1
     optionalDependencies:
-      next: 15.1.0(@babel/core@7.26.9)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
     transitivePeerDependencies:
       - '@vercel/analytics'
@@ -12864,7 +12915,7 @@ snapshots:
       - acorn
       - supports-color
 
-  fumadocs-ui@14.7.7(@types/react-dom@18.3.0)(@types/react@19.0.10)(fumadocs-core@14.7.7(@types/react@19.0.10)(next@15.2.1(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(next@15.2.1(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.6.2))):
+  fumadocs-ui@14.7.7(@types/react-dom@18.3.0)(@types/react@19.0.10)(fumadocs-core@14.7.7(@types/react@19.0.10)(next@15.2.1(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(next@15.2.1(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.7.2))):
     dependencies:
       '@radix-ui/react-accordion': 1.2.3(@types/react-dom@18.3.0)(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@radix-ui/react-collapsible': 1.1.3(@types/react-dom@18.3.0)(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -12887,7 +12938,7 @@ snapshots:
       react-medium-image-zoom: 5.2.14(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       tailwind-merge: 2.6.0
     optionalDependencies:
-      tailwindcss: 3.4.17(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.6.2))
+      tailwindcss: 3.4.17(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.7.2))
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
@@ -14437,13 +14488,13 @@ snapshots:
       camelcase-css: 2.0.1
       postcss: 8.5.3
 
-  postcss-load-config@4.0.2(postcss@8.5.3)(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.6.2)):
+  postcss-load-config@4.0.2(postcss@8.5.3)(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.7.2)):
     dependencies:
       lilconfig: 3.1.3
       yaml: 2.7.0
     optionalDependencies:
       postcss: 8.5.3
-      ts-node: 10.9.2(@types/node@20.17.23)(typescript@5.6.2)
+      ts-node: 10.9.2(@types/node@20.17.23)(typescript@5.7.2)
 
   postcss-nested@6.2.0(postcss@8.5.3):
     dependencies:
@@ -15241,7 +15292,7 @@ snapshots:
     dependencies:
       tailwindcss: 4.0.11
 
-  tailwindcss@3.4.17(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.6.2)):
+  tailwindcss@3.4.17(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.7.2)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -15260,7 +15311,7 @@ snapshots:
       postcss: 8.5.3
       postcss-import: 15.1.0(postcss@8.5.3)
       postcss-js: 4.0.1(postcss@8.5.3)
-      postcss-load-config: 4.0.2(postcss@8.5.3)(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.6.2))
+      postcss-load-config: 4.0.2(postcss@8.5.3)(ts-node@10.9.2(@types/node@20.17.23)(typescript@5.7.2))
       postcss-nested: 6.2.0(postcss@8.5.3)
       postcss-selector-parser: 6.1.2
       resolve: 1.22.10
@@ -15338,7 +15389,7 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-node@10.9.2(@types/node@20.17.23)(typescript@5.6.2):
+  ts-node@10.9.2(@types/node@20.17.23)(typescript@5.7.2):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
@@ -15352,7 +15403,7 @@ snapshots:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.6.2
+      typescript: 5.7.2
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
 
@@ -15393,7 +15444,7 @@ snapshots:
 
   typescript@5.5.4: {}
 
-  typescript@5.6.2: {}
+  typescript@5.7.2: {}
 
   typescript@5.8.2: {}
 

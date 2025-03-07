@@ -1,37 +1,37 @@
 {
-	"name": "docs",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"dev": "next dev",
-		"build": "next build",
-		"start": "next start",
-		"lint": "biome check . --write",
-		"check-types": "tsc --noEmit"
-	},
-	"dependencies": {
-		"repo-ui": "workspace:*",
-		"next": "15.2.1",
-		"react": "^19.0.0",
-		"react-dom": "^19.0.0",
-		"fumadocs-core": "^14.4.2",
-		"fumadocs-mdx": "^11.1.1",
-		"fumadocs-ui": "^14.4.2",
-		"@types/mdx": "^2.0.13",
-		"@mdx-js/loader": "^3.1.0",
-		"@mdx-js/react": "^3.1.0",
-		"@next/mdx": "^15.0.2",
-		"next-mdx-remote": "^5.0.0"
-	},
-	"devDependencies": {
-		"@tooling/biome-config": "workspace:*",
-		"@tooling/typescript-config": "workspace:*",
-		"@types/node": "^20",
-		"@types/react": "^19.0.0",
-		"@types/react-dom": "18.3.0",
-		"typescript": "5.6.2",
-		"autoprefixer": "^10.4.20",
-		"postcss": "^8.4.47",
-		"tailwindcss": "^3.4.14"
-	}
+  "name": "docs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "biome check . --write",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "repo-ui": "workspace:*",
+    "next": "15.2.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "fumadocs-core": "^14.4.2",
+    "fumadocs-mdx": "^11.1.1",
+    "fumadocs-ui": "^14.4.2",
+    "@types/mdx": "^2.0.13",
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.0.2",
+    "next-mdx-remote": "^5.0.0"
+  },
+  "devDependencies": {
+    "@tooling/biome-config": "workspace:*",
+    "@tooling/typescript-config": "workspace:*",
+    "@types/node": "^20",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "18.3.0",
+    "typescript": "5.7.2",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14"
+  }
 }
