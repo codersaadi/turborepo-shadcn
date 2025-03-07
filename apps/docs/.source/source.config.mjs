@@ -1,4 +1,14 @@
 // source.config.ts
 import { defineDocs } from "fumadocs-mdx/config";
-const { docs, meta } = defineDocs();
-export { docs, meta };
+var docs = defineDocs({
+  dir: "content/docs",
+  docs: {
+    // options for `doc` collection
+  },
+  meta: {
+    // options for `meta` collection
+  }
+});
+export {
+  docs
+};
