@@ -5,8 +5,9 @@
 		"allowSyntheticDefaultImports": true,
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"]
-		},
+			"@/*": ["./src/*"],
+			"@repo/*": ["../../packages/*"]
+		  },
 		"types": ["node"]
 	},
 	"include": [

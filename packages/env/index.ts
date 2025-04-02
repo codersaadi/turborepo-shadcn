@@ -79,7 +79,7 @@ const env = createEnv({
   },
   extends: [
     stripe(),
-    upstash(),
+    // upstash(),
     // add this if you are using cloudflare , plugins like  aws-s3 etc
     // cloudflare(),
     // posthogPreset(),
