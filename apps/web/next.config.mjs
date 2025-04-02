@@ -10,7 +10,7 @@ validateEnv();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	transpilePackages: [
-		"repo-ui",
+		"@repo/ui",
 		"@repo/env",
 		"@repo/api",
 		"@repo/db",

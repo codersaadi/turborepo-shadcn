@@ -1,7 +1,7 @@
 import ReactQueryProvider from "@/lib/trpc/trpc-client-provider";
 import { AnalyticsProvider } from "@repo/analytics";
+import { UIProvider } from "@repo/ui/components/ui-provider";
 import type React from "react";
-import { UIProvider } from "repo-ui/components/ui-provider";
 export default async function RootProvider({
 	children,
 }: {

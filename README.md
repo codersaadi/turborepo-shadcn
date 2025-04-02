@@ -56,7 +56,7 @@ This Turborepo includes the following packages/apps:
 
 - `docs`: a [Next.js](https://nextjs.org/) app, Fumadocs , Mdx
 - `web`: another [Next.js](https://nextjs.org/) app
-- `repo-ui`: a shared React component library using [shadcn/ui](https://ui.shadcn.com/)
+- `@repo/ui`: a shared React component library using [shadcn/ui](https://ui.shadcn.com/)
 - `@repo/api` API package with tRPC and Zod schemas
 -  `@repo/env` : shared env package , typesafe validated env.
 - `@repo/db` : a shared database package for scaling easily.
@@ -148,7 +148,7 @@ Seed user Password: codersaadi
 │   ├── docs                 # Documentation site
 │   └── web                 # Main web application
 ├── packages
-│   ├── repo-ui                  # Shared UI components
+│   ├── @repo/ui                  # Shared UI components
 │   ├── api/               # Shared API & tRPC routes
 │   ├── typescript-config   # Shared TypeScript configs
 │   └── biome-config        # Shared Biome configs

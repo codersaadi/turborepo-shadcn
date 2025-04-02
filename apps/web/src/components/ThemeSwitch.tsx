@@ -1,6 +1,6 @@
+import { ThemeSwitch as Switch } from "@repo/ui/components/theme-switch";
 import Image from "next/image";
 import React from "react";
-import { ThemeSwitch as Switch } from "repo-ui/components/theme-switch";
 
 export default function NextThemeSwitch() {
 	return (

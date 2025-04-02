@@ -1,5 +1,5 @@
+import { cn } from "@repo/ui/lib/utils";
 import { FileIcon, FolderIcon } from "lucide-react";
-import { cn } from "repo-ui/lib/utils";
 
 type TreeNode = {
 	name: string;
@@ -18,7 +18,7 @@ const projectStructure: TreeNode = {
 		{
 			name: "packages",
 			children: [
-				{ name: "repo-ui" },
+				{ name: "@repo/ui" },
 				{ name: "api" },
 				{ name: "db" },
 				{ name: "email" },

@@ -1,7 +1,7 @@
 import { SigninMagic } from "@/components/auth/signin";
 import { APP_NAME } from "@/constants";
 import type { Metadata } from "next";
-export default SigninMagic
+export default SigninMagic;
 /**
  * Meta data for the signin form page
  */

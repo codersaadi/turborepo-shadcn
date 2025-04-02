@@ -1,0 +1,17 @@
+{
+	"extends": "@tooling/typescript-config/react-library.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		"paths": {
+			"@repo/*": ["../*"],
+			"@repo/ui/*": ["./*"]
+		}
+	},
+	"include": ["**/*.ts", "**/*.tsx", "postcss.config.ts"],
+	"exclude": ["node_modules"]
+}

@@ -1,9 +1,9 @@
 "use client";
 import { emailVerifyAction } from "@authjs/core/actions/email-verify";
+import { FormFeedback } from "@repo/ui/components/form-feedback";
+import { Button } from "@repo/ui/components/ui/button";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { FormFeedback } from "repo-ui/components/form-feedback";
-import { Button } from "repo-ui/components/ui/button";
 
 export default function EmailVerifyForm({
 	token,

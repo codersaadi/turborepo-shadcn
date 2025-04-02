@@ -44,6 +44,9 @@ importers:
       '@repo/next-config':
         specifier: workspace:*
         version: link:../../packages/next-config
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@sentry/nextjs':
         specifier: ^8.43.0
         version: 8.55.0(@opentelemetry/context-async-hooks@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/core@1.30.1(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.57.2(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.30.1(@opentelemetry/api@1.9.0))(next@15.1.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(webpack@5.98.0)
@@ -56,9 +59,6 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
-      repo-ui:
-        specifier: workspace:*
-        version: link:../../packages/repo-ui
     devDependencies:
       '@tooling/typescript-config':
         specifier: workspace:*
@@ -90,6 +90,9 @@ importers:
       '@next/mdx':
         specifier: ^15.0.2
         version: 15.2.1(@mdx-js/loader@3.1.0(acorn@8.14.1)(webpack@5.98.0))(@mdx-js/react@3.1.0(@types/react@19.0.10)(react@19.0.0))
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@types/mdx':
         specifier: ^2.0.13
         version: 2.0.13
@@ -117,9 +120,6 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
-      repo-ui:
-        specifier: workspace:*
-        version: link:../../packages/repo-ui
       tailwindcss:
         specifier: ^4.0.11
         version: 4.0.11
@@ -181,6 +181,9 @@ importers:
       '@repo/rate-limit':
         specifier: workspace:*
         version: link:../../packages/rate-limit
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@stripe/react-stripe-js':
         specifier: ^3.0.0
         version: 3.3.0(@stripe/stripe-js@5.10.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -229,9 +232,6 @@ importers:
       react-hook-form:
         specifier: ^7.53.2
         version: 7.54.2(react@19.0.0)
-      repo-ui:
-        specifier: workspace:*
-        version: link:../../packages/repo-ui
       stripe:
         specifier: ^17.4.0
         version: 17.7.0
@@ -281,6 +281,9 @@ importers:
       '@radix-ui/react-icons':
         specifier: ^1.3.2
         version: 1.3.2(react@19.0.0)
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../ui
       lucide-react:
         specifier: ^0.460.0
         version: 0.460.0(react@19.0.0)
@@ -293,9 +296,6 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
-      repo-ui:
-        specifier: workspace:*
-        version: link:../../repo-ui
       zod:
         specifier: ^3.23.8
         version: 3.24.2
@@ -619,7 +619,47 @@ importers:
         specifier: ^0.34.6
         version: 0.34.6(lightningcss@1.29.2)(terser@5.39.0)
 
-  packages/repo-ui:
+  packages/trpc:
+    dependencies:
+      '@authjs/core':
+        specifier: workspace:*
+        version: link:../@authjs/core
+      '@repo/env':
+        specifier: workspace:*
+        version: link:../env
+      '@repo/rate-limit':
+        specifier: workspace:*
+        version: link:../rate-limit
+      '@trpc/client':
+        specifier: ^11.0.1
+        version: 11.0.1(@trpc/server@11.0.1(typescript@5.7.2))(typescript@5.7.2)
+      '@trpc/react-query':
+        specifier: ^11.0.1
+        version: 11.0.1(@tanstack/react-query@5.67.1(react@19.0.0))(@trpc/client@11.0.1(@trpc/server@11.0.1(typescript@5.7.2))(typescript@5.7.2))(@trpc/server@11.0.1(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      '@trpc/server':
+        specifier: ^11.0.1
+        version: 11.0.1(typescript@5.7.2)
+      '@trpc/tanstack-react-query':
+        specifier: ^11.0.1
+        version: 11.0.1(@tanstack/react-query@5.67.1(react@19.0.0))(@trpc/client@11.0.1(@trpc/server@11.0.1(typescript@5.7.2))(typescript@5.7.2))(@trpc/server@11.0.1(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      dinero.js:
+        specifier: 2.0.0-alpha.14
+        version: 2.0.0-alpha.14
+      superjson:
+        specifier: ^2.2.1
+        version: 2.2.2
+      zod:
+        specifier: ^3.23.8
+        version: 3.24.2
+    devDependencies:
+      '@tooling/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
+      typescript:
+        specifier: 5.7.2
+        version: 5.7.2
+
+  packages/ui:
     dependencies:
       '@hookform/resolvers':
         specifier: ^3.10.0
@@ -811,46 +851,6 @@ importers:
       tailwind-merge:
         specifier: ^3.0.2
         version: 3.0.2
-      typescript:
-        specifier: 5.7.2
-        version: 5.7.2
-
-  packages/trpc:
-    dependencies:
-      '@authjs/core':
-        specifier: workspace:*
-        version: link:../@authjs/core
-      '@repo/env':
-        specifier: workspace:*
-        version: link:../env
-      '@repo/rate-limit':
-        specifier: workspace:*
-        version: link:../rate-limit
-      '@trpc/client':
-        specifier: ^11.0.1
-        version: 11.0.1(@trpc/server@11.0.1(typescript@5.7.2))(typescript@5.7.2)
-      '@trpc/react-query':
-        specifier: ^11.0.1
-        version: 11.0.1(@tanstack/react-query@5.67.1(react@19.0.0))(@trpc/client@11.0.1(@trpc/server@11.0.1(typescript@5.7.2))(typescript@5.7.2))(@trpc/server@11.0.1(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
-      '@trpc/server':
-        specifier: ^11.0.1
-        version: 11.0.1(typescript@5.7.2)
-      '@trpc/tanstack-react-query':
-        specifier: ^11.0.1
-        version: 11.0.1(@tanstack/react-query@5.67.1(react@19.0.0))(@trpc/client@11.0.1(@trpc/server@11.0.1(typescript@5.7.2))(typescript@5.7.2))(@trpc/server@11.0.1(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
-      dinero.js:
-        specifier: 2.0.0-alpha.14
-        version: 2.0.0-alpha.14
-      superjson:
-        specifier: ^2.2.1
-        version: 2.2.2
-      zod:
-        specifier: ^3.23.8
-        version: 3.24.2
-    devDependencies:
-      '@tooling/typescript-config':
-        specifier: workspace:*
-        version: link:../../tooling/typescript-config
       typescript:
         specifier: 5.7.2
         version: 5.7.2
@@ -12078,11 +12078,11 @@ snapshots:
 
   '@types/connect@3.4.36':
     dependencies:
-      '@types/node': 22.10.1
+      '@types/node': 20.17.23
 
   '@types/conventional-commits-parser@5.0.1':
     dependencies:
-      '@types/node': 22.10.1
+      '@types/node': 20.17.23
 
   '@types/cookie@0.6.0': {}
 
@@ -12164,7 +12164,7 @@ snapshots:
 
   '@types/mysql@2.15.26':
     dependencies:
-      '@types/node': 22.10.1
+      '@types/node': 20.17.23
 
   '@types/node@20.17.23':
     dependencies:
@@ -12186,7 +12186,7 @@ snapshots:
 
   '@types/pg@8.6.1':
     dependencies:
-      '@types/node': 22.10.1
+      '@types/node': 20.17.23
       pg-protocol: 1.7.1
       pg-types: 2.2.0
 
@@ -12206,7 +12206,7 @@ snapshots:
 
   '@types/tedious@4.0.14':
     dependencies:
-      '@types/node': 22.10.1
+      '@types/node': 20.17.23
 
   '@types/through@0.0.33':
     dependencies:

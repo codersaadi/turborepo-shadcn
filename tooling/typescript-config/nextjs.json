@@ -1,24 +1,18 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends" :"./base.json",
+  "display": "Next.js",
+  "extends": "./base.json",
   "compilerOptions": {
-    "jsx": "preserve",
-    "allowJs": true,
-    "esModuleInterop": true,
-    "moduleResolution": "bundler",
+    "plugins": [{ "name": "next" }],
     "module": "ESNext",
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Bundler",
+    "allowJs": true,
+    "jsx": "preserve",
     "noEmit": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "types": ["node"]
-  }
+    "paths": {
+      "@/*": ["./*"],
+      "@repo/*": ["../../packages/*"]
+    }
+  },
+  "exclude": ["node_modules"]
 }

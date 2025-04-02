@@ -1,5 +1,5 @@
 'use client';
-import { Button } from '@repo/repo-ui/components/ui/button';
+import { Button } from '@repo/@repo/ui/components/ui/button';
 import { captureException } from '@sentry/nextjs';
 import type NextError from 'next/error';
 import { useEffect } from 'react';

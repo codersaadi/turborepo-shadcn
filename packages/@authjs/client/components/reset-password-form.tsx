@@ -2,19 +2,19 @@
 import { resetPasswordAction } from "@authjs/core/actions/forgot-password";
 import { ResetPasswordSchema } from "@authjs/core/schema";
 import { EyeClosedIcon, EyeOpenIcon } from "@radix-ui/react-icons";
-import { useState } from "react";
-import { FormFeedback } from "repo-ui/components/form-feedback";
-import { LoaderButton } from "repo-ui/components/loader-button";
+import { FormFeedback } from "@repo/ui/components/form-feedback";
+import { LoaderButton } from "@repo/ui/components/loader-button";
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
-} from "repo-ui/components/ui/form";
-import { Input } from "repo-ui/components/ui/input";
-import { useFormAction } from "repo-ui/hooks/use-form";
-import { cn } from "repo-ui/lib/utils";
+} from "@repo/ui/components/ui/form";
+import { Input } from "@repo/ui/components/ui/input";
+import { useFormAction } from "@repo/ui/hooks/use-form";
+import { cn } from "@repo/ui/lib/utils";
+import { useState } from "react";
 export default function ResetPasswordForm({
 	token,
 	onErrorIgnore

@@ -3,20 +3,20 @@
 import { signinMagic } from "@authjs/core/actions/signin-magic";
 import { MagicSignInSchema } from "@authjs/core/schema";
 import { AvatarIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
-import { FormFeedback } from "repo-ui/components/form-feedback";
-import { LoaderButton } from "repo-ui/components/loader-button";
-import { Button } from "repo-ui/components/ui/button";
+import { FormFeedback } from "@repo/ui/components/form-feedback";
+import { LoaderButton } from "@repo/ui/components/loader-button";
+import { Button } from "@repo/ui/components/ui/button";
 import {
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
-} from "repo-ui/components/ui/form";
-import { Input } from "repo-ui/components/ui/input";
-import { useFormAction } from "repo-ui/hooks/use-form";
-import { cn } from "repo-ui/lib/utils";
+} from "@repo/ui/components/ui/form";
+import { Input } from "@repo/ui/components/ui/input";
+import { useFormAction } from "@repo/ui/hooks/use-form";
+import { cn } from "@repo/ui/lib/utils";
+import Link from "next/link";
 import { SignInFooter } from "./signin-form";
 
 export default function MagicSignInForm({

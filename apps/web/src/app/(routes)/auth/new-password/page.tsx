@@ -1,8 +1,8 @@
-'use client'
+"use client";
 import { ResetPasswordForm } from "@/components/auth/new-password";
+import { Button } from "@repo/ui/components/ui/button";
 import Link from "next/link";
 import React from "react";
-import { Button } from "repo-ui/components/ui/button";
 interface ResetPasswordProps {
 	searchParams: Promise<{
 		token?: string;

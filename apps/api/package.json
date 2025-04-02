@@ -18,7 +18,7 @@
     "@repo/api": "workspace:*",
     "@sentry/nextjs": "^8.43.0",
     "@repo/db": "workspace:*",
-    "repo-ui": "workspace:*",
+    "@repo/ui": "workspace:*",
     "@repo/env": "workspace:*",
     "@repo/next-config": "workspace:*"
   },
