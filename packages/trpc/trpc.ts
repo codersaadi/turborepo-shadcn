@@ -10,6 +10,7 @@ import { ZodError } from "zod";
  * The pieces you will need to use are documented accordingly near the end
  */
 
+import { RatelimitError, secureLimiter } from "@repo/rate-limit";
 import { transformer } from "./transformer";
 
 /**
@@ -106,22 +107,49 @@ export const createCallerFactory = t.createCallerFactory;
  * tRPC API. It does not guarantee that a user querying is authorized, but you
  * can still access user session data if they are logged in
  */
-export const publicProcedure = t.procedure;
+export const publicProcedure = t.procedure.use(async ({ ctx, next }) => {
+  const limitResponse = await secureLimiter.limit(
+    getIp(ctx.headers) || "global-fallback"
+  );
+  if (!limitResponse.success) {
+    throw new RatelimitError("Too many requests, slow down.");
+  }
+  return next();
+});
 
 /**
  * Reusable procedure that enforces users are logged in before running the
  * code
  */
-export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
+export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
   if (!ctx.auth?.user || !ctx.auth.user.id) {
     throw new TRPCError({
       code: "UNAUTHORIZED",
       message: "User is not allowed to perform this action",
     });
   }
+  const limitResponse = await secureLimiter.limit(ctx.auth.user.id);
+  if (!limitResponse.success) {
+    throw new RatelimitError("Too many requests, slow down.");
+  }
+
   return next({
     ctx: {
       auth: ctx.auth as Session & { user: SessionUser },
     },
   });
 });
+
+const getIp = (headers: Headers) => {
+  const forwardedFor = headers.get("x-forwarded-for");
+  const realIp = headers.get("x-real-ip");
+
+  if (forwardedFor) {
+    return forwardedFor?.split(",")?.[0]?.trim();
+  }
+
+  if (realIp) {
+    return realIp.trim();
+  }
+  return null;
+};

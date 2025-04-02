@@ -11,6 +11,7 @@
     "stripe:listen": "stripe listen --forward-to http://localhost:3000/api/webhooks/stripe"
   },
   "dependencies": {
+    "@repo/rate-limit": "workspace:*",
     "@authjs/client": "workspace:*",
     "@authjs/core": "workspace:*",
     "@hookform/resolvers": "^3.9.1",

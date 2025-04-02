@@ -1,14 +1,13 @@
 {
-	"extends": "@tooling/typescript-config/base.json",
+	"extends": "@tooling/typescript-config/react-library.json",
 	"compilerOptions": {
-		"outDir": "dist",
-		"baseUrl": ".",	
-		"rootDir": ".",	
-		"paths": {
-			"@authjs/core/*": ["./*"],
-		},
-		
+	  "baseUrl": ".",
 	},
-	"include": ["**/*.ts", "index.ts"],
-	"exclude": ["node_modules", "dist"]
-}
+	"paths": {
+		"@authjs/core/*": ["./*"],
+	},
+
+	"include": ["**/*.ts", "**/*.tsx"],
+	"exclude": ["node_modules"]
+  }
+  

@@ -11,6 +11,7 @@
     "typescript": "5.7.2"
   },
   "dependencies": {
+    "@repo/rate-limit": "workspace:*",
     "@authjs/core": "workspace:*",
     "@repo/env": "workspace:*",
     "@tanstack/react-query": "^5.62.0",

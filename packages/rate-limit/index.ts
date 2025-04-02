@@ -1,19 +1,15 @@
-import env from "@repo/env";
-import { Ratelimit, type RatelimitConfig } from "@upstash/ratelimit";
-import { Redis } from "@upstash/redis";
+import { createRateLimiter, slidingWindow } from "./redis";
 
-export const redis = new Redis({
-  url: env.UPSTASH_REDIS_REST_URL,
-  token: env.UPSTASH_REDIS_REST_TOKEN,
+export * from "./redis";
+export * as withUpstash from "./upstash";
+
+// for un authenticated users (can say Global Limiter)
+export const strictLimiter = createRateLimiter({
+  limiter: slidingWindow(5, "10 s"), // Stricter limits
+  prefix: "unauthenticated",
 });
-
-export const { slidingWindow } = Ratelimit;
-export interface CreateRateLimiterProps
-  extends Omit<RatelimitConfig, "redis"> {}
-
-export const createRateLimiter = (props: CreateRateLimiterProps) =>
-  new Ratelimit({
-    redis,
-    limiter: props.limiter ?? slidingWindow(10, "10 s"),
-    prefix: props.prefix ?? "web-turbo",
-  });
+// for authenticated-users
+export const secureLimiter = createRateLimiter({
+  prefix: "authenticated",
+  limiter: slidingWindow(10, "10 s"),
+});

@@ -17,7 +17,7 @@ const serverSchema = {
   GOOGLE_CLIENT_ID: z.string(),
   GOOGLE_CLIENT_SECRET: z.string().min(1, "Google Client Secret is required"),
   NODE_ENV: z.enum(["test", "development", "production"]),
-
+  REDIS_CLIENT: z.string().min(1).url().optional(),
   // Added by Sentry Integration, Vercel Marketplace
   SENTRY_ORG: z.string().min(1).optional(),
   SENTRY_PROJECT: z.string().min(1).optional(),
@@ -72,6 +72,7 @@ const env = createEnv({
     ANALYZE: process.env.ANALYZE,
     NEXT_RUNTIME: process.env.NEXT_RUNTIME,
     NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
+    REDIS_CLIENT: process.env.REDIS_CLIENT,
   },
   onValidationError: (err) => {
     throw err;
