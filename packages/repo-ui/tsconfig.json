@@ -9,6 +9,6 @@
 			"repo-ui/hooks/*": ["./hooks/*"]
 		}
 	},
-	"include": ["**/*.tsx", "**/*.ts"],
+	"include": ["**/*.tsx", "**/*.ts", "components/404/index.tsc"],
 	"exclude": ["node_modules", "dist", ".turbo"]
 }
