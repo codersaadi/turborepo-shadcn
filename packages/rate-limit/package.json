@@ -6,7 +6,6 @@
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "test": "vitest run",
-    "build": "tsc",
     "test:watch": "vitest"
   },
   "dependencies": {
