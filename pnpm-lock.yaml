@@ -611,6 +611,9 @@ importers:
       '@upstash/redis':
         specifier: ^1.34.3
         version: 1.34.5
+      oss-ratelimit:
+        specifier: ^0.1.4
+        version: 0.1.4(redis@4.7.0)
       redis:
         specifier: ^4.7.0
         version: 4.7.0
@@ -6956,6 +6959,11 @@ packages:
   os-tmpdir@1.0.2:
     resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
     engines: {node: '>=0.10.0'}
+
+  oss-ratelimit@0.1.4:
+    resolution: {integrity: sha512-7eM1Yr7MxSV5JWLysd3GgBPT3f0RSXNhH1IahJjADvGw40QW1IB5IVyEhnIrQ3d6rSNvSgkyyqnGGe5fCuHl3w==}
+    peerDependencies:
+      redis: ^4.0.0
 
   p-limit@3.1.0:
     resolution: {integrity: sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==}
@@ -15269,6 +15277,10 @@ snapshots:
       wcwidth: 1.0.1
 
   os-tmpdir@1.0.2: {}
+
+  oss-ratelimit@0.1.4(redis@4.7.0):
+    dependencies:
+      redis: 4.7.0
 
   p-limit@3.1.0:
     dependencies:

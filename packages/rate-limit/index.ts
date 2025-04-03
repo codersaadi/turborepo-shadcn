@@ -1,15 +1,6 @@
-import { createRateLimiter, slidingWindow } from "./redis";
-
 export * from "./redis";
+// YOU MAY REMOVE THIS If you are using ratelimiting with our redis ratelimiter
 export * as withUpstash from "./upstash";
 
-// for un authenticated users (can say Global Limiter)
-export const strictLimiter = createRateLimiter({
-  limiter: slidingWindow(5, "10 s"), // Stricter limits
-  prefix: "unauthenticated",
-});
-// for authenticated-users
-export const secureLimiter = createRateLimiter({
-  prefix: "authenticated",
-  limiter: slidingWindow(10, "10 s"),
-});
+// YOU MAY REMOVE THIS IF YOU USING Ratelimiting with upstash
+export * from "./redis"; // (default ratelimiter requires REDIS_URL when using createSingletonRateLimiter )
