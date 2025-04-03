@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
-@source "../../packages/@repo/ui";
+@source "../../packages/ui/";
 @source "../../packages/@authjs/client";
 
 @custom-variant dark (&:is(.dark *));

@@ -114,7 +114,7 @@ export const publicProcedure = t.procedure.use(async ({ ctx, next }) => {
   if (!limitResponse.success) {
     throw new RatelimitError("Too many requests, slow down.");
   }
-  return next();
+  return next({ ctx });
 });
 
 /**
