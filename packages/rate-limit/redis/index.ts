@@ -1,4 +1,6 @@
+// https://www.npmjs.com/package/oss-ratelimit
 import { createSingletonRateLimiter, slidingWindow } from "oss-ratelimit";
+// https://github.com/codersaadi/oss-ratelimit
 
 // for un authenticated users (can say Global Limiter)
 export const strictLimiter = createSingletonRateLimiter({
